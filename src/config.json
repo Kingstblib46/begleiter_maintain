@@ -1,0 +1,18 @@
+{
+    "screenshot_interval": 20,
+    "save_path": "screenshots",
+    "record_user_actions": true,
+    "user_actions_log": "log/user_actions.log",
+    "encryption": {
+        "key": "16byteslongkey!!",
+        "iv": "16byteslongiv!!!"
+    },
+    "modelscope": {
+        "access_token": "1cb4c5f6-7e5e-49a4-8ce0-b4ac2fb898ae",
+        "owner_name": "kanadechan",
+        "dataset_name": "TEST",
+        "commit_message": "upload dataset folder to repo",
+        "repo_type": "dataset",
+        "path_in_repo": "test"
+    }
+}
