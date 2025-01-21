@@ -404,11 +404,11 @@ class StorageManager:
         try:
             with open(os.path.join(app_path(), 'username.txt'), 'r', encoding='utf-8') as f:
                 username = f.read().strip()
-                path_in_repo = f"{username}/{timestamp}.zip"
+                path_in_repo = f"{username}/{timestamp}.zip.enc"
                 print(f"上传路径: {path_in_repo}")
         except:
             print("未找到用户名文件")
-            path_in_repo = f"{timestamp}.zip"
+            path_in_repo = f"{timestamp}.zip.enc"
 
         if not os.path.exists(file_path):
             thread_safe_logging('error', f"错误: 文件 {file_path} 不存在。上传失败。")
