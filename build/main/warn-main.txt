@@ -14,7 +14,7 @@ Types if import:
 IMPORTANT: Do NOT post this list to the issue-tracker. Use it as a basis for
             tracking down the missing module yourself. Thanks!
 
-missing module named _winapi - imported by encodings (delayed, conditional, optional), shutil (conditional), subprocess (conditional), ntpath (optional), mimetypes (optional), multiprocessing.connection (optional), multiprocessing.spawn (delayed, conditional), multiprocessing.reduction (conditional), multiprocessing.shared_memory (conditional), multiprocessing.heap (conditional), multiprocessing.popen_spawn_win32 (top-level), asyncio.windows_events (top-level), asyncio.windows_utils (top-level), venv (delayed, conditional)
+missing module named _winapi - imported by encodings (delayed, conditional, optional), ntpath (optional), shutil (conditional), subprocess (conditional), mimetypes (optional), multiprocessing.connection (optional), multiprocessing.spawn (delayed, conditional), multiprocessing.reduction (conditional), multiprocessing.shared_memory (conditional), multiprocessing.heap (conditional), multiprocessing.popen_spawn_win32 (top-level), asyncio.windows_events (top-level), asyncio.windows_utils (top-level), venv (delayed, conditional)
 missing module named urllib.splittype - imported by urllib (conditional), pip._vendor.distlib.compat (conditional)
 missing module named urllib.ContentTooShortError - imported by urllib (conditional), pip._vendor.distlib.compat (conditional)
 missing module named urllib.pathname2url - imported by urllib (conditional), pip._vendor.distlib.compat (conditional)
@@ -23,7 +23,7 @@ missing module named urllib.unquote - imported by urllib (conditional), pip._ven
 missing module named urllib.quote - imported by urllib (conditional), pip._vendor.distlib.compat (conditional)
 missing module named urllib.urlretrieve - imported by urllib (conditional), pip._vendor.distlib.compat (conditional)
 missing module named winreg - imported by importlib._bootstrap_external (conditional), platform (delayed, optional), mimetypes (optional), urllib.request (delayed, conditional, optional), setuptools._vendor.platformdirs.windows (delayed, optional), requests.utils (delayed, conditional, optional), pip._vendor.requests.utils (delayed, conditional, optional), pip._vendor.platformdirs.windows (delayed, optional), setuptools._distutils._msvccompiler (top-level), setuptools.msvc (conditional)
-missing module named nt - imported by shutil (conditional), importlib._bootstrap_external (conditional), os (delayed, conditional, optional), ntpath (optional), ctypes (delayed, conditional)
+missing module named nt - imported by os (delayed, conditional, optional), ntpath (optional), shutil (conditional), importlib._bootstrap_external (conditional), ctypes (delayed, conditional)
 missing module named _frozen_importlib_external - imported by importlib._bootstrap (delayed), importlib (optional), importlib.abc (optional), zipimport (top-level), pip._vendor.distlib.resources (optional)
 excluded module named _frozen_importlib - imported by importlib (optional), importlib.abc (optional), zipimport (top-level), pip._vendor.distlib.resources (optional)
 missing module named pyimod02_importers - imported by /opt/anaconda3/envs/development/lib/python3.12/site-packages/PyInstaller/hooks/rthooks/pyi_rth_pkgutil.py (delayed), /opt/anaconda3/envs/development/lib/python3.12/site-packages/PyInstaller/hooks/rthooks/pyi_rth_pkgres.py (delayed)

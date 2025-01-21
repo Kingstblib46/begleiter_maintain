@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.21.1(第四版打包)" />
+    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.21.2(第五版打包)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,6 +196,8 @@
       <workItem from="1737430507240" duration="68000" />
       <workItem from="1737430579264" duration="1614000" />
       <workItem from="1737432369768" duration="65000" />
+      <workItem from="1737434906917" duration="662000" />
+      <workItem from="1737435926484" duration="417000" />
     </task>
     <task id="LOCAL-00001" summary="2025.1.14.1">
       <option name="closed" value="true" />
@@ -573,7 +575,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737362327139</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="2025.1.21.2(第五版打包)">
+      <option name="closed" value="true" />
+      <created>1737435704616</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1737435704616</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,7 +613,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025.1.15.8(优化了对连续输入的适应)" />
     <MESSAGE value="2025.1.15.9(优化了ui)" />
     <MESSAGE value="2025.1.16.1(增加了打包命令)" />
     <MESSAGE value="2025.1.16.2(修复完毕)" />
@@ -628,13 +637,14 @@
     <MESSAGE value="2025.1.20.4(第二版)" />
     <MESSAGE value="2025.1.20.5(第三版)&#10;修改处：ui第137行&#10;bug：结算json少一行" />
     <MESSAGE value="2025.1.20.5(第三版打包)" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025.1.20.5(第三版打包)" />
+    <MESSAGE value="2025.1.21.2(第五版打包)" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025.1.21.2(第五版打包)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/begleiter$ui.coverage" NAME="ui Coverage Results" MODIFIED="1736845995733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$storage.coverage" NAME="storage Coverage Results" MODIFIED="1737213298694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$test_screenshot.coverage" NAME="test_screenshot Coverage Results" MODIFIED="1736786701994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/begleiter_maintain$main.coverage" NAME="main Coverage Results" MODIFIED="1737432775310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/begleiter_maintain$main.coverage" NAME="main Coverage Results" MODIFIED="1737435929271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$action_recorder.coverage" NAME="action_recorder Coverage Results" MODIFIED="1737361339073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$main.coverage" NAME="main Coverage Results" MODIFIED="1737361475695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>

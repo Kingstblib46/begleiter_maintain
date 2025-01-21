@@ -8,9 +8,9 @@
         "iv": "16byteslongiv!!!"
     },
     "modelscope": {
-        "access_token": "1cb4c5f6-7e5e-49a4-8ce0-b4ac2fb898ae",
-        "owner_name": "kanadechan",
-        "dataset_name": "TEST",
+        "access_token": "45e3bad7-e2bc-45b6-b7be-44dda62adca6",
+        "owner_name": "lllijuih",
+        "dataset_name": "AGENTC",
         "commit_message": "upload dataset folder to repo",
         "repo_type": "dataset",
         "path_in_repo": "test"
