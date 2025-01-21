@@ -29,24 +29,25 @@ class ProcessSessionThread(QThread):
 
 
 class MainWindow(QtWidgets.QWidget):
-    error_signal = pyqtSignal(str)  # Define a signal for error messages
-    quit_signal = pyqtSignal()      # Define a signal to quit the application
+    error_signal = pyqtSignal(str)
+    quit_signal = pyqtSignal()
 
     def __init__(self, config):
         super().__init__()
         self.config = config
+        # 使用单例模式的 StorageManager
         self.storage_manager = StorageManager(config.get('save_path', 'screenshots'))
         self.action_recorder_thread = None
 
-        self.error_signal.connect(self.show_error)  # Connect the signal to the slot
-        self.quit_signal.connect(QtWidgets.QApplication.quit)  # Connect the quit signal
+        self.error_signal.connect(self.show_error)
+        self.quit_signal.connect(QtWidgets.QApplication.quit)
 
         self.init_ui()
         self.init_action_recorder()
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.capture_screenshot)
-        self.storage_manager.app_timer = self.timer  # Reference to timer in storage_manager
+        self.storage_manager.app_timer = self.timer
 
     def init_action_recorder(self):
         if self.config.get('record_user_actions', True):
@@ -102,14 +103,16 @@ class MainWindow(QtWidgets.QWidget):
     def on_accept(self):
         thread_safe_logging('info', "用户选择允许截屏")
         if request_permission(parent=self):
-            QtWidgets.QMessageBox.information(
-                self, '启动',
-                f"程序已启动，将自动截取屏幕，并记录用户操作。"
-            )
-            interval = self.config.get('screenshot_interval', 20)
-            self.timer.start(interval * 1000)  # 毫秒
-            thread_safe_logging('info', f"启动截屏定时器，每{interval}秒进行一次截屏。")
-            self.show_stop_close_button()
+            # 启动会话并创建文件夹
+            if self.storage_manager.start_session():
+                QtWidgets.QMessageBox.information(
+                    self, '启动',
+                    f"程序已启动，将自动截取屏幕，并记录用户操作。"
+                )
+                interval = self.config.get('screenshot_interval', 20)
+                self.timer.start(interval * 1000)  # 毫秒
+                thread_safe_logging('info', f"启动截屏定时器，每{interval}秒进行一次截屏。")
+                self.show_stop_close_button()
         else:
             self.on_decline()
 
@@ -129,24 +132,26 @@ class MainWindow(QtWidgets.QWidget):
     def on_stop_and_close(self):
         thread_safe_logging('info', "用户点击'停止记录并关闭'按钮")
         
+        # 停止定时器
         if self.timer.isActive():
             self.timer.stop()
             thread_safe_logging('info', "定时器已停止")
 
+        # 禁用按钮防止重复点击
         self.stop_close_btn.setEnabled(False)
-        thread_safe_logging('info', "已禁用'停止记录并关闭'按钮")
         
+        # 停止动作记录线程
         if self.action_recorder_thread:
             thread_safe_logging('info', "准备停止动作记录线程")
             self.action_recorder_thread.stop()
             thread_safe_logging('info', "动作记录线程已停止")
 
+        # 处理会话并退出
         thread_safe_logging('info', "准备启动处理会话线程")
         self.process_thread = ProcessSessionThread(self.storage_manager)
         self.process_thread.error_occurred.connect(self.show_error)
-        self.process_thread.finished_signal.connect(self.quit_signal.emit)
+        self.process_thread.finished_signal.connect(QtWidgets.QApplication.quit)
         self.process_thread.start()
-        thread_safe_logging('info', "处理会话线程已启动")
 
     def capture_screenshot(self):
         try:
@@ -160,21 +165,13 @@ class MainWindow(QtWidgets.QWidget):
 
     def closeEvent(self, event):
         thread_safe_logging('info', "触发窗口关闭事件")
-        reply = QtWidgets.QMessageBox.question(
-            self, '确认退出',
-            "确定要退出应用程序吗？",
-            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
-            QtWidgets.QMessageBox.No
-        )
-        thread_safe_logging('info', f"用户对关闭确认的回应: {'Yes' if reply == QtWidgets.QMessageBox.Yes else 'No'}")
-
-        if reply == QtWidgets.QMessageBox.Yes:
-            thread_safe_logging('info', "用户确认关闭，调用on_stop_and_close")
+        if hasattr(self, 'stop_close_btn') and self.stop_close_btn.isVisible():
+            # 如果正在记录，则调用停止记录并关闭
             self.on_stop_and_close()
-            event.ignore()
+            event.ignore()  # 忽略关闭事件，等待处理完成后自动退出
         else:
-            thread_safe_logging('info', "用户取消关闭，忽略关闭事件")
-            event.ignore()
+            # 如果还没开始记录，直接退出
+            QtWidgets.QApplication.quit()
 
     def show_error(self, message):
         QtWidgets.QMessageBox.critical(self, '错误', message)

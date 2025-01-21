@@ -45,32 +45,32 @@ def compress_image(input_path, output_path, target_size_kb=500):
         thread_safe_logging('error', f"压缩图片失败: {input_path}, 错误: {e}")
 
 class StorageManager:
+    _instance = None
+    _initialized = False
+    _session_started = False  # 新增标志，表示是否已经开始会话
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super(StorageManager, cls).__new__(cls)
+        return cls._instance
+
     def __init__(self, save_path='screenshots'):
+        # 确保只初始化一次
+        if StorageManager._initialized:
+            return
+            
         # 获取基础路径
         base_path = app_path()
         thread_safe_logging('info', f"StorageManager初始化 - 基础路径: {base_path}")
         self.config = self.load_config()
 
-        # 创建以当前时间戳为名称的文件夹，用于存储本次会话的所有数据
-        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        self.session_folder = os.path.join(os.path.join(base_path, "records"), timestamp)
-        thread_safe_logging('info', f"StorageManager - 创建会话文件夹: {self.session_folder}")
-        os.makedirs(self.session_folder, exist_ok=True)
-
-        # 创建本次会话的 log 和 screenshots 子文件夹
-        self.save_path = os.path.join(self.session_folder, 'screenshots')
-        os.makedirs(self.save_path, exist_ok=True)
-
-        self.original_path = os.path.join(self.save_path, 'original')
-        self.annotated_path = os.path.join(self.save_path, 'annotated')
-        os.makedirs(self.original_path, exist_ok=True)
-        os.makedirs(self.annotated_path, exist_ok=True)
-
-        self.log_path = os.path.join(self.session_folder, 'log')
-        os.makedirs(self.log_path, exist_ok=True)
-        # 保存路径设置
-        #self.save_path = os.path.join(base_path, save_path)
-        #os.makedirs(self.save_path, exist_ok=True)
+        # 初始化变量，但不立即创建文件夹
+        self.base_path = base_path
+        self.session_folder = None
+        self.save_path = None
+        self.original_path = None
+        self.annotated_path = None
+        self.log_path = None
 
         # 定义不可打印字符到组合键的映射（针对macOS的Command键）
         self.unicode_key_map = {
@@ -176,6 +176,8 @@ class StorageManager:
             # 可以根据需要添加更多特殊键
         }
 
+        StorageManager._initialized = True
+
     def load_config(self):
         """
         加载配置文件。
@@ -229,10 +231,11 @@ class StorageManager:
         return ' '.join(converted)
 
     def save_screenshot(self, x=None, y=None, dx=None, dy=None, button=None, key_name=None, screenshot=None, filename=None):
-        """
-        保存截图，包括带注释和不带注释的两份，并确保每份都压缩到小于500KB。
-        返回不带信息的截图的相对路径。
-        """
+        """保存截图"""
+        if not self._session_started:
+            thread_safe_logging('warning', "尝试保存截图但会话尚未开始")
+            return False
+            
         try:
             base_path = app_path()
             screen_size = pyautogui.size()
@@ -496,3 +499,28 @@ class StorageManager:
         except Exception as e:
             thread_safe_logging('error', f"会话处理失败 - 文件夹: {self.session_folder}, 错误: {str(e)}")
             raise
+
+    def start_session(self):
+        """在用户同意后启动会话"""
+        if not self._session_started:
+            # 创建以当前时间戳为名称的文件夹
+            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            self.session_folder = os.path.join(os.path.join(self.base_path, "records"), timestamp)
+            thread_safe_logging('info', f"StorageManager - 创建会话文件夹: {self.session_folder}")
+            
+            # 创建所需的文件夹
+            os.makedirs(self.session_folder, exist_ok=True)
+            self.save_path = os.path.join(self.session_folder, 'screenshots')
+            os.makedirs(self.save_path, exist_ok=True)
+            
+            self.original_path = os.path.join(self.save_path, 'original')
+            self.annotated_path = os.path.join(self.save_path, 'annotated')
+            os.makedirs(self.original_path, exist_ok=True)
+            os.makedirs(self.annotated_path, exist_ok=True)
+            
+            self.log_path = os.path.join(self.session_folder, 'log')
+            os.makedirs(self.log_path, exist_ok=True)
+            
+            StorageManager._session_started = True
+            return True
+        return False

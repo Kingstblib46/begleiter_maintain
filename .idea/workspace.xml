@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.21.5(重新打包)">
+    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.21.6(更多的debug信息)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/Analysis-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/EXE-00.toc" afterDir="false" />
@@ -15,7 +15,6 @@
       <change beforePath="$PROJECT_DIR$/build/main/xref-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/xref-main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/main" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/main.app/Contents/MacOS/main" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main.app/Contents/MacOS/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/log/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/log/app.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui.py" afterDir="false" />
     </list>
@@ -222,15 +221,8 @@
       <workItem from="1737449105504" duration="72000" />
       <workItem from="1737449509582" duration="771000" />
       <workItem from="1737458263215" duration="1856000" />
-      <workItem from="1737464898338" duration="361000" />
-    </task>
-    <task id="LOCAL-00004" summary="2025.1.14.3">
-      <option name="closed" value="true" />
-      <created>1736787696413</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1736787696413</updated>
+      <workItem from="1737464898338" duration="513000" />
+      <workItem from="1737466487796" duration="1366000" />
     </task>
     <task id="LOCAL-00005" summary="2025.1.14.2">
       <option name="closed" value="true" />
@@ -616,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737448083354</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="2025.1.21.6(更多的debug信息)">
+      <option name="closed" value="true" />
+      <created>1737465399195</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1737465399195</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +646,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025.1.16.3(补丁修复完毕)" />
     <MESSAGE value="2025.1.16.4(打包完毕)" />
     <MESSAGE value="2025.1.18.1(修改存储路径)" />
     <MESSAGE value="2025.1.18.2(打包完成)" />
@@ -671,7 +670,8 @@
     <MESSAGE value="2025.1.21.3(第六版打包)" />
     <MESSAGE value="2025.1.21.4(修复上传小bug)" />
     <MESSAGE value="2025.1.21.5(重新打包)" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025.1.21.5(重新打包)" />
+    <MESSAGE value="2025.1.21.6(更多的debug信息)" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025.1.21.6(更多的debug信息)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/begleiter$ui.coverage" NAME="ui Coverage Results" MODIFIED="1736845995733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
