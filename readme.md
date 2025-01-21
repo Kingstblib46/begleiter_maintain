@@ -137,6 +137,12 @@ pip install pynput PyQt5 pyautogui pillow psutil
 ```
 打包命令：pyinstaller --onefile --windowed --add-data "src/log:log" --add-data "src/resources:resources" src/main.py
 
+pyinstaller --onefile --windowed \
+--target-arch=arm64 \
+--add-data "src/log:log" \
+--add-data "src/resources:resources" \
+src/main.py
+
 #!/bin/bash
 # 清理旧文件
 rm -rf build dist *.spec
