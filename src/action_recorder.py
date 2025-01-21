@@ -18,6 +18,7 @@ import platform
 
 from threading import Timer
 
+
 class ActionRecorder(QtCore.QObject):
     action_recorded = QtCore.pyqtSignal(str)
 
@@ -52,7 +53,6 @@ class ActionRecorder(QtCore.QObject):
         self.key_process_interval = 0.1  # 每100ms处理一次按键
         self.last_process_time = time.time()
         self.key_lock = threading.Lock()  # 专门用于保护按键缓冲区的锁
-        self.max_action_length = 100    # 单次动作最大长度，可自行调整
 
         self.mouse_listener = mouse.Listener(on_click=self.on_click, on_scroll=self.on_scroll)
         self.keyboard_listener = keyboard.Listener(on_press=self.on_press)
@@ -74,9 +74,14 @@ class ActionRecorder(QtCore.QObject):
             thread_safe_logging('debug', "开启事件监听器。")
 
     def stop_recording(self):
-        if self.running:
-            self.running = False
+        """停止记录并保存数据"""
+        if not self.running:  # 如果已经停止，直接返回
+            return
 
+        self.running = False
+        thread_safe_logging('info', "正在停止记录...")
+
+        try:
             # 停止前，先把滚动的累积事件结算
             self.finalize_scroll_accumulation()
 
@@ -85,7 +90,7 @@ class ActionRecorder(QtCore.QObject):
                 if self.key_buffer:
                     keys_to_process = self.key_buffer.copy()
                     self.key_buffer.clear()
-                    
+
                     if keys_to_process:
                         # 合并剩余的按键
                         key_sequence = " ".join(k[0] for k in keys_to_process)
@@ -100,12 +105,29 @@ class ActionRecorder(QtCore.QObject):
                         }
                         self.handle_event(event_data)
 
-            self.mouse_listener.stop()
-            self.keyboard_listener.stop()
+            # 停止监听器
+            if hasattr(self, 'mouse_listener'):
+                self.mouse_listener.stop()
+            if hasattr(self, 'keyboard_listener'):
+                self.keyboard_listener.stop()
+
             thread_safe_logging('info', "用户操作记录器已停止。")
             thread_safe_logging('debug', "关闭事件监听器。")
 
-            self.save_data()
+            # 确保只调用一次保存操作
+            if hasattr(self, 'data') and self.data:
+                try:
+                    # 保存前检查数据是否已经被保存
+                    if not hasattr(self, '_data_saved'):
+                        self.save_data()
+                        self._data_saved = True  # 标记数据已保存
+                except Exception as e:
+                    thread_safe_logging('error', f"保存数据时出错: {e}")
+                finally:
+                    self.data = []  # 清空数据，防止重复保存
+
+        except Exception as e:
+            thread_safe_logging('error', f"停止记录时出错: {e}")
 
     def get_active_app(self):
         """获取当前前台进程名称"""
@@ -149,7 +171,7 @@ class ActionRecorder(QtCore.QObject):
                 "position": {"x": x, "y": y},
                 "active_app": active_app
             }
-            
+
             thread_safe_logging('debug', f"捕获到鼠标{'按下' if pressed else '松开'}事件: {event_data}")
             self.handle_event(event_data)
 
@@ -167,7 +189,7 @@ class ActionRecorder(QtCore.QObject):
             self.finalize_scroll_accumulation()
 
             key_pressed = self._get_key_name(key)
-            
+
             # 将按键添加到缓冲区
             with self.key_lock:
                 self.key_buffer.append((key_pressed, time.time()))
@@ -196,7 +218,7 @@ class ActionRecorder(QtCore.QObject):
                     continue
 
                 current_time = time.time()
-                
+
                 # 如果距离上次处理时间不足间隔时间，等待
                 if current_time - self.last_process_time < self.key_process_interval:
                     time.sleep(0.01)  # 短暂休眠以避免CPU过度使用
@@ -216,10 +238,10 @@ class ActionRecorder(QtCore.QObject):
                 if keys_to_process:
                     # 按时间顺序排序按键
                     keys_to_process.sort(key=lambda x: x[1])
-                    
+
                     # 合并按键
                     key_sequence = " ".join(k[0] for k in keys_to_process)
-                    
+
                     # 创建事件
                     mouse_x, mouse_y = pyautogui.position()
                     active_app = self.get_active_app()
@@ -230,7 +252,7 @@ class ActionRecorder(QtCore.QObject):
                         "position": {"x": mouse_x, "y": mouse_y},
                         "active_app": active_app
                     }
-                    
+
                     # 处理事件
                     self.handle_event(event_data)
 
@@ -422,10 +444,6 @@ class ActionRecorder(QtCore.QObject):
                     "mouse_position": mouse_position  # 独立保存鼠标位置
                 }
 
-                # 先将事件添加到数据列表中
-                with self.lock:
-                    self.data.append(new_event)
-
                 # 实时保存事件到 JSONL 文件
                 filename = self.storage_manager.getLogPath()
                 filename = os.path.join(filename, self.log_filename)
@@ -436,8 +454,12 @@ class ActionRecorder(QtCore.QObject):
                 # Emit the event
                 self.action_recorded.emit(json.dumps(new_event))
 
+                # Append the event to the data list for final JSON
+                with self.lock:
+                    self.data.append(new_event)
+
                 thread_safe_logging('info', f"记录事件并保存截图: {new_event}")
-                
+
         except Exception as e:
             thread_safe_logging('error', f"处理事件时出错: {e}")
 
@@ -462,7 +484,7 @@ class ActionRecorder(QtCore.QObject):
         """
         从绝对路径中提取相对路径，从\\records\\开始
         """
-        
+
         # 查找关键词位置
         if '/records/' in absolute_path:
             # 找到 records 路径，截取并返回
