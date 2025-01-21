@@ -391,13 +391,15 @@ class StorageManager:
         """
         使用 ModelScope API 上传打包后的 ZIP 文件。
         """
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
         config = self.config.get('modelscope', {})
         access_token = config.get('access_token')
         owner_name = config.get('owner_name')
         dataset_name = config.get('dataset_name')
         commit_message = config.get('commit_message', 'upload dataset folder to repo')
         repo_type = config.get('repo_type', 'dataset')
-        path_in_repo = config.get('path_in_repo', 'test')
+        path_in_repo = timestamp#config.get('path_in_repo', 'test')
 
         if not os.path.exists(file_path):
             thread_safe_logging('error', f"错误: 文件 {file_path} 不存在。上传失败。")

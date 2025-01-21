@@ -47,9 +47,11 @@ class ActionRecorder(QtCore.QObject):
         self.scroll_timeout = 2.0
 
         # ---------- 键盘连续输入相关 ----------
-        self.current_action = ""       # 用于累计用户连续输入的字符串
-        self.action_timer = None       # 定时器，用来判断用户是否停止输入
-        self.last_key_time = time.time()
+        self.current_action = ""
+        self.key_buffer = []  # 新增：用于存储按键的缓冲区
+        self.key_process_interval = 0.1  # 每100ms处理一次按键
+        self.last_process_time = time.time()
+        self.key_lock = threading.Lock()  # 专门用于保护按键缓冲区的锁
         self.max_action_length = 100    # 单次动作最大长度，可自行调整
 
         self.mouse_listener = mouse.Listener(on_click=self.on_click, on_scroll=self.on_scroll)
@@ -58,6 +60,10 @@ class ActionRecorder(QtCore.QObject):
         # 启动一个线程来监控滚动超时
         self.scroll_thread = threading.Thread(target=self.monitor_scroll_timeout, daemon=True)
         self.scroll_thread.start()
+
+        # 启动按键处理线程
+        self.key_process_thread = threading.Thread(target=self._process_key_buffer, daemon=True)
+        self.key_process_thread.start()
 
     def start_recording(self):
         if not self.running:
@@ -74,10 +80,25 @@ class ActionRecorder(QtCore.QObject):
             # 停止前，先把滚动的累积事件结算
             self.finalize_scroll_accumulation()
 
-            # 停止前，也需要把最后一次的键盘输入保存
-            if self.action_timer:
-                self.action_timer.cancel()
-            self.finish_action()
+            # 处理剩余的按键缓冲区
+            with self.key_lock:
+                if self.key_buffer:
+                    keys_to_process = self.key_buffer.copy()
+                    self.key_buffer.clear()
+                    
+                    if keys_to_process:
+                        # 合并剩余的按键
+                        key_sequence = " ".join(k[0] for k in keys_to_process)
+                        mouse_x, mouse_y = pyautogui.position()
+                        active_app = self.get_active_app()
+                        event_data = {
+                            "timestamp": keys_to_process[-1][1],
+                            "event": "key_press",
+                            "key": key_sequence,
+                            "position": {"x": mouse_x, "y": mouse_y},
+                            "active_app": active_app
+                        }
+                        self.handle_event(event_data)
 
             self.mouse_listener.stop()
             self.keyboard_listener.stop()
@@ -114,50 +135,45 @@ class ActionRecorder(QtCore.QObject):
             return "未知应用"
 
     def on_click(self, x, y, button, pressed):
-        if pressed and self.running:
+        if self.running:
             # 若有未完成的滚动事件，先结算
             self.finalize_scroll_accumulation()
 
             active_app = self.get_active_app()
 
+            # 根据pressed状态创建相应的事件
             event_data = {
                 "timestamp": time.time(),
                 "event": "mouse_click",
-                "button": str(button),
+                "button": f"{button}.press" if pressed else f"{button}.release",
                 "position": {"x": x, "y": y},
                 "active_app": active_app
             }
+            
+            thread_safe_logging('debug', f"捕获到鼠标{'按下' if pressed else '松开'}事件: {event_data}")
             self.handle_event(event_data)
-            thread_safe_logging('debug', f"捕获到鼠标点击事件: {event_data}")
 
     def on_scroll(self, x, y, dx, dy):
         if self.running:
             self.handle_vertical_scroll(x, y, dy)
 
     def on_press(self, key):
-        """键盘按下时，将当前按键加入连续输入的缓冲区。"""
+        """键盘按下时，将按键加入缓冲区"""
         if not self.running:
             return
 
-        # 若有未完成的滚动事件，先结算
-        self.finalize_scroll_accumulation()
+        try:
+            # 若有未完成的滚动事件，先结算
+            self.finalize_scroll_accumulation()
 
-        key_pressed = self._get_key_name(key)
+            key_pressed = self._get_key_name(key)
+            
+            # 将按键添加到缓冲区
+            with self.key_lock:
+                self.key_buffer.append((key_pressed, time.time()))
 
-        # 如果一次动作超过预设最大长度，先保存之前的再开始新动作
-        if len(self.current_action) + len(key_pressed) + 1 > self.max_action_length:
-            self.finish_action()
-
-        if self.current_action:
-            self.current_action += " " + key_pressed
-        else:
-            self.current_action = key_pressed
-
-        # 重置/启动定时器：1.5 秒后若无新的按键按下，则视为一次完整输入
-        if self.action_timer:
-            self.action_timer.cancel()
-        self.action_timer = Timer(0.5, self.finish_action)
-        self.action_timer.start()
+        except Exception as e:
+            thread_safe_logging('error', f"处理键盘事件时出错: {e}")
 
     def _get_key_name(self, key):
         """将 pynput 的 key 转成可读字符串。"""
@@ -171,22 +187,58 @@ class ActionRecorder(QtCore.QObject):
         except AttributeError:
             return str(key)
 
-    def finish_action(self):
-        """当用户停止输入超过 1 秒，或长度超标时，将本段输入合并为一次事件。"""
-        if not self.current_action.strip():
-            return
+    def _process_key_buffer(self):
+        """持续处理按键缓冲区的线程"""
+        while True:
+            try:
+                if not self.running:
+                    time.sleep(0.1)
+                    continue
 
-        mouse_x, mouse_y = pyautogui.position()
-        active_app = self.get_active_app()
-        event_data = {
-            "timestamp": time.time(),
-            "event": "key_press",
-            "key": self.current_action.strip(),
-            "position": {"x": mouse_x, "y": mouse_y},  # 记录鼠标位置
-            "active_app": active_app
-        }
-        self.handle_event(event_data)
-        self.current_action = ""
+                current_time = time.time()
+                
+                # 如果距离上次处理时间不足间隔时间，等待
+                if current_time - self.last_process_time < self.key_process_interval:
+                    time.sleep(0.01)  # 短暂休眠以避免CPU过度使用
+                    continue
+
+                with self.key_lock:
+                    # 没有按键需要处理
+                    if not self.key_buffer:
+                        time.sleep(0.01)
+                        continue
+
+                    # 获取所有待处理的按键
+                    keys_to_process = self.key_buffer.copy()
+                    self.key_buffer.clear()
+
+                # 处理按键
+                if keys_to_process:
+                    # 按时间顺序排序按键
+                    keys_to_process.sort(key=lambda x: x[1])
+                    
+                    # 合并按键
+                    key_sequence = " ".join(k[0] for k in keys_to_process)
+                    
+                    # 创建事件
+                    mouse_x, mouse_y = pyautogui.position()
+                    active_app = self.get_active_app()
+                    event_data = {
+                        "timestamp": keys_to_process[-1][1],  # 使用最后一个按键的时间
+                        "event": "key_press",
+                        "key": key_sequence,
+                        "position": {"x": mouse_x, "y": mouse_y},
+                        "active_app": active_app
+                    }
+                    
+                    # 处理事件
+                    self.handle_event(event_data)
+
+                self.last_process_time = current_time
+
+            except Exception as e:
+                thread_safe_logging('error', f"处理按键缓冲区时出错: {e}")
+                time.sleep(0.1)  # 发生错误时短暂暂停
 
     def handle_vertical_scroll(self, x, y, dy):
         """累加垂直滚动事件。若方向改变或超时则生成一次 mouse_scroll 事件并截图。"""
@@ -370,6 +422,10 @@ class ActionRecorder(QtCore.QObject):
                     "mouse_position": mouse_position  # 独立保存鼠标位置
                 }
 
+                # 先将事件添加到数据列表中
+                with self.lock:
+                    self.data.append(new_event)
+
                 # 实时保存事件到 JSONL 文件
                 filename = self.storage_manager.getLogPath()
                 filename = os.path.join(filename, self.log_filename)
@@ -379,10 +435,6 @@ class ActionRecorder(QtCore.QObject):
 
                 # Emit the event
                 self.action_recorded.emit(json.dumps(new_event))
-
-                # Append the event to the data list for final JSON
-                with self.lock:
-                    self.data.append(new_event)
 
                 thread_safe_logging('info', f"记录事件并保存截图: {new_event}")
                 
