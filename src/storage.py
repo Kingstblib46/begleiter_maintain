@@ -48,11 +48,13 @@ class StorageManager:
     def __init__(self, save_path='screenshots'):
         # 获取基础路径
         base_path = app_path()
+        thread_safe_logging('info', f"StorageManager初始化 - 基础路径: {base_path}")
         self.config = self.load_config()
 
         # 创建以当前时间戳为名称的文件夹，用于存储本次会话的所有数据
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         self.session_folder = os.path.join(os.path.join(base_path, "records"), timestamp)
+        thread_safe_logging('info', f"StorageManager - 创建会话文件夹: {self.session_folder}")
         os.makedirs(self.session_folder, exist_ok=True)
 
         # 创建本次会话的 log 和 screenshots 子文件夹
@@ -357,35 +359,58 @@ class StorageManager:
         将指定文件夹打包成 ZIP 文件。
         """
         try:
+            thread_safe_logging('info', f"开始压缩文件夹 - 源文件夹: {folder_path}")
+            thread_safe_logging('info', f"ZIP文件将保存至: {zip_path}")
+            
             with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                file_count = 0
                 for root, dirs, files in os.walk(folder_path):
+                    thread_safe_logging('info', f"正在处理子目录: {root}")
+                    thread_safe_logging('info', f"发现文件数量: {len(files)}")
                     for file in files:
                         abs_file_path = os.path.join(root, file)
                         relative_path = os.path.relpath(abs_file_path, os.path.dirname(folder_path))
                         zipf.write(abs_file_path, relative_path)
-            thread_safe_logging('info', f"成功: 文件夹 {folder_path} 已打包为 {zip_path}。")
+                        file_count += 1
+                        thread_safe_logging('info', f"已添加文件: {relative_path}")
+            
+            zip_size = os.path.getsize(zip_path) / (1024 * 1024)  # Convert to MB
+            thread_safe_logging('info', f"压缩完成 - 文件数: {file_count}, ZIP大小: {zip_size:.2f}MB")
+            
         except Exception as e:
-            thread_safe_logging('error', f"错误: 打包文件夹 {folder_path} 时出错: {e}")
+            thread_safe_logging('error', f"压缩失败 - 文件夹: {folder_path}, 错误: {str(e)}")
+            raise
 
     def encrypt_file(self, input_file, output_file, key, iv):
         """
         使用 AES 加密文件。
         """
         try:
+            thread_safe_logging('info', f"开始加密文件 - 源文件: {input_file}")
+            thread_safe_logging('info', f"加密文件将保存至: {output_file}")
+            
+            input_size = os.path.getsize(input_file) / (1024 * 1024)  # Convert to MB
+            thread_safe_logging('info', f"源文件大小: {input_size:.2f}MB")
+
             cipher = AES.new(key.encode('utf-8'), AES.MODE_CBC, iv.encode('utf-8'))
             with open(input_file, 'rb') as f:
                 plaintext = f.read()
+                thread_safe_logging('info', f"已读取源文件，准备加密")
 
             # 使用 PKCS7 填充数据
-            ciphertext = cipher.encrypt(pad(plaintext, AES.block_size))
+            padded_data = pad(plaintext, AES.block_size)
+            ciphertext = cipher.encrypt(padded_data)
 
             # 保存 IV + 加密后的数据
             with open(output_file, 'wb') as f:
-                f.write(iv.encode('utf-8') + ciphertext)  # 将 IV 和加密后的数据写入文件
+                f.write(iv.encode('utf-8') + ciphertext)
 
-            thread_safe_logging('info', f"成功: 文件 {input_file} 已加密为 {output_file}。")
+            output_size = os.path.getsize(output_file) / (1024 * 1024)  # Convert to MB
+            thread_safe_logging('info', f"加密完成 - 加密后文件大小: {output_size:.2f}MB")
+            
         except Exception as e:
-            thread_safe_logging('error', f"错误: 加密文件 {input_file} 时出错: {e}")
+            thread_safe_logging('error', f"加密失败 - 文件: {input_file}, 错误: {str(e)}")
+            raise
 
     def upload_file(self, file_path):
         """
@@ -442,26 +467,32 @@ class StorageManager:
         压缩、加密并上传当前会话的文件夹。
         """
         try:
+            thread_safe_logging('info', f"开始处理会话文件夹: {self.session_folder}")
+            
             zip_path = os.path.join(self.session_folder, f"session_{datetime.now().strftime('%Y%m%d_%H%M%S')}.zip")
             encrypted_zip_path = zip_path + ".enc"
+            
+            thread_safe_logging('info', f"计划生成的ZIP文件路径: {zip_path}")
+            thread_safe_logging('info', f"计划生成的加密文件路径: {encrypted_zip_path}")
 
-            # 压缩文件夹
             self.zip_folder(self.session_folder, zip_path)
 
-            # 加密压缩文件
             encryption_config = self.config.get('encryption', {})
             key = encryption_config.get('key')
             iv = encryption_config.get('iv')
+            
             if not key or not iv:
-                thread_safe_logging('error', "加密配置缺失: key 或 iv 未配置。")
+                thread_safe_logging('error', "加密失败 - 配置缺失: key 或 iv 未配置")
                 return
 
+            thread_safe_logging('info', "开始加密ZIP文件")
             self.encrypt_file(zip_path, encrypted_zip_path, key, iv)
 
-            # 上传加密文件
+            thread_safe_logging('info', "开始上传加密文件")
             self.upload_file(encrypted_zip_path)
 
-            thread_safe_logging('info', f"会话文件夹 {self.session_folder} 已处理完毕。")
+            thread_safe_logging('info', f"会话处理完成 - 文件夹: {self.session_folder}")
 
         except Exception as e:
-            thread_safe_logging('error', f"处理会话文件夹时出错: {e}")
+            thread_safe_logging('error', f"会话处理失败 - 文件夹: {self.session_folder}, 错误: {str(e)}")
+            raise

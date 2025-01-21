@@ -76,13 +76,13 @@ class MainWindow(QtWidgets.QWidget):
         # 按钮布局
         self.button_layout = QtWidgets.QHBoxLayout()
 
-        # “允许”按钮
+        # "允许"按钮
         self.accept_btn = QtWidgets.QPushButton('允许')
         self.accept_btn.setStyleSheet("background-color: #4CAF50; color: white; padding: 10px;")
         self.accept_btn.clicked.connect(self.on_accept)
         self.button_layout.addWidget(self.accept_btn)
 
-        # “拒绝”按钮
+        # "拒绝"按钮
         self.decline_btn = QtWidgets.QPushButton('拒绝')
         self.decline_btn.setStyleSheet("background-color: #f44336; color: white; padding: 10px;")
         self.decline_btn.clicked.connect(self.on_decline)
@@ -90,7 +90,7 @@ class MainWindow(QtWidgets.QWidget):
 
         self.layout.addLayout(self.button_layout)
 
-        # 创建“停止记录并关闭”按钮，但初始时隐藏
+        # 创建"停止记录并关闭"按钮，但初始时隐藏
         self.stop_close_btn = QtWidgets.QPushButton('停止记录并关闭')
         self.stop_close_btn.setStyleSheet("background-color: #555555; color: white; padding: 10px;")
         self.stop_close_btn.clicked.connect(self.on_stop_and_close)
@@ -127,20 +127,26 @@ class MainWindow(QtWidgets.QWidget):
         self.stop_close_btn.show()
 
     def on_stop_and_close(self):
-        # Stop the timer from the main thread
+        thread_safe_logging('info', "用户点击'停止记录并关闭'按钮")
+        
         if self.timer.isActive():
             self.timer.stop()
-            thread_safe_logging('info', "定时器已停止。")
+            thread_safe_logging('info', "定时器已停止")
 
-        # Disable the button to prevent multiple clicks
         self.stop_close_btn.setEnabled(False)
-        self.action_recorder_thread.stop()
+        thread_safe_logging('info', "已禁用'停止记录并关闭'按钮")
+        
+        if self.action_recorder_thread:
+            thread_safe_logging('info', "准备停止动作记录线程")
+            self.action_recorder_thread.stop()
+            thread_safe_logging('info', "动作记录线程已停止")
 
-        # Start process session in a separate thread
+        thread_safe_logging('info', "准备启动处理会话线程")
         self.process_thread = ProcessSessionThread(self.storage_manager)
         self.process_thread.error_occurred.connect(self.show_error)
         self.process_thread.finished_signal.connect(self.quit_signal.emit)
         self.process_thread.start()
+        thread_safe_logging('info', "处理会话线程已启动")
 
     def capture_screenshot(self):
         try:
@@ -153,18 +159,21 @@ class MainWindow(QtWidgets.QWidget):
             thread_safe_logging('error', f"截屏失败: {e}")
 
     def closeEvent(self, event):
-        thread_safe_logging('info', "关闭事件触发")
+        thread_safe_logging('info', "触发窗口关闭事件")
         reply = QtWidgets.QMessageBox.question(
             self, '确认退出',
             "确定要退出应用程序吗？",
             QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
             QtWidgets.QMessageBox.No
         )
+        thread_safe_logging('info', f"用户对关闭确认的回应: {'Yes' if reply == QtWidgets.QMessageBox.Yes else 'No'}")
 
         if reply == QtWidgets.QMessageBox.Yes:
+            thread_safe_logging('info', "用户确认关闭，调用on_stop_and_close")
             self.on_stop_and_close()
             event.ignore()
         else:
+            thread_safe_logging('info', "用户取消关闭，忽略关闭事件")
             event.ignore()
 
     def show_error(self, message):
