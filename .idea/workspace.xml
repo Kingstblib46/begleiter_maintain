@@ -4,8 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.21.4(修复上传小bug)">
+    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.21.5(重新打包)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/main.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/main.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/warn-main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/warn-main.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/xref-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/xref-main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.app/Contents/MacOS/main" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main.app/Contents/MacOS/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.spec" beforeDir="false" afterPath="$PROJECT_DIR$/main.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,14 +218,9 @@
       <workItem from="1737443806282" duration="809000" />
       <workItem from="1737446631415" duration="11000" />
       <workItem from="1737447647221" duration="45000" />
-    </task>
-    <task id="LOCAL-00003" summary="2025.1.14.">
-      <option name="closed" value="true" />
-      <created>1736787659012</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1736787659012</updated>
+      <workItem from="1737448003754" duration="183000" />
+      <workItem from="1737449105504" duration="72000" />
+      <workItem from="1737449509582" duration="771000" />
     </task>
     <task id="LOCAL-00004" summary="2025.1.14.3">
       <option name="closed" value="true" />
@@ -599,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737443210266</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="2025.1.21.5(重新打包)">
+      <option name="closed" value="true" />
+      <created>1737448083354</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1737448083354</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +644,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025.1.16.2(修复完毕)" />
     <MESSAGE value="2025.1.16.3(补丁修复完毕)" />
     <MESSAGE value="2025.1.16.4(打包完毕)" />
     <MESSAGE value="2025.1.18.1(修改存储路径)" />
@@ -654,7 +668,8 @@
     <MESSAGE value="2025.1.21.2(第五版打包)" />
     <MESSAGE value="2025.1.21.3(第六版打包)" />
     <MESSAGE value="2025.1.21.4(修复上传小bug)" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025.1.21.4(修复上传小bug)" />
+    <MESSAGE value="2025.1.21.5(重新打包)" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025.1.21.5(重新打包)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/begleiter$ui.coverage" NAME="ui Coverage Results" MODIFIED="1736845995733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />

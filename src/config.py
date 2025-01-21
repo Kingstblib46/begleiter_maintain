@@ -13,12 +13,12 @@ DEFAULT_CONFIG = {
         "iv": "16byteslongiv!!!"    # AES初始化向量（16字节）
     },
     "modelscope": {
-        "access_token": "1cb4c5f6-7e5e-49a4-8ce0-b4ac2fb898ae",  # ModelScope API访问令牌
-        "owner_name": "kanadechan",  # 仓库所有者名称
-        "dataset_name": "TEST",       # 数据集名称
-        "commit_message": "upload dataset folder to repo",  # 提交信息
-        "repo_type": "dataset",       # 仓库类型（例如：dataset）
-        "path_in_repo": "test"         # 仓库中的路径
+        "access_token": "45e3bad7-e2bc-45b6-b7be-44dda62adca6",
+        "owner_name": "lllijuih",
+        "dataset_name": "AGENTC",
+        "commit_message": "upload dataset folder to repo",
+        "repo_type": "dataset",
+        "path_in_repo": "test"
     }
     # 新增配置项结束
 }

@@ -399,6 +399,7 @@ class StorageManager:
         dataset_name = config.get('dataset_name')
         commit_message = config.get('commit_message', 'upload dataset folder to repo')
         repo_type = config.get('repo_type', 'dataset')
+        print('\n' + access_token, owner_name, dataset_name, commit_message, repo_type)
         
         # 读取用户名并构建上传路径（用户名作为文件夹，时间戳作为文件名）
         try:
