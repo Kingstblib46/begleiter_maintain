@@ -136,3 +136,27 @@ pip install pynput PyQt5 pyautogui pillow psutil
 本项目采用 MIT 许可证。详情请参阅 `LICENSE` 文件。
 ```
 打包命令：pyinstaller --onefile --windowed --add-data "src/log:log" --add-data "src/resources:resources" src/main.py
+
+#!/bin/bash
+# 清理旧文件
+rm -rf build dist *.spec
+
+# 执行打包命令
+pyinstaller --clean \
+  --name "Begleiter" \
+  --windowed \
+  --onefile \
+  --noconfirm \
+  --icon "src/resources/cursor.png" \
+  --add-data "src/resources:resources" \
+  --add-data "src/log:log" \
+  --add-data "src/config.json:." \
+  --hidden-import "PIL._tkinter_finder" \
+  --collect-all "pynput" \
+  --collect-all "Crypto" \
+  --target-arch arm64 \
+  --osx-bundle-identifier "com.begleiter.app" \
+  --distpath "./dist" \
+  --workpath "./build" \
+  --specpath "." \
+  src/main.py
