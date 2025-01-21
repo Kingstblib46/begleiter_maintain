@@ -399,7 +399,16 @@ class StorageManager:
         dataset_name = config.get('dataset_name')
         commit_message = config.get('commit_message', 'upload dataset folder to repo')
         repo_type = config.get('repo_type', 'dataset')
-        path_in_repo = timestamp#config.get('path_in_repo', 'test')
+        
+        # 读取用户名并构建上传路径（用户名作为文件夹，时间戳作为文件名）
+        try:
+            with open(os.path.join(app_path(), 'username.txt'), 'r', encoding='utf-8') as f:
+                username = f.read().strip()
+                path_in_repo = f"{username}/{timestamp}.zip"
+                print(f"上传路径: {path_in_repo}")
+        except:
+            print("未找到用户名文件")
+            path_in_repo = f"{timestamp}.zip"
 
         if not os.path.exists(file_path):
             thread_safe_logging('error', f"错误: 文件 {file_path} 不存在。上传失败。")
@@ -409,16 +418,23 @@ class StorageManager:
         api.login(access_token)
 
         try:
+            repo_id = f"{owner_name}/{dataset_name}"
+            print(f"正在上传到仓库: {repo_id}")
+            print(f"文件路径: {file_path}")
+            print(f"仓库内路径: {path_in_repo}")
+            
             api.upload_file(
-                repo_id=f"{owner_name}/{dataset_name}",
-                path_or_fileobj=file_path,  # 使用 file_path 作为参数
+                repo_id=repo_id,
+                path_or_fileobj=file_path,
                 path_in_repo=path_in_repo,
                 commit_message=commit_message,
                 repo_type=repo_type
             )
-            thread_safe_logging('info', "成功: 文件已成功上传。")
+            thread_safe_logging('info', f"成功: 文件已上传到 {repo_id}/{path_in_repo}")
+            print(f"文件已上传到: {repo_id}/{path_in_repo}")
         except Exception as e:
             thread_safe_logging('error', f"错误: 上传文件时出错: {e}")
+            print(f"上传错误: {str(e)}")
 
     def process_session(self):
         """
