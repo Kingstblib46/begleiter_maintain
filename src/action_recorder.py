@@ -202,6 +202,7 @@ class ActionRecorder(QtCore.QObject):
             self.keyboard_listener.stop()
             thread_safe_logging('info', "用户操作记录器已停止。")
             thread_safe_logging('debug', "关闭事件监听器。")
+            self.save_data()
 
     def get_active_app(self):
         """获取当前前台进程名称"""
@@ -242,34 +243,18 @@ class ActionRecorder(QtCore.QObject):
             position_x = f"{x}/{self.screen_width}"
             position_y = f"{y}/{self.screen_height}"
 
-            if pressed:
-                # 截图
-                self.click_press_start_screenshot = pyautogui.screenshot()
-                # 鼠标按下，记录拖拽开始
-                self.drag_start_x, self.drag_start_y = x, y
-                # 记录按下事件
-                event_data = {
-                    "timestamp": time.time(),
-                    "event": "mouse_click",
-                    "button": f"{button}.press",
-                    "position": {"x": x, "y": y},
-                    "active_app": active_app
-                }
-                thread_safe_logging('debug', f"捕获到鼠标按下事件: {event_data}")
-                self.handle_event(event_data, screenshot=self.click_press_start_screenshot)
-            else:
-                # 鼠标松开，记录拖拽结束
-                event_data = {
-                    "timestamp": time.time(),
-                    "event": "mouse_click",
-                    "button": f"{button}.release",
-                    "position": {"x": x, "y": y},
-                    "active_app": active_app
-                }
-                # 记录松开事件
-                thread_safe_logging('debug', f"捕获到鼠标松开事件: {event_data}")
-                self.handle_event(event_data, screenshot=self.click_press_start_screenshot)
-                self.click_press_start_screenshot = None
+
+            self.click_press_start_screenshot = pyautogui.screenshot()
+            event_data = {
+                "timestamp": time.time(),
+                "event": "mouse_click",
+                "button": f"{button}.press" if pressed else f"{button}.release",
+                "position": {"x": x, "y": y},
+                "active_app": active_app
+            }
+
+            thread_safe_logging('debug', f"捕获到鼠标按下事件: {event_data}")
+            self.handle_event(event_data, screenshot=self.click_press_start_screenshot)
 
     def on_scroll(self, x, y, dx, dy):
         if self.running:
@@ -470,7 +455,7 @@ class ActionRecorder(QtCore.QObject):
 
                 if action_type in ['mouse_click', 'mouse_scroll']:
                     x = event['position']['x']
-                    y = event['position']['y']
+                    y = self.screen_height - event['position']['y']
                     button = event.get('button')
 
                     if action_type == 'mouse_scroll':
@@ -494,7 +479,7 @@ class ActionRecorder(QtCore.QObject):
                             "key": None  # 对于鼠标事件，key 设置为 None
                         }
                     else:  # mouse_click
-                        screenshot_path = self.storage_manager.save_screenshot(x=x, y=y, screenshot=screenshot)
+                        screenshot_path = self.storage_manager.save_screenshot(x=x, y=y, screenshot=screenshot, button=button)
                         action_content = {
                             "position": {
                                 "x": x,
@@ -513,12 +498,13 @@ class ActionRecorder(QtCore.QObject):
                         screenshot_path = self.storage_manager.save_screenshot(key_name=key_name, screenshot=screenshot)
                     else:
                         screenshot_path = self.storage_manager.save_screenshot(key_name=key_name)
-                    mouse_x, mouse_y = pyautogui.position()
+                    x = event['position']['x']
+                    y = self.screen_height - event['position']['y']
 
                     action_content = {
                         "position": {
-                            "x": int(mouse_x),
-                            "y": int(mouse_y),
+                            "x": x,
+                            "y": y,
                             "max_x": pyautogui.size().width,
                             "max_y": pyautogui.size().height
                         },  # 记录鼠标位置
@@ -533,7 +519,7 @@ class ActionRecorder(QtCore.QObject):
                 # 将 position 字段处理并移除
                 if 'position' in event:
                     x = event['position']['x']
-                    y = event['position']['y']
+                    y = self.screen_height - event['position']['y']
 
                     # 设置 mouse_position 字段
                     mouse_position = {
