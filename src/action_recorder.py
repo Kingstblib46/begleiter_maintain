@@ -357,6 +357,7 @@ class ActionRecorder(QtCore.QObject):
 
         if self.is_scroll_press_start is True:
             self.scroll_press_start_screenshot = pyautogui.screenshot()
+            print("[*] scroll_press_start_screenshot")
             self.is_scroll_press_start = False
 
         if dy == 0:
