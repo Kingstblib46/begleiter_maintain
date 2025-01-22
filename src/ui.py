@@ -35,17 +35,29 @@ class MainWindow(QtWidgets.QWidget):
     def __init__(self, config):
         super().__init__()
         self.config = config
-        # 使用单例模式的 StorageManager
         self.storage_manager = StorageManager(config.get('save_path', 'screenshots'))
         self.action_recorder_thread = None
-
-        self.error_signal.connect(self.show_error)
-        self.quit_signal.connect(QtWidgets.QApplication.quit)
-
+        self.process_thread = None
+        self.is_processing = False
+        self.should_quit = False
+        
+        # 设置窗口属性
+        self.setWindowTitle('熊猫实习生')
+        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resources',
+                                 'icon.icns' if sys.platform == 'darwin' else 'icon.ico')
+        self.setWindowIcon(QtGui.QIcon(icon_path))
+        self.setFixedSize(400, 300)
+        
+        # 初始化UI和动作记录器
         self.init_ui()
         self.init_action_recorder()
-
-        self.timer = QTimer()
+        
+        # 连接信号
+        self.error_signal.connect(self.show_error)
+        self.quit_signal.connect(QtWidgets.QApplication.quit)
+        
+        # 初始化定时器
+        self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.capture_screenshot)
         self.storage_manager.app_timer = self.timer
 
@@ -61,12 +73,6 @@ class MainWindow(QtWidgets.QWidget):
         thread_safe_logging('debug', f"接收到用户操作: {action}")
 
     def init_ui(self):
-        self.setWindowTitle('屏幕截图工具')
-        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resources',
-                                 'icon.icns' if sys.platform == 'darwin' else 'icon.ico')
-        self.setWindowIcon(QtGui.QIcon(icon_path))
-        self.setFixedSize(400, 300)
-
         self.layout = QtWidgets.QVBoxLayout()
 
         # 提示标签
@@ -130,6 +136,11 @@ class MainWindow(QtWidgets.QWidget):
         self.stop_close_btn.show()
 
     def on_stop_and_close(self):
+        if self.is_processing:
+            return
+        
+        self.is_processing = True
+        self.should_quit = True
         thread_safe_logging('info', "用户点击'停止记录并关闭'按钮")
         
         # 停止定时器
@@ -150,7 +161,7 @@ class MainWindow(QtWidgets.QWidget):
         thread_safe_logging('info', "准备启动处理会话线程")
         self.process_thread = ProcessSessionThread(self.storage_manager)
         self.process_thread.error_occurred.connect(self.show_error)
-        self.process_thread.finished_signal.connect(QtWidgets.QApplication.quit)
+        self.process_thread.finished_signal.connect(self.final_quit)
         self.process_thread.start()
 
     def capture_screenshot(self):
@@ -177,3 +188,7 @@ class MainWindow(QtWidgets.QWidget):
         QtWidgets.QMessageBox.critical(self, '错误', message)
         # Re-enable stop and close button in case of error
         self.stop_close_btn.setEnabled(True)
+
+    def final_quit(self):
+        thread_safe_logging('info', "会话处理完成，准备退出。")
+        QtWidgets.QApplication.quit()

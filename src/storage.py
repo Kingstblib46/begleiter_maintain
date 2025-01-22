@@ -359,7 +359,7 @@ class StorageManager:
 
     def zip_folder(self, folder_path, zip_path):
         """
-        将指定文件夹打包成 ZIP 文件。
+        将指定文件夹打包成 ZIP 文件，排除之前生成的压缩包和加密文件。
         """
         try:
             thread_safe_logging('info', f"开始压缩文件夹 - 源文件夹: {folder_path}")
@@ -369,7 +369,10 @@ class StorageManager:
                 file_count = 0
                 for root, dirs, files in os.walk(folder_path):
                     thread_safe_logging('info', f"正在处理子目录: {root}")
+                    # 过滤掉不需要的文件
+                    files = [f for f in files if not (f.endswith('.zip') or f.endswith('.enc'))]
                     thread_safe_logging('info', f"发现文件数量: {len(files)}")
+                    
                     for file in files:
                         abs_file_path = os.path.join(root, file)
                         relative_path = os.path.relpath(abs_file_path, os.path.dirname(folder_path))
