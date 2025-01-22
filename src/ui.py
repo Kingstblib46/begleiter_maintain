@@ -17,7 +17,7 @@ class ProcessSessionThread(QThread):
     def __init__(self, storage_manager):
         super().__init__()
         self.storage_manager = storage_manager
-
+    
     def run(self):
         try:
             self.storage_manager.process_session()
@@ -40,6 +40,7 @@ class MainWindow(QtWidgets.QWidget):
         self.process_thread = None
         self.is_processing = False
         self.should_quit = False
+        self.upload_in_progress_msg = None  # 添加上传提示框变量
         
         # 设置窗口属性
         self.setWindowTitle('熊猫实习生')
@@ -60,7 +61,7 @@ class MainWindow(QtWidgets.QWidget):
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.capture_screenshot)
         self.storage_manager.app_timer = self.timer
-
+    
     def init_action_recorder(self):
         if self.config.get('record_user_actions', True):
             self.action_recorder_thread = ActionRecorderThread(
@@ -68,42 +69,42 @@ class MainWindow(QtWidgets.QWidget):
             )
             self.action_recorder_thread.action_recorded.connect(self.handle_action_recorded)
             self.action_recorder_thread.start()
-
+    
     def handle_action_recorded(self, action):
         thread_safe_logging('debug', f"接收到用户操作: {action}")
-
+    
     def init_ui(self):
         self.layout = QtWidgets.QVBoxLayout()
-
+    
         # 提示标签
         self.label = QtWidgets.QLabel('是否允许程序自动截取屏幕截图并保存？')
         self.label.setAlignment(Qt.AlignCenter)
         self.layout.addWidget(self.label)
-
+    
         # 按钮布局
         self.button_layout = QtWidgets.QHBoxLayout()
-
+    
         # "允许"按钮
         self.accept_btn = QtWidgets.QPushButton('允许')
         self.accept_btn.setStyleSheet("background-color: #4CAF50; color: white; padding: 10px;")
         self.accept_btn.clicked.connect(self.on_accept)
         self.button_layout.addWidget(self.accept_btn)
-
+    
         # "拒绝"按钮
         self.decline_btn = QtWidgets.QPushButton('拒绝')
         self.decline_btn.setStyleSheet("background-color: #f44336; color: white; padding: 10px;")
         self.decline_btn.clicked.connect(self.on_decline)
         self.button_layout.addWidget(self.decline_btn)
-
+    
         self.layout.addLayout(self.button_layout)
-
+    
         # 创建"停止记录并关闭"按钮，但初始时隐藏
         self.stop_close_btn = QtWidgets.QPushButton('停止记录并关闭')
         self.stop_close_btn.setStyleSheet("background-color: #555555; color: white; padding: 10px;")
         self.stop_close_btn.clicked.connect(self.on_stop_and_close)
         self.layout.addWidget(self.stop_close_btn)
         self.stop_close_btn.hide()  # 初始隐藏
-
+    
         self.setLayout(self.layout)
        
     def on_accept(self):
@@ -121,12 +122,12 @@ class MainWindow(QtWidgets.QWidget):
                 self.show_stop_close_button()
         else:
             self.on_decline()
-
+    
     def on_decline(self):
         thread_safe_logging('info', "用户选择拒绝截屏")
         QtWidgets.QMessageBox.information(self, '退出', '程序已退出。')
         QtWidgets.QApplication.quit()
-
+    
     def show_stop_close_button(self):
         # 隐藏提示标签和接受、拒绝按钮
         self.label.hide()
@@ -134,7 +135,7 @@ class MainWindow(QtWidgets.QWidget):
         self.decline_btn.hide()
         # 显示停止记录并关闭按钮
         self.stop_close_btn.show()
-
+    
     def on_stop_and_close(self):
         if self.is_processing:
             return
@@ -143,11 +144,19 @@ class MainWindow(QtWidgets.QWidget):
         self.should_quit = True
         thread_safe_logging('info', "用户点击'停止记录并关闭'按钮")
         
+        # 显示上传进度提示
+        self.upload_in_progress_msg = QtWidgets.QMessageBox(self)
+        self.upload_in_progress_msg.setWindowTitle("上传中")
+        self.upload_in_progress_msg.setText("数据文件正在上传中，请勿关闭窗口...")
+        self.upload_in_progress_msg.setStandardButtons(QtWidgets.QMessageBox.NoButton)
+        self.upload_in_progress_msg.setIcon(QtWidgets.QMessageBox.Information)
+        self.upload_in_progress_msg.show()
+        
         # 停止定时器
         if self.timer.isActive():
             self.timer.stop()
             thread_safe_logging('info', "定时器已停止")
-
+    
         # 禁用按钮防止重复点击
         self.stop_close_btn.setEnabled(False)
         
@@ -156,14 +165,22 @@ class MainWindow(QtWidgets.QWidget):
             thread_safe_logging('info', "准备停止动作记录线程")
             self.action_recorder_thread.stop()
             thread_safe_logging('info', "动作记录线程已停止")
-
+    
         # 处理会话并退出
         thread_safe_logging('info', "准备启动处理会话线程")
         self.process_thread = ProcessSessionThread(self.storage_manager)
         self.process_thread.error_occurred.connect(self.show_error)
-        self.process_thread.finished_signal.connect(self.final_quit)
+        self.process_thread.finished_signal.connect(self.on_upload_finished)
         self.process_thread.start()
-
+    
+    def on_upload_finished(self):
+        """上传完成后的处理"""
+        if self.upload_in_progress_msg:
+            self.upload_in_progress_msg.close()
+        thread_safe_logging('info', "会话处理完成，程序将退出。")
+        QtWidgets.QMessageBox.information(self, '完成', '上传完成，程序将退出。')
+        self.final_quit()
+    
     def capture_screenshot(self):
         try:
             timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -173,22 +190,31 @@ class MainWindow(QtWidgets.QWidget):
             thread_safe_logging('info', f"已保存截图: {filename}")
         except Exception as e:
             thread_safe_logging('error', f"截屏失败: {e}")
-
+    
     def closeEvent(self, event):
         thread_safe_logging('info', "触发窗口关闭事件")
         if hasattr(self, 'stop_close_btn') and self.stop_close_btn.isVisible():
-            # 如果正在记录，则调用停止记录并关闭
-            self.on_stop_and_close()
-            event.ignore()  # 忽略关闭事件，等待处理完成后自动退出
+            reply = QtWidgets.QMessageBox.question(
+                self, '确认退出',
+                "确定要退出应用程序吗？",
+                QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                QtWidgets.QMessageBox.No
+            )
+    
+            if reply == QtWidgets.QMessageBox.Yes:
+                self.on_stop_and_close()
+                event.ignore()  # 忽略关闭事件，等待上传完成
+            else:
+                event.ignore()  # 用户选择不退出
         else:
             # 如果还没开始记录，直接退出
-            QtWidgets.QApplication.quit()
-
+            event.accept()
+    
     def show_error(self, message):
         QtWidgets.QMessageBox.critical(self, '错误', message)
         # Re-enable stop and close button in case of error
         self.stop_close_btn.setEnabled(True)
-
+    
     def final_quit(self):
         thread_safe_logging('info', "会话处理完成，准备退出。")
         QtWidgets.QApplication.quit()
