@@ -500,14 +500,14 @@ class StorageManager:
             thread_safe_logging('info', f"会话处理完成 - 文件夹: {self.session_folder}")
 
             # 在所有处理完成后，删除会话文件夹
-            #try:
-                #import shutil
-                #shutil.rmtree(self.session_folder)
-                #print(f"\n会话文件夹已删除: {self.session_folder}")
-                #thread_safe_logging('info', f"会话文件夹已删除: {self.session_folder}")
-            #except Exception as e:
-                #thread_safe_logging('error', f"删除文件夹失败: {str(e)}")
-                #print(f"\n删除文件夹失败: {str(e)}")
+            try:
+                import shutil
+                shutil.rmtree(self.session_folder)
+                print(f"\n会话文件夹已删除: {self.session_folder}")
+                thread_safe_logging('info', f"会话文件夹已删除: {self.session_folder}")
+            except Exception as e:
+                thread_safe_logging('error', f"删除文件夹失败: {str(e)}")
+                print(f"\n删除文件夹失败: {str(e)}")
 
         except Exception as e:
             thread_safe_logging('error', f"会话处理失败 - 文件夹: {self.session_folder}, 错误: {str(e)}")
