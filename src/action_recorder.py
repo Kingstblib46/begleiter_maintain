@@ -243,18 +243,36 @@ class ActionRecorder(QtCore.QObject):
             position_x = f"{x}/{self.screen_width}"
             position_y = f"{y}/{self.screen_height}"
 
-
-            self.click_press_start_screenshot = pyautogui.screenshot()
-            event_data = {
-                "timestamp": time.time(),
-                "event": "mouse_click",
-                "button": f"{button}.press" if pressed else f"{button}.release",
-                "position": {"x": x, "y": y},
-                "active_app": active_app
-            }
-
-            thread_safe_logging('debug', f"捕获到鼠标按下事件: {event_data}")
-            self.handle_event(event_data, screenshot=self.click_press_start_screenshot)
+            if pressed:
+                print("press")
+                # 截图
+                self.click_press_start_screenshot = pyautogui.screenshot()
+                # 鼠标按下，记录拖拽开始
+                self.drag_start_x, self.drag_start_y = x, y
+                # 记录按下事件
+                event_data = {
+                    "timestamp": time.time(),
+                    "event": "mouse_click",
+                    "button": f"{button}.press",
+                    "position": {"x": x, "y": y},
+                    "active_app": active_app
+                }
+                thread_safe_logging('debug', f"捕获到鼠标按下事件: {event_data}")
+                self.handle_event(event_data, screenshot=self.click_press_start_screenshot)
+            else:
+                # 鼠标松开，记录拖拽结束
+                print("release")
+                event_data = {
+                        "timestamp": time.time(),
+                        "event": "mouse_click",
+                        "button": f"{button}.release",
+                        "position": {"x": x, "y": y},
+                        "active_app": active_app
+                    }
+                    # 记录松开事件
+                thread_safe_logging('debug', f"捕获到鼠标松开事件: {event_data}")
+                self.handle_event(event_data, screenshot=self.click_press_start_screenshot)
+                self.click_press_start_screenshot = None
 
     def on_scroll(self, x, y, dx, dy):
         if self.running:
