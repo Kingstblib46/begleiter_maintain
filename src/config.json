@@ -9,8 +9,8 @@
     },
     "modelscope": {
         "access_token": "45e3bad7-e2bc-45b6-b7be-44dda62adca6",
-        "owner_name": "lllijuih",
-        "dataset_name": "AGENTC",
+        "owner_name": "LazyPoint",
+        "dataset_name": "AGENTC-DEV",
         "commit_message": "upload dataset folder to repo",
         "repo_type": "dataset",
         "path_in_repo": "test"

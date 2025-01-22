@@ -122,7 +122,6 @@ class ActionRecorder(QtCore.QObject):
             "cmd": "Cmd",  # cmd 键保持为 Cmd
             "esc": "Esc",  # esc 键保持为 Esc
             "delete": "Delete",  # delete 键
-            "enter": "Return",  # macOS 中通常使用 Return
             "space": "Space",  # 空格键
             "tab": "Tab",  # Tab 键
             "backspace": "Backspace",  # 回退键
@@ -139,31 +138,29 @@ class ActionRecorder(QtCore.QObject):
             "f10": "F10",  # F10 功能键
             "f11": "F11",  # F11 功能键
             "f12": "F12",  # F12 功能键
-            "volume_up": "Volume Up",  # 音量增大
-            "volume_down": "Volume Down",  # 音量减小
+            "volume_up": "Volume_Up",  # 音量增大
+            "volume_down": "Volume_Down",  # 音量减小
             "mute": "Mute",  # 静音
-            "brightness_up": "Brightness Up",  # 增加亮度
-            "brightness_down": "Brightness Down",  # 降低亮度
+            "brightness_up": "Brightness_Up",  # 增加亮度
+            "brightness_down": "Brightness_Down",  # 降低亮度
             "home": "Home",  # Home 键
             "end": "End",  # End 键
-            "page_up": "Page Up",  # 上一页
-            "page_down": "Page Down",  # 下一页
+            "page_up": "Page_Up",  # 上一页
+            "page_down": "Page_Down",  # 下一页
             "insert": "Insert",  # 插入键
-            "print_screen": "Print Screen",  # 打印屏幕（通常 macOS 使用截图功能）
-            "scroll_lock": "Scroll Lock",  # 滚动锁定键
+            "print_screen": "Print_Screen",  # 打印屏幕（通常 macOS 使用截图功能）
+            "scroll_lock": "Scroll_Lock",  # 滚动锁定键
             "pause": "Pause",  # 暂停键
-            "num_lock": "Num Lock",  # 数字锁定键
-            "left_arrow": "Left Arrow",  # 左箭头
-            "right_arrow": "Right Arrow",  # 右箭头
-            "up_arrow": "Up Arrow",  # 上箭头
-            "down_arrow": "Down Arrow",  # 下箭头
+            "num_lock": "Num_Lock",  # 数字锁定键
+            "left_arrow": "Left_Arrow",  # 左箭头
+            "right_arrow": "Right_Arrow",  # 右箭头
+            "up_arrow": "Up_Arrow",  # 上箭头
+            "down_arrow": "Down_Arrow",  # 下箭头
             "fn": "Fn",  # 功能键 (macOS 上通常与其他功能键组合)
             "command": "Cmd",  # 作为命令键映射
             "option": "Option",  # 作为 option 键映射
-            "capslock": "Caps Lock",  # 大小写锁定
+            "capslock": "Caps_Lock",  # 大小写锁定
             "enter": "Return",  # 回车
-            "shift_l": "Shift Left",  # 左 shift
-            "shift_r": "Shift Right",  # 右 shift
         }
 
         # ---------- 键盘press前截图 ----------
