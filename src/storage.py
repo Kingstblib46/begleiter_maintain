@@ -74,34 +74,38 @@ class StorageManager:
 
         # 定义不可打印字符到组合键的映射（针对macOS的Command键）
         self.unicode_key_map = {
-            "\x01": "Cmd+A",
-            "\x02": "Cmd+B",
-            "\x03": "Cmd+C",
-            "\x04": "Cmd+D",
-            "\x05": "Cmd+E",
-            "\x06": "Cmd+F",
-            "\x07": "Cmd+G",
-            "\x08": "Cmd+H",
-            "\x09": "Cmd+I",
-            "\x0A": "Cmd+J",
-            "\x0B": "Cmd+K",
-            "\x0C": "Cmd+L",
-            "\x0D": "Cmd+M",
-            "\x0E": "Cmd+N",
-            "\x0F": "Cmd+O",
-            "\x10": "Cmd+P",
-            "\x11": "Cmd+Q",
-            "\x12": "Cmd+R",
-            "\x13": "Cmd+S",
-            "\x14": "Cmd+T",
-            "\x15": "Cmd+U",
-            "\x16": "Cmd+V",
-            "\x17": "Cmd+W",
-            "\x18": "Cmd+X",
-            "\x19": "Cmd+Y",
-            "\x1A": "Cmd+Z",
-            "\x1B": "Esc",
-            "\x7F": "Del",
+            "\x01": "Cmd+A",  # Cmd+A 替代 Ctrl+A
+            "\x02": "Cmd+B",  # Cmd+B 替代 Ctrl+B
+            "\x03": "Cmd+C",  # Cmd+C 替代 Ctrl+C
+            "\x04": "Cmd+D",  # Cmd+D 替代 Ctrl+D
+            "\x05": "Cmd+E",  # Cmd+E 替代 Ctrl+E
+            "\x06": "Cmd+F",  # Cmd+F 替代 Ctrl+F
+            "\x07": "Cmd+G",  # Cmd+G 替代 Ctrl+G
+            "\x08": "Cmd+H",  # Cmd+H 替代 Ctrl+H
+            "\x09": "Cmd+I",  # Cmd+I 替代 Ctrl+I
+            "\x0A": "Cmd+J",  # Cmd+J 替代 Ctrl+J
+            "\x0B": "Cmd+K",  # Cmd+K 替代 Ctrl+K
+            "\x0C": "Cmd+L",  # Cmd+L 替代 Ctrl+L
+            "\x0D": "Cmd+M",  # Cmd+M 替代 Ctrl+M
+            "\x0E": "Cmd+N",  # Cmd+N 替代 Ctrl+N
+            "\x0F": "Cmd+O",  # Cmd+O 替代 Ctrl+O
+            "\x10": "Cmd+P",  # Cmd+P 替代 Ctrl+P
+            "\x11": "Cmd+Q",  # Cmd+Q 替代 Ctrl+Q
+            "\x12": "Cmd+R",  # Cmd+R 替代 Ctrl+R
+            "\x13": "Cmd+S",  # Cmd+S 替代 Ctrl+S
+            "\x14": "Cmd+T",  # Cmd+T 替代 Ctrl+T
+            "\x15": "Cmd+U",  # Cmd+U 替代 Ctrl+U
+            "\x16": "Cmd+V",  # Cmd+V 替代 Ctrl+V
+            "\x17": "Cmd+W",  # Cmd+W 替代 Ctrl+W
+            "\x18": "Cmd+X",  # Cmd+X 替代 Ctrl+X
+            "\x19": "Cmd+Y",  # Cmd+Y 替代 Ctrl+Y
+            "\x1A": "Cmd+Z",  # Cmd+Z 替代 Ctrl+Z
+            "\x1B": "Esc",  # 保持一致
+            "\x1C": "Cmd+\\",  # Cmd+\ 替代 Ctrl+\
+            "\x1D": "Cmd+]",  # Cmd+] 替代 Ctrl+]
+            "\x1E": "Cmd+^",  # Cmd+^ 替代 Ctrl+^
+            "\x1F": "Cmd+_",  # Cmd+_ 替代 Ctrl+_
+            "\x7F": "Delete",  # macOS 使用 Delete 而非 Del
             # 根据需要添加更多映射
         }
 
@@ -220,14 +224,16 @@ class StorageManager:
         # Split the key_name by space to handle continuous input
         keys = key_name.split(' ')
         for key in keys:
-            if key.startswith('Key.'):
-                special_key = key.split('.')[1]
+            if key.lower() in self.special_key_map:
+                special_key = key.lower()
                 converted_key = self.special_key_map.get(special_key, special_key.capitalize())
                 converted.append(converted_key)
             elif key in string.printable and not key.isspace():
                 converted.append(key)
+            elif key in self.unicode_key_map:
+                converted.append(self.unicode_key_map[key])
             else:
-                converted.append(f"U+{ord(key):04X}")
+                converted.append(key)
         return ' '.join(converted)
 
     def save_screenshot(self, x=None, y=None, dx=None, dy=None, button=None, key_name=None, screenshot=None, filename=None):
@@ -246,9 +252,15 @@ class StorageManager:
                 img = screenshot
                 # 从文件名中提取时间戳（假设文件名格式为 screenshot_TIMESTAMP.png）
                 timestamp = os.path.splitext(filename)[0].split('_')[-1]
+                print('\nflag1\n')
+            elif screenshot:
+                img = screenshot
+                timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%f")
+                print('\nflag2\n')
             else:
                 img = pyautogui.screenshot()
                 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%f")
+                print('\nflag3\n')
 
             # 定义文件名
             unannotated_filename = f"screenshot_{timestamp}_no_info.jpg"
@@ -500,14 +512,14 @@ class StorageManager:
             thread_safe_logging('info', f"会话处理完成 - 文件夹: {self.session_folder}")
 
             # 在所有处理完成后，删除会话文件夹
-            try:
-                import shutil
-                shutil.rmtree(self.session_folder)
-                print(f"\n会话文件夹已删除: {self.session_folder}")
-                thread_safe_logging('info', f"会话文件夹已删除: {self.session_folder}")
-            except Exception as e:
-                thread_safe_logging('error', f"删除文件夹失败: {str(e)}")
-                print(f"\n删除文件夹失败: {str(e)}")
+            #try:
+                #import shutil
+                #shutil.rmtree(self.session_folder)
+                #print(f"\n会话文件夹已删除: {self.session_folder}")
+                #thread_safe_logging('info', f"会话文件夹已删除: {self.session_folder}")
+            #except Exception as e:
+                #thread_safe_logging('error', f"删除文件夹失败: {str(e)}")
+                #print(f"\n删除文件夹失败: {str(e)}")
 
         except Exception as e:
             thread_safe_logging('error', f"会话处理失败 - 文件夹: {self.session_folder}, 错误: {str(e)}")
