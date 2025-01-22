@@ -373,6 +373,7 @@ class StorageManager:
         """
         将指定文件夹打包成 ZIP 文件，排除之前生成的压缩包和加密文件。
         """
+        origin_file_count = 0
         try:
             thread_safe_logging('info', f"开始压缩文件夹 - 源文件夹: {folder_path}")
             thread_safe_logging('info', f"ZIP文件将保存至: {zip_path}")
@@ -384,7 +385,10 @@ class StorageManager:
                     # 过滤掉不需要的文件
                     files = [f for f in files if not (f.endswith('.zip') or f.endswith('.enc'))]
                     thread_safe_logging('info', f"发现文件数量: {len(files)}")
-                    
+
+                    if os.path.basename(root) == 'original':
+                        origin_file_count += len(files)
+
                     for file in files:
                         abs_file_path = os.path.join(root, file)
                         relative_path = os.path.relpath(abs_file_path, os.path.dirname(folder_path))
@@ -398,6 +402,8 @@ class StorageManager:
         except Exception as e:
             thread_safe_logging('error', f"压缩失败 - 文件夹: {folder_path}, 错误: {str(e)}")
             raise
+
+        return origin_file_count
 
     def encrypt_file(self, input_file, output_file, key, iv):
         """
@@ -430,7 +436,7 @@ class StorageManager:
             thread_safe_logging('error', f"加密失败 - 文件: {input_file}, 错误: {str(e)}")
             raise
 
-    def upload_file(self, file_path):
+    def upload_file(self, file_path, file_count):
         """
         使用 ModelScope API 上传打包后的 ZIP 文件。
         """
@@ -448,11 +454,11 @@ class StorageManager:
         try:
             with open(os.path.join(app_path(), 'username.txt'), 'r', encoding='utf-8') as f:
                 username = f.read().strip()
-                path_in_repo = f"{username}/{timestamp}.zip.enc"
+                path_in_repo = f"{username}/{timestamp}-log-{file_count}.zip.enc"
                 print(f"上传路径: {path_in_repo}")
         except:
             print("未找到用户名文件")
-            path_in_repo = f"{timestamp}.zip.enc"
+            path_in_repo = f"{timestamp}-log-{file_count}.zip.enc"
 
         if not os.path.exists(file_path):
             thread_safe_logging('error', f"错误: 文件 {file_path} 不存在。上传失败。")
@@ -494,6 +500,7 @@ class StorageManager:
             thread_safe_logging('info', f"计划生成的加密文件路径: {encrypted_zip_path}")
 
             self.zip_folder(self.session_folder, zip_path)
+            file_count = self.zip_folder(self.session_folder, zip_path)
 
             encryption_config = self.config.get('encryption', {})
             key = encryption_config.get('key')
@@ -504,10 +511,11 @@ class StorageManager:
                 return
 
             thread_safe_logging('info', "开始加密ZIP文件")
+            encrypted_zip_path = zip_path + f"-{file_count}" + ".enc"
             self.encrypt_file(zip_path, encrypted_zip_path, key, iv)
 
             thread_safe_logging('info', "开始上传加密文件")
-            self.upload_file(encrypted_zip_path)
+            self.upload_file(encrypted_zip_path, file_count=file_count)
 
             thread_safe_logging('info', f"会话处理完成 - 文件夹: {self.session_folder}")
 
