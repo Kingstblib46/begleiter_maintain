@@ -120,3 +120,748 @@
 2025-01-22 21:04:29,900 - INFO - 会话处理完成，程序将退出。
 2025-01-22 21:04:32,537 - INFO - 会话处理完成，准备退出。
 2025-01-22 21:04:32,538 - INFO - 应用程序已正常退出。
+2025-01-22 21:12:28,455 - INFO - 日志系统已初始化。
+2025-01-22 21:12:28,455 - INFO - 配置文件已加载。
+2025-01-22 21:12:28,523 - INFO - StorageManager初始化 - 基础路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src
+2025-01-22 21:12:28,523 - INFO - 存储管理器配置已加载。
+2025-01-22 21:12:28,526 - INFO - 已加载字体: /System/Library/Fonts/Supplemental/Arial.ttf，字体大小: 100
+2025-01-22 21:12:28,618 - INFO - 用户操作记录器已启动。
+2025-01-22 21:12:31,625 - INFO - 用户选择允许截屏
+2025-01-22 21:12:32,007 - INFO - 截屏权限已授予。
+2025-01-22 21:12:32,007 - INFO - StorageManager - 创建会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32
+2025-01-22 21:12:32,952 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-32_435827_no_info.jpg，大小: 428.75KB，质量: 5
+2025-01-22 21:12:33,498 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-32_435827_with_info.jpg，大小: 436.14KB，质量: 5
+2025-01-22 21:12:33,499 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-32_435827_no_info.jpg
+2025-01-22 21:12:33,499 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-32_435827_with_info.jpg
+2025-01-22 21:12:33,508 - INFO - 记录事件并保存截图: {'timestamp': 1737551553.508121, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1416.55859375, 'y': 791.3828125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-32_435827_no_info.jpg', 'mouse_position': {'x': 1416.55859375, 'y': 791.3828125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:12:33,580 - INFO - 启动截屏定时器，每20秒进行一次截屏。
+2025-01-22 21:12:34,853 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-34_327815_no_info.jpg，大小: 429.40KB，质量: 5
+2025-01-22 21:12:35,406 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-34_327815_with_info.jpg，大小: 437.20KB，质量: 5
+2025-01-22 21:12:35,407 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-34_327815_no_info.jpg
+2025-01-22 21:12:35,407 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-34_327815_with_info.jpg
+2025-01-22 21:12:35,416 - INFO - 记录事件并保存截图: {'timestamp': 1737551555.416211, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1416.55859375, 'y': 791.3828125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-34_327815_no_info.jpg', 'mouse_position': {'x': 1416.55859375, 'y': 791.3828125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:12:36,771 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-36_237639_no_info.jpg，大小: 430.90KB，质量: 5
+2025-01-22 21:12:37,410 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-36_237639_with_info.jpg，大小: 438.76KB，质量: 5
+2025-01-22 21:12:37,412 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-36_237639_no_info.jpg
+2025-01-22 21:12:37,412 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-36_237639_with_info.jpg
+2025-01-22 21:12:37,424 - INFO - 记录事件并保存截图: {'timestamp': 1737551557.4241831, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1632.23828125, 'y': 879.47265625, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-36_237639_no_info.jpg', 'mouse_position': {'x': 1632.23828125, 'y': 879.47265625, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:12:45,075 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-44_546393_no_info.jpg，大小: 440.82KB，质量: 5
+2025-01-22 21:12:45,634 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-44_546393_with_info.jpg，大小: 447.50KB，质量: 5
+2025-01-22 21:12:45,635 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-44_546393_no_info.jpg
+2025-01-22 21:12:45,635 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-44_546393_with_info.jpg
+2025-01-22 21:12:45,649 - INFO - 记录事件并保存截图: {'timestamp': 1737551565.6493928, 'action_type': 'mouse_scroll', 'action_content': {'position': {'x': 1025.9921875, 'y': 1392.25, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': {'dx': 0, 'dy': -500}, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-44_546393_no_info.jpg', 'mouse_position': {'x': 1025.9921875, 'y': 1392.25, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:12:46,504 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-45_970072_no_info.jpg，大小: 440.54KB，质量: 5
+2025-01-22 21:12:47,058 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-45_970072_with_info.jpg，大小: 446.89KB，质量: 5
+2025-01-22 21:12:47,059 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-45_970072_no_info.jpg
+2025-01-22 21:12:47,059 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-45_970072_with_info.jpg
+2025-01-22 21:12:47,068 - INFO - 记录事件并保存截图: {'timestamp': 1737551567.0683541, 'action_type': 'mouse_scroll', 'action_content': {'position': {'x': 1025.9921875, 'y': 1392.25, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': {'dx': 0, 'dy': -500}, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-45_970072_no_info.jpg', 'mouse_position': {'x': 1025.9921875, 'y': 1392.25, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:12:48,477 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-47_930948_no_info.jpg，大小: 452.63KB，质量: 5
+2025-01-22 21:12:49,040 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-47_930948_with_info.jpg，大小: 459.32KB，质量: 5
+2025-01-22 21:12:49,041 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-47_930948_no_info.jpg
+2025-01-22 21:12:49,041 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-47_930948_with_info.jpg
+2025-01-22 21:12:49,052 - INFO - 记录事件并保存截图: {'timestamp': 1737551569.052643, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1450.859375, 'y': 54.109375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-47_930948_no_info.jpg', 'mouse_position': {'x': 1450.859375, 'y': 54.109375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:12:50,355 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-49_865229_no_info.jpg，大小: 485.98KB，质量: 10
+2025-01-22 21:12:50,880 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-49_865229_with_info.jpg，大小: 498.25KB，质量: 10
+2025-01-22 21:12:50,881 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-49_865229_no_info.jpg
+2025-01-22 21:12:50,881 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-49_865229_with_info.jpg
+2025-01-22 21:12:50,892 - INFO - 记录事件并保存截图: {'timestamp': 1737551570.892069, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1450.859375, 'y': 54.109375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-49_865229_no_info.jpg', 'mouse_position': {'x': 1450.859375, 'y': 54.109375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:12:51,719 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-51_224152_no_info.jpg，大小: 485.98KB，质量: 10
+2025-01-22 21:12:51,724 - ERROR - 截屏失败: ord() expected a character, but string of length 3 found
+2025-01-22 21:12:51,728 - INFO - 记录事件并保存截图: {'timestamp': 1737551571.728016, 'action_type': 'key_press', 'action_content': {'position': {'x': 1531, 'y': 1185, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': None, 'key': 'Cmd n'}, 'active_app': 'sublime_text', 'screenshots_path': '截屏失败', 'mouse_position': {'x': 1531, 'y': 1185, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:12:54,790 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_21-12-53_no_info.jpg，大小: 487.06KB，质量: 10
+2025-01-22 21:12:55,276 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_21-12-53_with_info.jpg，大小: 487.06KB，质量: 10
+2025-01-22 21:12:55,277 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_21-12-53_no_info.jpg
+2025-01-22 21:12:55,277 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_21-12-53_with_info.jpg
+2025-01-22 21:12:55,282 - INFO - 已保存截图: screenshot_2025-01-22_21-12-53.png
+2025-01-22 21:12:56,964 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-56_468427_no_info.jpg，大小: 485.00KB，质量: 10
+2025-01-22 21:12:57,490 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-56_468427_with_info.jpg，大小: 488.54KB，质量: 10
+2025-01-22 21:12:57,490 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-56_468427_no_info.jpg
+2025-01-22 21:12:57,490 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-56_468427_with_info.jpg
+2025-01-22 21:12:57,500 - INFO - 记录事件并保存截图: {'timestamp': 1737551577.5001652, 'action_type': 'key_press', 'action_content': {'position': {'x': 1531, 'y': 1185, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': None, 'key': 'a a a a a a a a a a a a a a a a a a a'}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-56_468427_no_info.jpg', 'mouse_position': {'x': 1531, 'y': 1185, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:13:02,143 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-13-01_643142_no_info.jpg，大小: 481.89KB，质量: 10
+2025-01-22 21:13:02,663 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-13-01_643142_with_info.jpg，大小: 494.61KB，质量: 10
+2025-01-22 21:13:02,664 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-13-01_643142_no_info.jpg
+2025-01-22 21:13:02,664 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-13-01_643142_with_info.jpg
+2025-01-22 21:13:02,675 - INFO - 记录事件并保存截图: {'timestamp': 1737551582.675425, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 2304.05859375, 'y': 66.7421875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-13-01_643142_no_info.jpg', 'mouse_position': {'x': 2304.05859375, 'y': 66.7421875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:13:03,475 - INFO - 用户点击'停止记录并关闭'按钮
+2025-01-22 21:13:03,479 - INFO - 定时器已停止
+2025-01-22 21:13:03,479 - INFO - 准备停止动作记录线程
+2025-01-22 21:13:03,479 - INFO - 用户操作记录器已停止。
+2025-01-22 21:13:03,480 - INFO - ActionRecorderThread 已成功停止。
+2025-01-22 21:13:03,480 - INFO - 动作记录线程已停止
+2025-01-22 21:13:03,480 - INFO - 准备启动处理会话线程
+2025-01-22 21:13:03,480 - INFO - 开始处理会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32
+2025-01-22 21:13:03,480 - INFO - 计划生成的ZIP文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/session_20250122_211303.zip
+2025-01-22 21:13:03,480 - INFO - 计划生成的加密文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/session_20250122_211303.zip.enc
+2025-01-22 21:13:03,480 - INFO - 开始压缩文件夹 - 源文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32
+2025-01-22 21:13:03,480 - INFO - ZIP文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/session_20250122_211303.zip
+2025-01-22 21:13:03,480 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32
+2025-01-22 21:13:03,480 - INFO - 发现文件数量: 0
+2025-01-22 21:13:03,480 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots
+2025-01-22 21:13:03,480 - INFO - 发现文件数量: 0
+2025-01-22 21:13:03,480 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated
+2025-01-22 21:13:03,480 - INFO - 发现文件数量: 10
+2025-01-22 21:13:03,487 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_21-12-53_with_info.jpg
+2025-01-22 21:13:03,494 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-32_435827_with_info.jpg
+2025-01-22 21:13:03,501 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-56_468427_with_info.jpg
+2025-01-22 21:13:03,507 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-13-01_643142_with_info.jpg
+2025-01-22 21:13:03,513 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-34_327815_with_info.jpg
+2025-01-22 21:13:03,519 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-47_930948_with_info.jpg
+2025-01-22 21:13:03,525 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-36_237639_with_info.jpg
+2025-01-22 21:13:03,531 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-44_546393_with_info.jpg
+2025-01-22 21:13:03,536 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-45_970072_with_info.jpg
+2025-01-22 21:13:03,542 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-12-49_865229_with_info.jpg
+2025-01-22 21:13:03,543 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original
+2025-01-22 21:13:03,543 - INFO - 发现文件数量: 12
+2025-01-22 21:13:03,548 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-56_468427_no_info.jpg
+2025-01-22 21:13:03,554 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-45_970072_no_info.jpg
+2025-01-22 21:13:03,560 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-51_224152_no_info.jpg
+2025-01-22 21:13:03,567 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-34_327815_no_info.jpg
+2025-01-22 21:13:03,573 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_21-12-53_no_info.jpg
+2025-01-22 21:13:03,579 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-49_865229_no_info.jpg
+2025-01-22 21:13:03,584 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-36_237639_no_info.jpg
+2025-01-22 21:13:03,590 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-44_546393_no_info.jpg
+2025-01-22 21:13:03,597 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-47_930948_no_info.jpg
+2025-01-22 21:13:03,603 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-12-32_435827_no_info.jpg
+2025-01-22 21:13:03,609 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-13-01_643142_no_info.jpg
+2025-01-22 21:13:03,624 - INFO - 已添加文件: 2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-13-03_506801_no_info.jpg
+2025-01-22 21:13:03,624 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/log
+2025-01-22 21:13:03,624 - INFO - 发现文件数量: 1
+2025-01-22 21:13:03,624 - INFO - 已添加文件: 2025-01-22_21-12-32/log/user_actions_real_time_20250122_211228_535171.jsonl
+2025-01-22 21:13:03,624 - INFO - 压缩完成 - 文件数: 23, ZIP大小: 4.44MB
+2025-01-22 21:13:03,624 - INFO - 开始加密ZIP文件
+2025-01-22 21:13:03,624 - INFO - 开始加密文件 - 源文件: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/session_20250122_211303.zip
+2025-01-22 21:13:03,624 - INFO - 加密文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/session_20250122_211303.zip.enc
+2025-01-22 21:13:03,624 - INFO - 源文件大小: 4.44MB
+2025-01-22 21:13:03,625 - INFO - 已读取源文件，准备加密
+2025-01-22 21:13:03,637 - INFO - 加密完成 - 加密后文件大小: 4.44MB
+2025-01-22 21:13:03,638 - INFO - 开始上传加密文件
+2025-01-22 21:13:04,014 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-13-03_506801_no_info.jpg，大小: 481.89KB，质量: 10
+2025-01-22 21:13:04,539 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-13-03_506801_with_info.jpg，大小: 495.30KB，质量: 10
+2025-01-22 21:13:04,540 - INFO - 已保存无信息截图: records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-13-03_506801_no_info.jpg
+2025-01-22 21:13:04,540 - INFO - 已保存有信息截图: records/2025-01-22_21-12-32/screenshots/annotated/screenshot_2025-01-22_21-13-03_506801_with_info.jpg
+2025-01-22 21:13:04,550 - INFO - 记录事件并保存截图: {'timestamp': 1737551584.550192, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 2304.05859375, 'y': 66.7421875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-12-32/screenshots/original/screenshot_2025-01-22_21-13-03_506801_no_info.jpg', 'mouse_position': {'x': 2304.05859375, 'y': 66.7421875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:13:26,168 - INFO - 成功: 文件已上传到 lllijuih/AGENTC/2025-01-22_21-13-03.zip.enc
+2025-01-22 21:13:26,168 - INFO - 会话处理完成 - 文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-12-32
+2025-01-22 21:13:26,168 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:13:26,168 - INFO - 会话处理完成，程序将退出。
+2025-01-22 21:13:29,610 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:13:29,612 - INFO - 应用程序已正常退出。
+2025-01-22 21:15:26,694 - INFO - 日志系统已初始化。
+2025-01-22 21:15:26,695 - INFO - 配置文件已加载。
+2025-01-22 21:15:26,751 - INFO - StorageManager初始化 - 基础路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src
+2025-01-22 21:15:26,751 - INFO - 存储管理器配置已加载。
+2025-01-22 21:15:26,752 - INFO - 已加载字体: /System/Library/Fonts/Supplemental/Arial.ttf，字体大小: 100
+2025-01-22 21:15:26,838 - INFO - 用户操作记录器已启动。
+2025-01-22 21:15:29,549 - INFO - 用户选择允许截屏
+2025-01-22 21:15:29,932 - WARNING - 尝试保存截图但会话尚未开始
+2025-01-22 21:15:29,932 - ERROR - 处理事件时出错: argument of type 'bool' is not iterable
+2025-01-22 21:15:29,933 - INFO - 截屏权限已授予。
+2025-01-22 21:15:29,933 - INFO - StorageManager - 创建会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29
+2025-01-22 21:15:31,267 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-30_746180_no_info.jpg，大小: 431.31KB，质量: 5
+2025-01-22 21:15:31,813 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-30_746180_with_info.jpg，大小: 439.00KB，质量: 5
+2025-01-22 21:15:31,814 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-30_746180_no_info.jpg
+2025-01-22 21:15:31,814 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-30_746180_with_info.jpg
+2025-01-22 21:15:31,823 - INFO - 记录事件并保存截图: {'timestamp': 1737551731.823429, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1452.3828125, 'y': 776.2109375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-30_746180_no_info.jpg', 'mouse_position': {'x': 1452.3828125, 'y': 776.2109375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:32,512 - INFO - 启动截屏定时器，每20秒进行一次截屏。
+2025-01-22 21:15:33,681 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-33_148034_no_info.jpg，大小: 429.27KB，质量: 5
+2025-01-22 21:15:34,227 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-33_148034_with_info.jpg，大小: 436.89KB，质量: 5
+2025-01-22 21:15:34,228 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-33_148034_no_info.jpg
+2025-01-22 21:15:34,228 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-33_148034_with_info.jpg
+2025-01-22 21:15:34,238 - INFO - 记录事件并保存截图: {'timestamp': 1737551734.237838, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1631.89453125, 'y': 876.96484375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-33_148034_no_info.jpg', 'mouse_position': {'x': 1631.89453125, 'y': 876.96484375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:35,565 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-35_040110_no_info.jpg，大小: 429.27KB，质量: 5
+2025-01-22 21:15:36,114 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-35_040110_with_info.jpg，大小: 437.18KB，质量: 5
+2025-01-22 21:15:36,115 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-35_040110_no_info.jpg
+2025-01-22 21:15:36,115 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-35_040110_with_info.jpg
+2025-01-22 21:15:36,125 - INFO - 记录事件并保存截图: {'timestamp': 1737551736.124985, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1631.89453125, 'y': 876.96484375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-35_040110_no_info.jpg', 'mouse_position': {'x': 1631.89453125, 'y': 876.96484375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:38,044 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-37_498743_no_info.jpg，大小: 431.70KB，质量: 5
+2025-01-22 21:15:38,591 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-37_498743_with_info.jpg，大小: 439.92KB，质量: 5
+2025-01-22 21:15:38,593 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-37_498743_no_info.jpg
+2025-01-22 21:15:38,593 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-37_498743_with_info.jpg
+2025-01-22 21:15:38,602 - INFO - 记录事件并保存截图: {'timestamp': 1737551738.60197, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 646.80859375, 'y': 1588.18359375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-37_498743_no_info.jpg', 'mouse_position': {'x': 646.80859375, 'y': 1588.18359375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:39,954 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-39_429180_no_info.jpg，大小: 431.74KB，质量: 5
+2025-01-22 21:15:40,499 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-39_429180_with_info.jpg，大小: 440.14KB，质量: 5
+2025-01-22 21:15:40,500 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-39_429180_no_info.jpg
+2025-01-22 21:15:40,500 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-39_429180_with_info.jpg
+2025-01-22 21:15:40,509 - INFO - 记录事件并保存截图: {'timestamp': 1737551740.509262, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 646.80859375, 'y': 1588.18359375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-39_429180_no_info.jpg', 'mouse_position': {'x': 646.80859375, 'y': 1588.18359375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:46,803 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-46_272742_no_info.jpg，大小: 433.31KB，质量: 5
+2025-01-22 21:15:47,362 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-46_272742_with_info.jpg，大小: 440.79KB，质量: 5
+2025-01-22 21:15:47,363 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-46_272742_no_info.jpg
+2025-01-22 21:15:47,363 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-46_272742_with_info.jpg
+2025-01-22 21:15:47,372 - INFO - 记录事件并保存截图: {'timestamp': 1737551747.372478, 'action_type': 'mouse_scroll', 'action_content': {'position': {'x': 1029.1953125, 'y': 1321.17578125, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': {'dx': 0, 'dy': -458}, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-46_272742_no_info.jpg', 'mouse_position': {'x': 1029.1953125, 'y': 1321.17578125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:52,225 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-51_688195_no_info.jpg，大小: 432.35KB，质量: 5
+2025-01-22 21:15:52,503 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-51_966096_no_info.jpg，大小: 432.86KB，质量: 5
+2025-01-22 21:15:52,790 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-51_688195_with_info.jpg，大小: 440.03KB，质量: 5
+2025-01-22 21:15:52,792 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-51_688195_no_info.jpg
+2025-01-22 21:15:52,792 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-51_688195_with_info.jpg
+2025-01-22 21:15:52,801 - INFO - 记录事件并保存截图: {'timestamp': 1737551752.8017092, 'action_type': 'mouse_scroll', 'action_content': {'position': {'x': 1055.49609375, 'y': 1310.9296875, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': {'dx': 0, 'dy': -333}, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-51_688195_no_info.jpg', 'mouse_position': {'x': 1055.49609375, 'y': 1310.9296875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:53,083 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-51_966096_with_info.jpg，大小: 440.21KB，质量: 5
+2025-01-22 21:15:53,084 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-51_966096_no_info.jpg
+2025-01-22 21:15:53,084 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-51_966096_with_info.jpg
+2025-01-22 21:15:53,094 - INFO - 记录事件并保存截图: {'timestamp': 1737551753.094332, 'action_type': 'mouse_scroll', 'action_content': {'position': {'x': 1055.49609375, 'y': 1310.9296875, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': {'dx': 0, 'dy': -333}, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-51_966096_no_info.jpg', 'mouse_position': {'x': 1055.49609375, 'y': 1310.9296875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:53,785 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_21-15-52_no_info.jpg，大小: 432.59KB，质量: 5
+2025-01-22 21:15:54,320 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_21-15-52_with_info.jpg，大小: 432.59KB，质量: 5
+2025-01-22 21:15:54,321 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_21-15-52_no_info.jpg
+2025-01-22 21:15:54,321 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_21-15-52_with_info.jpg
+2025-01-22 21:15:54,326 - INFO - 已保存截图: screenshot_2025-01-22_21-15-52.png
+2025-01-22 21:15:54,443 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-53_908405_no_info.jpg，大小: 432.59KB，质量: 5
+2025-01-22 21:15:54,998 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-53_908405_with_info.jpg，大小: 439.51KB，质量: 5
+2025-01-22 21:15:54,999 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-53_908405_no_info.jpg
+2025-01-22 21:15:54,999 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-53_908405_with_info.jpg
+2025-01-22 21:15:55,008 - INFO - 记录事件并保存截图: {'timestamp': 1737551755.0081081, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 2319.26171875, 'y': 61.2421875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-53_908405_no_info.jpg', 'mouse_position': {'x': 2319.26171875, 'y': 61.2421875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:56,371 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-55_840537_no_info.jpg，大小: 432.59KB，质量: 5
+2025-01-22 21:15:56,922 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-55_840537_with_info.jpg，大小: 439.89KB，质量: 5
+2025-01-22 21:15:56,923 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-55_840537_no_info.jpg
+2025-01-22 21:15:56,923 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-55_840537_with_info.jpg
+2025-01-22 21:15:56,934 - INFO - 记录事件并保存截图: {'timestamp': 1737551756.934047, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 2319.26171875, 'y': 61.2421875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-55_840537_no_info.jpg', 'mouse_position': {'x': 2319.26171875, 'y': 61.2421875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:15:57,128 - INFO - 用户点击'停止记录并关闭'按钮
+2025-01-22 21:15:57,132 - INFO - 定时器已停止
+2025-01-22 21:15:57,132 - INFO - 准备停止动作记录线程
+2025-01-22 21:15:57,132 - INFO - 用户操作记录器已停止。
+2025-01-22 21:15:57,133 - INFO - ActionRecorderThread 已成功停止。
+2025-01-22 21:15:57,133 - INFO - 动作记录线程已停止
+2025-01-22 21:15:57,133 - INFO - 准备启动处理会话线程
+2025-01-22 21:15:57,133 - INFO - 开始处理会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29
+2025-01-22 21:15:57,133 - INFO - 计划生成的ZIP文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/session_20250122_211557.zip
+2025-01-22 21:15:57,133 - INFO - 计划生成的加密文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/session_20250122_211557.zip.enc
+2025-01-22 21:15:57,133 - INFO - 开始压缩文件夹 - 源文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29
+2025-01-22 21:15:57,133 - INFO - ZIP文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/session_20250122_211557.zip
+2025-01-22 21:15:57,133 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29
+2025-01-22 21:15:57,133 - INFO - 发现文件数量: 0
+2025-01-22 21:15:57,133 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots
+2025-01-22 21:15:57,133 - INFO - 发现文件数量: 0
+2025-01-22 21:15:57,133 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated
+2025-01-22 21:15:57,133 - INFO - 发现文件数量: 11
+2025-01-22 21:15:57,140 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_21-15-52_with_info.jpg
+2025-01-22 21:15:57,150 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-37_498743_with_info.jpg
+2025-01-22 21:15:57,158 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-30_746180_with_info.jpg
+2025-01-22 21:15:57,165 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-35_040110_with_info.jpg
+2025-01-22 21:15:57,171 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-46_272742_with_info.jpg
+2025-01-22 21:15:57,177 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-51_966096_with_info.jpg
+2025-01-22 21:15:57,183 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-33_148034_with_info.jpg
+2025-01-22 21:15:57,189 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-53_908405_with_info.jpg
+2025-01-22 21:15:57,195 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-55_840537_with_info.jpg
+2025-01-22 21:15:57,200 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-51_688195_with_info.jpg
+2025-01-22 21:15:57,206 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-39_429180_with_info.jpg
+2025-01-22 21:15:57,206 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original
+2025-01-22 21:15:57,206 - INFO - 发现文件数量: 11
+2025-01-22 21:15:57,211 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-51_966096_no_info.jpg
+2025-01-22 21:15:57,217 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-55_840537_no_info.jpg
+2025-01-22 21:15:57,222 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-46_272742_no_info.jpg
+2025-01-22 21:15:57,228 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-33_148034_no_info.jpg
+2025-01-22 21:15:57,233 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-53_908405_no_info.jpg
+2025-01-22 21:15:57,239 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-37_498743_no_info.jpg
+2025-01-22 21:15:57,245 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-39_429180_no_info.jpg
+2025-01-22 21:15:57,251 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-35_040110_no_info.jpg
+2025-01-22 21:15:57,257 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-30_746180_no_info.jpg
+2025-01-22 21:15:57,262 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_21-15-52_no_info.jpg
+2025-01-22 21:15:57,267 - INFO - 已添加文件: 2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-51_688195_no_info.jpg
+2025-01-22 21:15:57,267 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/log
+2025-01-22 21:15:57,268 - INFO - 发现文件数量: 1
+2025-01-22 21:15:57,268 - INFO - 已添加文件: 2025-01-22_21-15-29/log/user_actions_real_time_20250122_211526_760278.jsonl
+2025-01-22 21:15:57,268 - INFO - 压缩完成 - 文件数: 23, ZIP大小: 3.53MB
+2025-01-22 21:15:57,268 - INFO - 开始加密ZIP文件
+2025-01-22 21:15:57,268 - INFO - 开始加密文件 - 源文件: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/session_20250122_211557.zip
+2025-01-22 21:15:57,268 - INFO - 加密文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/session_20250122_211557.zip.enc
+2025-01-22 21:15:57,268 - INFO - 源文件大小: 3.53MB
+2025-01-22 21:15:57,268 - INFO - 已读取源文件，准备加密
+2025-01-22 21:15:57,279 - INFO - 加密完成 - 加密后文件大小: 3.53MB
+2025-01-22 21:15:57,279 - INFO - 开始上传加密文件
+2025-01-22 21:15:58,407 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-57_874325_no_info.jpg，大小: 435.91KB，质量: 5
+2025-01-22 21:15:58,975 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-57_874325_with_info.jpg，大小: 443.65KB，质量: 5
+2025-01-22 21:15:58,976 - INFO - 已保存无信息截图: records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-57_874325_no_info.jpg
+2025-01-22 21:15:58,976 - INFO - 已保存有信息截图: records/2025-01-22_21-15-29/screenshots/annotated/screenshot_2025-01-22_21-15-57_874325_with_info.jpg
+2025-01-22 21:15:58,986 - INFO - 记录事件并保存截图: {'timestamp': 1737551758.9858189, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1529.6953125, 'y': 880.1015625, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-15-29/screenshots/original/screenshot_2025-01-22_21-15-57_874325_no_info.jpg', 'mouse_position': {'x': 1529.6953125, 'y': 880.1015625, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:16:17,890 - INFO - 成功: 文件已上传到 lllijuih/AGENTC/2025-01-22_21-15-57.zip.enc
+2025-01-22 21:16:17,890 - INFO - 会话处理完成 - 文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-15-29
+2025-01-22 21:16:17,890 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:16:17,890 - INFO - 会话处理完成，程序将退出。
+2025-01-22 21:16:21,678 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:16:21,679 - INFO - 应用程序已正常退出。
+2025-01-22 21:18:08,006 - INFO - 日志系统已初始化。
+2025-01-22 21:18:08,006 - INFO - 配置文件已加载。
+2025-01-22 21:18:08,076 - INFO - StorageManager初始化 - 基础路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src
+2025-01-22 21:18:08,076 - INFO - 存储管理器配置已加载。
+2025-01-22 21:18:08,078 - INFO - 已加载字体: /System/Library/Fonts/Supplemental/Arial.ttf，字体大小: 100
+2025-01-22 21:18:08,161 - INFO - 用户操作记录器已启动。
+2025-01-22 21:18:09,828 - INFO - 用户选择允许截屏
+2025-01-22 21:18:10,163 - WARNING - 尝试保存截图但会话尚未开始
+2025-01-22 21:18:10,163 - ERROR - 处理事件时出错: argument of type 'bool' is not iterable
+2025-01-22 21:18:10,193 - INFO - 截屏权限已授予。
+2025-01-22 21:18:10,193 - INFO - StorageManager - 创建会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10
+2025-01-22 21:18:11,290 - INFO - 启动截屏定时器，每20秒进行一次截屏。
+2025-01-22 21:18:11,487 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-10_969625_no_info.jpg，大小: 429.59KB，质量: 5
+2025-01-22 21:18:12,036 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/screenshots/annotated/screenshot_2025-01-22_21-18-10_969625_with_info.jpg，大小: 437.35KB，质量: 5
+2025-01-22 21:18:12,037 - INFO - 已保存无信息截图: records/2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-10_969625_no_info.jpg
+2025-01-22 21:18:12,037 - INFO - 已保存有信息截图: records/2025-01-22_21-18-10/screenshots/annotated/screenshot_2025-01-22_21-18-10_969625_with_info.jpg
+2025-01-22 21:18:12,046 - INFO - 记录事件并保存截图: {'timestamp': 1737551892.0461419, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1430.8359375, 'y': 784.0546875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-10_969625_no_info.jpg', 'mouse_position': {'x': 1430.8359375, 'y': 784.0546875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:18:13,391 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-12_867404_no_info.jpg，大小: 427.52KB，质量: 5
+2025-01-22 21:18:13,937 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/screenshots/annotated/screenshot_2025-01-22_21-18-12_867404_with_info.jpg，大小: 435.30KB，质量: 5
+2025-01-22 21:18:13,938 - INFO - 已保存无信息截图: records/2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-12_867404_no_info.jpg
+2025-01-22 21:18:13,938 - INFO - 已保存有信息截图: records/2025-01-22_21-18-10/screenshots/annotated/screenshot_2025-01-22_21-18-12_867404_with_info.jpg
+2025-01-22 21:18:13,947 - INFO - 记录事件并保存截图: {'timestamp': 1737551893.9470952, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1620.08984375, 'y': 879.91015625, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-12_867404_no_info.jpg', 'mouse_position': {'x': 1620.08984375, 'y': 879.91015625, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:18:14,807 - INFO - 用户点击'停止记录并关闭'按钮
+2025-01-22 21:18:14,810 - INFO - 定时器已停止
+2025-01-22 21:18:14,810 - INFO - 准备停止动作记录线程
+2025-01-22 21:18:14,810 - INFO - 用户操作记录器已停止。
+2025-01-22 21:18:14,811 - INFO - ActionRecorderThread 已成功停止。
+2025-01-22 21:18:14,811 - INFO - 动作记录线程已停止
+2025-01-22 21:18:14,811 - INFO - 准备启动处理会话线程
+2025-01-22 21:18:14,811 - INFO - 开始处理会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10
+2025-01-22 21:18:14,811 - INFO - 计划生成的ZIP文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/session_20250122_211814.zip
+2025-01-22 21:18:14,811 - INFO - 计划生成的加密文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/session_20250122_211814.zip.enc
+2025-01-22 21:18:14,811 - INFO - 开始压缩文件夹 - 源文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10
+2025-01-22 21:18:14,811 - INFO - ZIP文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/session_20250122_211814.zip
+2025-01-22 21:18:14,811 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10
+2025-01-22 21:18:14,811 - INFO - 发现文件数量: 0
+2025-01-22 21:18:14,811 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/screenshots
+2025-01-22 21:18:14,811 - INFO - 发现文件数量: 0
+2025-01-22 21:18:14,811 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/screenshots/annotated
+2025-01-22 21:18:14,811 - INFO - 发现文件数量: 2
+2025-01-22 21:18:14,817 - INFO - 已添加文件: 2025-01-22_21-18-10/screenshots/annotated/screenshot_2025-01-22_21-18-12_867404_with_info.jpg
+2025-01-22 21:18:14,823 - INFO - 已添加文件: 2025-01-22_21-18-10/screenshots/annotated/screenshot_2025-01-22_21-18-10_969625_with_info.jpg
+2025-01-22 21:18:14,823 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/screenshots/original
+2025-01-22 21:18:14,823 - INFO - 发现文件数量: 3
+2025-01-22 21:18:14,858 - INFO - 已添加文件: 2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-14_768607_no_info.jpg
+2025-01-22 21:18:14,863 - INFO - 已添加文件: 2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-12_867404_no_info.jpg
+2025-01-22 21:18:14,868 - INFO - 已添加文件: 2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-10_969625_no_info.jpg
+2025-01-22 21:18:14,868 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/log
+2025-01-22 21:18:14,868 - INFO - 发现文件数量: 1
+2025-01-22 21:18:14,868 - INFO - 已添加文件: 2025-01-22_21-18-10/log/user_actions_real_time_20250122_211808_086090.jsonl
+2025-01-22 21:18:14,868 - INFO - 压缩完成 - 文件数: 6, ZIP大小: 2.09MB
+2025-01-22 21:18:14,868 - INFO - 开始加密ZIP文件
+2025-01-22 21:18:14,868 - INFO - 开始加密文件 - 源文件: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/session_20250122_211814.zip
+2025-01-22 21:18:14,868 - INFO - 加密文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/session_20250122_211814.zip.enc
+2025-01-22 21:18:14,868 - INFO - 源文件大小: 2.09MB
+2025-01-22 21:18:14,869 - INFO - 已读取源文件，准备加密
+2025-01-22 21:18:14,875 - INFO - 加密完成 - 加密后文件大小: 2.09MB
+2025-01-22 21:18:14,875 - INFO - 开始上传加密文件
+2025-01-22 21:18:15,296 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-14_768607_no_info.jpg，大小: 427.67KB，质量: 5
+2025-01-22 21:18:15,848 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10/screenshots/annotated/screenshot_2025-01-22_21-18-14_768607_with_info.jpg，大小: 435.57KB，质量: 5
+2025-01-22 21:18:15,849 - INFO - 已保存无信息截图: records/2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-14_768607_no_info.jpg
+2025-01-22 21:18:15,849 - INFO - 已保存有信息截图: records/2025-01-22_21-18-10/screenshots/annotated/screenshot_2025-01-22_21-18-14_768607_with_info.jpg
+2025-01-22 21:18:15,858 - INFO - 记录事件并保存截图: {'timestamp': 1737551895.858499, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1620.08984375, 'y': 879.91015625, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-18-10/screenshots/original/screenshot_2025-01-22_21-18-14_768607_no_info.jpg', 'mouse_position': {'x': 1620.08984375, 'y': 879.91015625, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:18:34,285 - INFO - 成功: 文件已上传到 lllijuih/AGENTC/2025-01-22_21-18-14.zip.enc
+2025-01-22 21:18:34,285 - INFO - 会话处理完成 - 文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-10
+2025-01-22 21:18:34,285 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:18:34,285 - INFO - 会话处理完成，程序将退出。
+2025-01-22 21:18:44,484 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:18:44,486 - INFO - 应用程序已正常退出。
+2025-01-22 21:18:46,777 - INFO - 日志系统已初始化。
+2025-01-22 21:18:46,777 - INFO - 配置文件已加载。
+2025-01-22 21:18:46,840 - INFO - StorageManager初始化 - 基础路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src
+2025-01-22 21:18:46,840 - INFO - 存储管理器配置已加载。
+2025-01-22 21:18:46,841 - INFO - 已加载字体: /System/Library/Fonts/Supplemental/Arial.ttf，字体大小: 100
+2025-01-22 21:18:46,919 - INFO - 用户操作记录器已启动。
+2025-01-22 21:18:48,603 - INFO - 用户选择允许截屏
+2025-01-22 21:18:48,823 - WARNING - 尝试保存截图但会话尚未开始
+2025-01-22 21:18:48,823 - ERROR - 处理事件时出错: argument of type 'bool' is not iterable
+2025-01-22 21:18:48,951 - INFO - 截屏权限已授予。
+2025-01-22 21:18:48,951 - INFO - StorageManager - 创建会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48
+2025-01-22 21:18:50,151 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-49_631932_no_info.jpg，大小: 429.98KB，质量: 5
+2025-01-22 21:18:50,424 - INFO - 启动截屏定时器，每20秒进行一次截屏。
+2025-01-22 21:18:50,700 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/screenshots/annotated/screenshot_2025-01-22_21-18-49_631932_with_info.jpg，大小: 437.39KB，质量: 5
+2025-01-22 21:18:50,701 - INFO - 已保存无信息截图: records/2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-49_631932_no_info.jpg
+2025-01-22 21:18:50,701 - INFO - 已保存有信息截图: records/2025-01-22_21-18-48/screenshots/annotated/screenshot_2025-01-22_21-18-49_631932_with_info.jpg
+2025-01-22 21:18:50,710 - INFO - 记录事件并保存截图: {'timestamp': 1737551930.710388, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1416.4140625, 'y': 787.51171875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-49_631932_no_info.jpg', 'mouse_position': {'x': 1416.4140625, 'y': 787.51171875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:18:52,047 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-51_525399_no_info.jpg，大小: 427.97KB，质量: 5
+2025-01-22 21:18:52,591 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/screenshots/annotated/screenshot_2025-01-22_21-18-51_525399_with_info.jpg，大小: 435.13KB，质量: 5
+2025-01-22 21:18:52,592 - INFO - 已保存无信息截图: records/2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-51_525399_no_info.jpg
+2025-01-22 21:18:52,592 - INFO - 已保存有信息截图: records/2025-01-22_21-18-48/screenshots/annotated/screenshot_2025-01-22_21-18-51_525399_with_info.jpg
+2025-01-22 21:18:52,601 - INFO - 记录事件并保存截图: {'timestamp': 1737551932.60126, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1634.609375, 'y': 874.8203125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-51_525399_no_info.jpg', 'mouse_position': {'x': 1634.609375, 'y': 874.8203125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:18:53,040 - INFO - 用户点击'停止记录并关闭'按钮
+2025-01-22 21:18:53,043 - INFO - 定时器已停止
+2025-01-22 21:18:53,043 - INFO - 准备停止动作记录线程
+2025-01-22 21:18:53,043 - INFO - 用户操作记录器已停止。
+2025-01-22 21:18:53,043 - INFO - ActionRecorderThread 已成功停止。
+2025-01-22 21:18:53,043 - INFO - 动作记录线程已停止
+2025-01-22 21:18:53,043 - INFO - 准备启动处理会话线程
+2025-01-22 21:18:53,043 - INFO - 开始处理会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48
+2025-01-22 21:18:53,043 - INFO - 计划生成的ZIP文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/session_20250122_211853.zip
+2025-01-22 21:18:53,043 - INFO - 计划生成的加密文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/session_20250122_211853.zip.enc
+2025-01-22 21:18:53,043 - INFO - 开始压缩文件夹 - 源文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48
+2025-01-22 21:18:53,043 - INFO - ZIP文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/session_20250122_211853.zip
+2025-01-22 21:18:53,044 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48
+2025-01-22 21:18:53,044 - INFO - 发现文件数量: 0
+2025-01-22 21:18:53,044 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/screenshots
+2025-01-22 21:18:53,044 - INFO - 发现文件数量: 0
+2025-01-22 21:18:53,044 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/screenshots/annotated
+2025-01-22 21:18:53,044 - INFO - 发现文件数量: 2
+2025-01-22 21:18:53,050 - INFO - 已添加文件: 2025-01-22_21-18-48/screenshots/annotated/screenshot_2025-01-22_21-18-51_525399_with_info.jpg
+2025-01-22 21:18:53,055 - INFO - 已添加文件: 2025-01-22_21-18-48/screenshots/annotated/screenshot_2025-01-22_21-18-49_631932_with_info.jpg
+2025-01-22 21:18:53,055 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/screenshots/original
+2025-01-22 21:18:53,055 - INFO - 发现文件数量: 2
+2025-01-22 21:18:53,061 - INFO - 已添加文件: 2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-51_525399_no_info.jpg
+2025-01-22 21:18:53,066 - INFO - 已添加文件: 2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-49_631932_no_info.jpg
+2025-01-22 21:18:53,066 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/log
+2025-01-22 21:18:53,066 - INFO - 发现文件数量: 1
+2025-01-22 21:18:53,066 - INFO - 已添加文件: 2025-01-22_21-18-48/log/user_actions_real_time_20250122_211846_848816.jsonl
+2025-01-22 21:18:53,066 - INFO - 压缩完成 - 文件数: 5, ZIP大小: 0.62MB
+2025-01-22 21:18:53,066 - INFO - 开始加密ZIP文件
+2025-01-22 21:18:53,066 - INFO - 开始加密文件 - 源文件: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/session_20250122_211853.zip
+2025-01-22 21:18:53,066 - INFO - 加密文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/session_20250122_211853.zip.enc
+2025-01-22 21:18:53,066 - INFO - 源文件大小: 0.62MB
+2025-01-22 21:18:53,067 - INFO - 已读取源文件，准备加密
+2025-01-22 21:18:53,068 - INFO - 加密完成 - 加密后文件大小: 0.62MB
+2025-01-22 21:18:53,068 - INFO - 开始上传加密文件
+2025-01-22 21:18:53,956 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-53_433079_no_info.jpg，大小: 427.96KB，质量: 5
+2025-01-22 21:18:54,497 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48/screenshots/annotated/screenshot_2025-01-22_21-18-53_433079_with_info.jpg，大小: 435.40KB，质量: 5
+2025-01-22 21:18:54,498 - INFO - 已保存无信息截图: records/2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-53_433079_no_info.jpg
+2025-01-22 21:18:54,498 - INFO - 已保存有信息截图: records/2025-01-22_21-18-48/screenshots/annotated/screenshot_2025-01-22_21-18-53_433079_with_info.jpg
+2025-01-22 21:18:54,507 - INFO - 记录事件并保存截图: {'timestamp': 1737551934.507448, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1634.609375, 'y': 874.8203125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-18-48/screenshots/original/screenshot_2025-01-22_21-18-53_433079_no_info.jpg', 'mouse_position': {'x': 1634.609375, 'y': 874.8203125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:19:07,973 - INFO - 成功: 文件已上传到 lllijuih/AGENTC/2025-01-22_21-18-53.zip.enc
+2025-01-22 21:19:07,973 - INFO - 会话处理完成 - 文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-18-48
+2025-01-22 21:19:07,973 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:19:07,973 - INFO - 会话处理完成，程序将退出。
+2025-01-22 21:19:09,793 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:19:09,793 - INFO - 应用程序已正常退出。
+2025-01-22 21:19:12,892 - INFO - 日志系统已初始化。
+2025-01-22 21:19:12,892 - INFO - 配置文件已加载。
+2025-01-22 21:19:12,962 - INFO - StorageManager初始化 - 基础路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src
+2025-01-22 21:19:12,963 - INFO - 存储管理器配置已加载。
+2025-01-22 21:19:12,964 - INFO - 已加载字体: /System/Library/Fonts/Supplemental/Arial.ttf，字体大小: 100
+2025-01-22 21:19:13,045 - INFO - 用户操作记录器已启动。
+2025-01-22 21:19:14,796 - INFO - 用户选择允许截屏
+2025-01-22 21:19:15,138 - WARNING - 尝试保存截图但会话尚未开始
+2025-01-22 21:19:15,138 - ERROR - 处理事件时出错: argument of type 'bool' is not iterable
+2025-01-22 21:19:15,169 - INFO - 截屏权限已授予。
+2025-01-22 21:19:15,169 - INFO - StorageManager - 创建会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15
+2025-01-22 21:19:16,473 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-15_956204_no_info.jpg，大小: 429.99KB，质量: 5
+2025-01-22 21:19:17,019 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-15_956204_with_info.jpg，大小: 437.57KB，质量: 5
+2025-01-22 21:19:17,020 - INFO - 已保存无信息截图: records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-15_956204_no_info.jpg
+2025-01-22 21:19:17,020 - INFO - 已保存有信息截图: records/2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-15_956204_with_info.jpg
+2025-01-22 21:19:17,029 - INFO - 记录事件并保存截图: {'timestamp': 1737551957.029671, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1401.40234375, 'y': 783.203125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-15_956204_no_info.jpg', 'mouse_position': {'x': 1401.40234375, 'y': 783.203125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:19:17,116 - INFO - 启动截屏定时器，每20秒进行一次截屏。
+2025-01-22 21:19:18,368 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-17_846160_no_info.jpg，大小: 427.96KB，质量: 5
+2025-01-22 21:19:18,911 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-17_846160_with_info.jpg，大小: 435.44KB，质量: 5
+2025-01-22 21:19:18,912 - INFO - 已保存无信息截图: records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-17_846160_no_info.jpg
+2025-01-22 21:19:18,912 - INFO - 已保存有信息截图: records/2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-17_846160_with_info.jpg
+2025-01-22 21:19:18,921 - INFO - 记录事件并保存截图: {'timestamp': 1737551958.921002, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1616.3828125, 'y': 869.23046875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-17_846160_no_info.jpg', 'mouse_position': {'x': 1616.3828125, 'y': 869.23046875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:19:20,260 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-19_739981_no_info.jpg，大小: 427.98KB，质量: 5
+2025-01-22 21:19:20,800 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-19_739981_with_info.jpg，大小: 435.62KB，质量: 5
+2025-01-22 21:19:20,801 - INFO - 已保存无信息截图: records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-19_739981_no_info.jpg
+2025-01-22 21:19:20,801 - INFO - 已保存有信息截图: records/2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-19_739981_with_info.jpg
+2025-01-22 21:19:20,810 - INFO - 记录事件并保存截图: {'timestamp': 1737551960.8106308, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1616.3828125, 'y': 869.23046875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-19_739981_no_info.jpg', 'mouse_position': {'x': 1616.3828125, 'y': 869.23046875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:19:21,741 - INFO - 用户点击'停止记录并关闭'按钮
+2025-01-22 21:19:21,746 - INFO - 定时器已停止
+2025-01-22 21:19:21,746 - INFO - 准备停止动作记录线程
+2025-01-22 21:19:21,746 - INFO - 用户操作记录器已停止。
+2025-01-22 21:19:21,746 - INFO - ActionRecorderThread 已成功停止。
+2025-01-22 21:19:21,746 - INFO - 动作记录线程已停止
+2025-01-22 21:19:21,746 - INFO - 准备启动处理会话线程
+2025-01-22 21:19:21,746 - INFO - 开始处理会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15
+2025-01-22 21:19:21,746 - INFO - 计划生成的ZIP文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/session_20250122_211921.zip
+2025-01-22 21:19:21,746 - INFO - 计划生成的加密文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/session_20250122_211921.zip.enc
+2025-01-22 21:19:21,746 - INFO - 开始压缩文件夹 - 源文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15
+2025-01-22 21:19:21,746 - INFO - ZIP文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/session_20250122_211921.zip
+2025-01-22 21:19:21,746 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15
+2025-01-22 21:19:21,746 - INFO - 发现文件数量: 0
+2025-01-22 21:19:21,746 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots
+2025-01-22 21:19:21,746 - INFO - 发现文件数量: 0
+2025-01-22 21:19:21,746 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/annotated
+2025-01-22 21:19:21,746 - INFO - 发现文件数量: 3
+2025-01-22 21:19:21,758 - INFO - 已添加文件: 2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-17_846160_with_info.jpg
+2025-01-22 21:19:21,765 - INFO - 已添加文件: 2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-19_739981_with_info.jpg
+2025-01-22 21:19:21,772 - INFO - 已添加文件: 2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-15_956204_with_info.jpg
+2025-01-22 21:19:21,772 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/original
+2025-01-22 21:19:21,772 - INFO - 发现文件数量: 3
+2025-01-22 21:19:21,778 - INFO - 已添加文件: 2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-19_739981_no_info.jpg
+2025-01-22 21:19:21,784 - INFO - 已添加文件: 2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-17_846160_no_info.jpg
+2025-01-22 21:19:21,790 - INFO - 已添加文件: 2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-15_956204_no_info.jpg
+2025-01-22 21:19:21,790 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/log
+2025-01-22 21:19:21,790 - INFO - 发现文件数量: 1
+2025-01-22 21:19:21,790 - INFO - 已添加文件: 2025-01-22_21-19-15/log/user_actions_real_time_20250122_211912_971100.jsonl
+2025-01-22 21:19:21,790 - INFO - 压缩完成 - 文件数: 7, ZIP大小: 0.93MB
+2025-01-22 21:19:21,790 - INFO - 开始加密ZIP文件
+2025-01-22 21:19:21,790 - INFO - 开始加密文件 - 源文件: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/session_20250122_211921.zip
+2025-01-22 21:19:21,790 - INFO - 加密文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/session_20250122_211921.zip.enc
+2025-01-22 21:19:21,790 - INFO - 源文件大小: 0.93MB
+2025-01-22 21:19:21,790 - INFO - 已读取源文件，准备加密
+2025-01-22 21:19:21,793 - INFO - 加密完成 - 加密后文件大小: 0.93MB
+2025-01-22 21:19:21,793 - INFO - 开始上传加密文件
+2025-01-22 21:19:22,988 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-22_464404_no_info.jpg，大小: 431.45KB，质量: 5
+2025-01-22 21:19:23,538 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-22_464404_with_info.jpg，大小: 439.05KB，质量: 5
+2025-01-22 21:19:23,539 - INFO - 已保存无信息截图: records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-22_464404_no_info.jpg
+2025-01-22 21:19:23,539 - INFO - 已保存有信息截图: records/2025-01-22_21-19-15/screenshots/annotated/screenshot_2025-01-22_21-19-22_464404_with_info.jpg
+2025-01-22 21:19:23,548 - INFO - 记录事件并保存截图: {'timestamp': 1737551963.54846, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1553.7578125, 'y': 891.58984375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-19-15/screenshots/original/screenshot_2025-01-22_21-19-22_464404_no_info.jpg', 'mouse_position': {'x': 1553.7578125, 'y': 891.58984375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:19:38,285 - INFO - 成功: 文件已上传到 lllijuih/AGENTC/2025-01-22_21-19-21.zip.enc
+2025-01-22 21:19:38,285 - INFO - 会话处理完成 - 文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-19-15
+2025-01-22 21:19:38,285 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:19:38,286 - INFO - 会话处理完成，程序将退出。
+2025-01-22 21:19:59,367 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:19:59,369 - INFO - 应用程序已正常退出。
+2025-01-22 21:23:01,902 - INFO - 日志系统已初始化。
+2025-01-22 21:23:01,903 - INFO - 配置文件已加载。
+2025-01-22 21:23:01,970 - INFO - StorageManager初始化 - 基础路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src
+2025-01-22 21:23:01,970 - INFO - 存储管理器配置已加载。
+2025-01-22 21:23:01,971 - INFO - 已加载字体: /System/Library/Fonts/Supplemental/Arial.ttf，字体大小: 100
+2025-01-22 21:23:02,055 - INFO - 用户操作记录器已启动。
+2025-01-22 21:23:04,317 - INFO - 用户选择允许截屏
+2025-01-22 21:23:04,588 - WARNING - 尝试保存截图但会话尚未开始
+2025-01-22 21:23:04,589 - ERROR - 处理事件时出错: argument of type 'bool' is not iterable
+2025-01-22 21:23:04,671 - INFO - 截屏权限已授予。
+2025-01-22 21:23:04,671 - INFO - StorageManager - 创建会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04
+2025-01-22 21:23:05,900 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-05_408931_no_info.jpg，大小: 470.19KB，质量: 10
+2025-01-22 21:23:06,413 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-05_408931_with_info.jpg，大小: 483.08KB，质量: 10
+2025-01-22 21:23:06,413 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-05_408931_no_info.jpg
+2025-01-22 21:23:06,413 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-05_408931_with_info.jpg
+2025-01-22 21:23:06,422 - INFO - 记录事件并保存截图: {'timestamp': 1737552186.422403, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1428.2265625, 'y': 788.21875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-05_408931_no_info.jpg', 'mouse_position': {'x': 1428.2265625, 'y': 788.21875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:07,221 - INFO - 启动截屏定时器，每20秒进行一次截屏。
+2025-01-22 21:23:08,401 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-07_908010_no_info.jpg，大小: 466.74KB，质量: 10
+2025-01-22 21:23:08,915 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-07_908010_with_info.jpg，大小: 479.87KB，质量: 10
+2025-01-22 21:23:08,916 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-07_908010_no_info.jpg
+2025-01-22 21:23:08,916 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-07_908010_with_info.jpg
+2025-01-22 21:23:08,925 - INFO - 记录事件并保存截图: {'timestamp': 1737552188.92576, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1621.59765625, 'y': 880.640625, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-07_908010_no_info.jpg', 'mouse_position': {'x': 1621.59765625, 'y': 880.640625, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:10,394 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-09_745459_no_info.jpg，大小: 467.15KB，质量: 10
+2025-01-22 21:23:10,911 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-09_745459_with_info.jpg，大小: 480.50KB，质量: 10
+2025-01-22 21:23:10,912 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-09_745459_no_info.jpg
+2025-01-22 21:23:10,912 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-09_745459_with_info.jpg
+2025-01-22 21:23:10,921 - INFO - 记录事件并保存截图: {'timestamp': 1737552190.9214861, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1621.59765625, 'y': 880.640625, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-09_745459_no_info.jpg', 'mouse_position': {'x': 1621.59765625, 'y': 880.640625, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:15,799 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-15_311888_no_info.jpg，大小: 466.76KB，质量: 10
+2025-01-22 21:23:16,312 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-15_311888_with_info.jpg，大小: 479.81KB，质量: 10
+2025-01-22 21:23:16,313 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-15_311888_no_info.jpg
+2025-01-22 21:23:16,313 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-15_311888_with_info.jpg
+2025-01-22 21:23:16,322 - INFO - 记录事件并保存截图: {'timestamp': 1737552196.322782, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 776.85546875, 'y': 1176.12109375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'System Settings', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-15_311888_no_info.jpg', 'mouse_position': {'x': 776.85546875, 'y': 1176.12109375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:17,660 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-17_158028_no_info.jpg，大小: 466.69KB，质量: 10
+2025-01-22 21:23:18,173 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-17_158028_with_info.jpg，大小: 480.27KB，质量: 10
+2025-01-22 21:23:18,174 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-17_158028_no_info.jpg
+2025-01-22 21:23:18,174 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-17_158028_with_info.jpg
+2025-01-22 21:23:18,183 - INFO - 记录事件并保存截图: {'timestamp': 1737552198.1833, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 776.85546875, 'y': 1176.12109375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-17_158028_no_info.jpg', 'mouse_position': {'x': 776.85546875, 'y': 1176.12109375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:21,770 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-21_243179_no_info.jpg，大小: 439.55KB，质量: 5
+2025-01-22 21:23:22,320 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-21_243179_with_info.jpg，大小: 447.12KB，质量: 5
+2025-01-22 21:23:22,321 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-21_243179_no_info.jpg
+2025-01-22 21:23:22,321 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-21_243179_with_info.jpg
+2025-01-22 21:23:22,330 - INFO - 记录事件并保存截图: {'timestamp': 1737552202.330049, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-21_243179_no_info.jpg', 'mouse_position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:23,728 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-23_196370_no_info.jpg，大小: 439.55KB，质量: 5
+2025-01-22 21:23:24,279 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-23_196370_with_info.jpg，大小: 447.27KB，质量: 5
+2025-01-22 21:23:24,280 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-23_196370_no_info.jpg
+2025-01-22 21:23:24,280 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-23_196370_with_info.jpg
+2025-01-22 21:23:24,289 - INFO - 记录事件并保存截图: {'timestamp': 1737552204.2892, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-23_196370_no_info.jpg', 'mouse_position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:25,675 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-25_156465_no_info.jpg，大小: 430.01KB，质量: 5
+2025-01-22 21:23:26,228 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-25_156465_with_info.jpg，大小: 436.81KB，质量: 5
+2025-01-22 21:23:26,230 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-25_156465_no_info.jpg
+2025-01-22 21:23:26,230 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-25_156465_with_info.jpg
+2025-01-22 21:23:26,239 - INFO - 记录事件并保存截图: {'timestamp': 1737552206.239001, 'action_type': 'mouse_scroll', 'action_content': {'position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': {'dx': 0, 'dy': 5}, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-25_156465_no_info.jpg', 'mouse_position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:27,627 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-27_102251_no_info.jpg，大小: 430.00KB，质量: 5
+2025-01-22 21:23:27,746 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_21-23-26_no_info.jpg，大小: 430.01KB，质量: 5
+2025-01-22 21:23:28,188 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-27_102251_with_info.jpg，大小: 435.84KB，质量: 5
+2025-01-22 21:23:28,189 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-27_102251_no_info.jpg
+2025-01-22 21:23:28,189 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-27_102251_with_info.jpg
+2025-01-22 21:23:28,199 - INFO - 记录事件并保存截图: {'timestamp': 1737552208.1993191, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1962.0, 'y': 950.0, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.middle.press', 'delta': None, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-27_102251_no_info.jpg', 'mouse_position': {'x': 1962.0, 'y': 950.0, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:28,291 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_21-23-26_with_info.jpg，大小: 430.01KB，质量: 5
+2025-01-22 21:23:28,293 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_21-23-26_no_info.jpg
+2025-01-22 21:23:28,293 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_21-23-26_with_info.jpg
+2025-01-22 21:23:28,299 - INFO - 已保存截图: screenshot_2025-01-22_21-23-26.png
+2025-01-22 21:23:29,580 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-29_057697_no_info.jpg，大小: 423.42KB，质量: 5
+2025-01-22 21:23:29,632 - INFO - 用户点击'停止记录并关闭'按钮
+2025-01-22 21:23:29,635 - INFO - 定时器已停止
+2025-01-22 21:23:29,636 - INFO - 准备停止动作记录线程
+2025-01-22 21:23:30,138 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-29_057697_with_info.jpg，大小: 430.36KB，质量: 5
+2025-01-22 21:23:30,139 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-29_057697_no_info.jpg
+2025-01-22 21:23:30,139 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-29_057697_with_info.jpg
+2025-01-22 21:23:30,148 - INFO - 记录事件并保存截图: {'timestamp': 1737552210.148314, 'action_type': 'mouse_scroll', 'action_content': {'position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': {'dx': 0, 'dy': 5}, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-29_057697_no_info.jpg', 'mouse_position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:30,635 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-30_114173_no_info.jpg，大小: 423.28KB，质量: 5
+2025-01-22 21:23:31,176 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-30_114173_with_info.jpg，大小: 430.20KB，质量: 5
+2025-01-22 21:23:31,177 - INFO - 已保存无信息截图: records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-30_114173_no_info.jpg
+2025-01-22 21:23:31,177 - INFO - 已保存有信息截图: records/2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-30_114173_with_info.jpg
+2025-01-22 21:23:31,185 - INFO - 记录事件并保存截图: {'timestamp': 1737552211.185794, 'action_type': 'mouse_scroll', 'action_content': {'position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': {'dx': 0, 'dy': 5}, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-30_114173_no_info.jpg', 'mouse_position': {'x': 1962.4609375, 'y': 949.54296875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:23:31,187 - INFO - 用户操作记录器已停止。
+2025-01-22 21:23:31,187 - INFO - 用户操作数据已保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/log/user_actions_20250122_212331_187574.json
+2025-01-22 21:23:31,187 - INFO - ActionRecorderThread 已成功停止。
+2025-01-22 21:23:31,187 - INFO - 动作记录线程已停止
+2025-01-22 21:23:31,187 - INFO - 准备启动处理会话线程
+2025-01-22 21:23:31,188 - INFO - 开始处理会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04
+2025-01-22 21:23:31,188 - INFO - 计划生成的ZIP文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/session_20250122_212331.zip
+2025-01-22 21:23:31,188 - INFO - 计划生成的加密文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/session_20250122_212331.zip.enc
+2025-01-22 21:23:31,188 - INFO - 开始压缩文件夹 - 源文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04
+2025-01-22 21:23:31,188 - INFO - ZIP文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/session_20250122_212331.zip
+2025-01-22 21:23:31,188 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04
+2025-01-22 21:23:31,188 - INFO - 发现文件数量: 0
+2025-01-22 21:23:31,188 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots
+2025-01-22 21:23:31,188 - INFO - 发现文件数量: 0
+2025-01-22 21:23:31,188 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/annotated
+2025-01-22 21:23:31,188 - INFO - 发现文件数量: 12
+2025-01-22 21:23:31,195 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-17_158028_with_info.jpg
+2025-01-22 21:23:31,200 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-23_196370_with_info.jpg
+2025-01-22 21:23:31,207 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-07_908010_with_info.jpg
+2025-01-22 21:23:31,213 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-05_408931_with_info.jpg
+2025-01-22 21:23:31,219 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-09_745459_with_info.jpg
+2025-01-22 21:23:31,225 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-27_102251_with_info.jpg
+2025-01-22 21:23:31,231 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-15_311888_with_info.jpg
+2025-01-22 21:23:31,237 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-21_243179_with_info.jpg
+2025-01-22 21:23:31,242 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-29_057697_with_info.jpg
+2025-01-22 21:23:31,247 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_21-23-26_with_info.jpg
+2025-01-22 21:23:31,252 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-30_114173_with_info.jpg
+2025-01-22 21:23:31,258 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/annotated/screenshot_2025-01-22_21-23-25_156465_with_info.jpg
+2025-01-22 21:23:31,258 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/screenshots/original
+2025-01-22 21:23:31,258 - INFO - 发现文件数量: 12
+2025-01-22 21:23:31,263 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-25_156465_no_info.jpg
+2025-01-22 21:23:31,268 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-29_057697_no_info.jpg
+2025-01-22 21:23:31,273 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-30_114173_no_info.jpg
+2025-01-22 21:23:31,278 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-07_908010_no_info.jpg
+2025-01-22 21:23:31,284 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-27_102251_no_info.jpg
+2025-01-22 21:23:31,289 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-23_196370_no_info.jpg
+2025-01-22 21:23:31,295 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-15_311888_no_info.jpg
+2025-01-22 21:23:31,301 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-09_745459_no_info.jpg
+2025-01-22 21:23:31,307 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-05_408931_no_info.jpg
+2025-01-22 21:23:31,313 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-21_243179_no_info.jpg
+2025-01-22 21:23:31,318 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_21-23-26_no_info.jpg
+2025-01-22 21:23:31,324 - INFO - 已添加文件: 2025-01-22_21-23-04/screenshots/original/screenshot_2025-01-22_21-23-17_158028_no_info.jpg
+2025-01-22 21:23:31,324 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/log
+2025-01-22 21:23:31,324 - INFO - 发现文件数量: 2
+2025-01-22 21:23:31,324 - INFO - 已添加文件: 2025-01-22_21-23-04/log/user_actions_real_time_20250122_212301_979271.jsonl
+2025-01-22 21:23:31,324 - INFO - 已添加文件: 2025-01-22_21-23-04/log/user_actions_20250122_212331_187574.json
+2025-01-22 21:23:31,324 - INFO - 压缩完成 - 文件数: 26, ZIP大小: 4.05MB
+2025-01-22 21:23:31,324 - INFO - 开始加密ZIP文件
+2025-01-22 21:23:31,324 - INFO - 开始加密文件 - 源文件: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/session_20250122_212331.zip
+2025-01-22 21:23:31,324 - INFO - 加密文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04/session_20250122_212331.zip.enc
+2025-01-22 21:23:31,324 - INFO - 源文件大小: 4.05MB
+2025-01-22 21:23:31,325 - INFO - 已读取源文件，准备加密
+2025-01-22 21:23:31,337 - INFO - 加密完成 - 加密后文件大小: 4.05MB
+2025-01-22 21:23:31,337 - INFO - 开始上传加密文件
+2025-01-22 21:23:53,869 - INFO - 成功: 文件已上传到 lllijuih/AGENTC/2025-01-22_21-23-31.zip.enc
+2025-01-22 21:23:53,870 - INFO - 会话处理完成 - 文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-23-04
+2025-01-22 21:23:53,870 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:23:53,870 - INFO - 会话处理完成，程序将退出。
+2025-01-22 21:23:57,061 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:23:57,064 - INFO - 应用程序已正常退出。
+2025-01-22 21:25:12,755 - INFO - 日志系统已初始化。
+2025-01-22 21:25:12,755 - INFO - 配置文件已加载。
+2025-01-22 21:25:12,830 - INFO - StorageManager初始化 - 基础路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src
+2025-01-22 21:25:12,830 - INFO - 存储管理器配置已加载。
+2025-01-22 21:25:12,833 - INFO - 已加载字体: /System/Library/Fonts/Supplemental/Arial.ttf，字体大小: 100
+2025-01-22 21:25:12,933 - INFO - 用户操作记录器已启动。
+2025-01-22 21:25:14,826 - INFO - 用户选择允许截屏
+2025-01-22 21:25:15,224 - INFO - 截屏权限已授予。
+2025-01-22 21:25:15,224 - INFO - StorageManager - 创建会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15
+2025-01-22 21:25:15,224 - WARNING - 尝试保存截图但会话尚未开始
+2025-01-22 21:25:15,224 - ERROR - 处理事件时出错: argument of type 'bool' is not iterable
+2025-01-22 21:25:16,540 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-16_052406_no_info.jpg，大小: 470.06KB，质量: 10
+2025-01-22 21:25:17,056 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-16_052406_with_info.jpg，大小: 482.97KB，质量: 10
+2025-01-22 21:25:17,057 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-16_052406_no_info.jpg
+2025-01-22 21:25:17,057 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-16_052406_with_info.jpg
+2025-01-22 21:25:17,066 - INFO - 记录事件并保存截图: {'timestamp': 1737552317.065856, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1392.0703125, 'y': 791.359375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-16_052406_no_info.jpg', 'mouse_position': {'x': 1392.0703125, 'y': 791.359375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:17,929 - INFO - 启动截屏定时器，每20秒进行一次截屏。
+2025-01-22 21:25:19,244 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-18_753061_no_info.jpg，大小: 466.54KB，质量: 10
+2025-01-22 21:25:19,759 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-18_753061_with_info.jpg，大小: 479.48KB，质量: 10
+2025-01-22 21:25:19,759 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-18_753061_no_info.jpg
+2025-01-22 21:25:19,759 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-18_753061_with_info.jpg
+2025-01-22 21:25:19,769 - INFO - 记录事件并保存截图: {'timestamp': 1737552319.7689059, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1632.26171875, 'y': 877.421875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-18_753061_no_info.jpg', 'mouse_position': {'x': 1632.26171875, 'y': 877.421875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:26,814 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-26_293730_no_info.jpg，大小: 425.80KB，质量: 5
+2025-01-22 21:25:27,363 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-26_293730_with_info.jpg，大小: 432.72KB，质量: 5
+2025-01-22 21:25:27,364 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-26_293730_no_info.jpg
+2025-01-22 21:25:27,364 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-26_293730_with_info.jpg
+2025-01-22 21:25:27,374 - INFO - 记录事件并保存截图: {'timestamp': 1737552327.374219, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1535.69140625, 'y': 50.53125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'pycharm', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-26_293730_no_info.jpg', 'mouse_position': {'x': 1535.69140625, 'y': 50.53125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:28,839 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-28_294762_no_info.jpg，大小: 430.66KB，质量: 5
+2025-01-22 21:25:29,380 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-28_294762_with_info.jpg，大小: 437.86KB，质量: 5
+2025-01-22 21:25:29,381 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-28_294762_no_info.jpg
+2025-01-22 21:25:29,381 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-28_294762_with_info.jpg
+2025-01-22 21:25:29,391 - INFO - 记录事件并保存截图: {'timestamp': 1737552329.391333, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1535.69140625, 'y': 50.53125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'ChatGPT', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-28_294762_no_info.jpg', 'mouse_position': {'x': 1535.69140625, 'y': 50.53125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:35,322 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-34_830310_no_info.jpg，大小: 467.31KB，质量: 10
+2025-01-22 21:25:35,835 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-34_830310_with_info.jpg，大小: 479.97KB，质量: 10
+2025-01-22 21:25:35,836 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-34_830310_no_info.jpg
+2025-01-22 21:25:35,836 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-34_830310_with_info.jpg
+2025-01-22 21:25:35,845 - INFO - 记录事件并保存截图: {'timestamp': 1737552335.845143, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 472.5703125, 'y': 1402.58203125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'ChatGPT', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-34_830310_no_info.jpg', 'mouse_position': {'x': 472.5703125, 'y': 1402.58203125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:37,178 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-36_689083_no_info.jpg，大小: 467.31KB，质量: 10
+2025-01-22 21:25:37,693 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-36_689083_with_info.jpg，大小: 480.46KB，质量: 10
+2025-01-22 21:25:37,694 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-36_689083_no_info.jpg
+2025-01-22 21:25:37,694 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-36_689083_with_info.jpg
+2025-01-22 21:25:37,703 - INFO - 记录事件并保存截图: {'timestamp': 1737552337.703586, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 472.5703125, 'y': 1402.58203125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'ChatGPT', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-36_689083_no_info.jpg', 'mouse_position': {'x': 472.5703125, 'y': 1402.58203125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:38,719 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_21-25-37_no_info.jpg，大小: 467.31KB，质量: 10
+2025-01-22 21:25:39,212 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_21-25-37_with_info.jpg，大小: 467.31KB，质量: 10
+2025-01-22 21:25:39,214 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_21-25-37_no_info.jpg
+2025-01-22 21:25:39,214 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_21-25-37_with_info.jpg
+2025-01-22 21:25:39,218 - INFO - 已保存截图: screenshot_2025-01-22_21-25-37.png
+2025-01-22 21:25:40,527 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-40_002241_no_info.jpg，大小: 429.91KB，质量: 5
+2025-01-22 21:25:41,081 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-40_002241_with_info.jpg，大小: 436.83KB，质量: 5
+2025-01-22 21:25:41,082 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-40_002241_no_info.jpg
+2025-01-22 21:25:41,082 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-40_002241_with_info.jpg
+2025-01-22 21:25:41,092 - INFO - 记录事件并保存截图: {'timestamp': 1737552341.091983, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 2223.65625, 'y': 288.34375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-40_002241_no_info.jpg', 'mouse_position': {'x': 2223.65625, 'y': 288.34375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:42,498 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-41_973458_no_info.jpg，大小: 429.92KB，质量: 5
+2025-01-22 21:25:43,059 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-41_973458_with_info.jpg，大小: 436.89KB，质量: 5
+2025-01-22 21:25:43,061 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-41_973458_no_info.jpg
+2025-01-22 21:25:43,061 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-41_973458_with_info.jpg
+2025-01-22 21:25:43,070 - INFO - 记录事件并保存截图: {'timestamp': 1737552343.070289, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 2223.65625, 'y': 288.34375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-41_973458_no_info.jpg', 'mouse_position': {'x': 2223.65625, 'y': 288.34375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:46,598 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-46_076091_no_info.jpg，大小: 433.39KB，质量: 5
+2025-01-22 21:25:47,145 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-46_076091_with_info.jpg，大小: 439.98KB，质量: 5
+2025-01-22 21:25:47,146 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-46_076091_no_info.jpg
+2025-01-22 21:25:47,146 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-46_076091_with_info.jpg
+2025-01-22 21:25:47,154 - INFO - 记录事件并保存截图: {'timestamp': 1737552347.1547, 'action_type': 'mouse_scroll', 'action_content': {'position': {'x': 2218.9921875, 'y': 289.984375, 'max_x': 3008, 'max_y': 1692}, 'button': None, 'delta': {'dx': 0, 'dy': 47}, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-46_076091_no_info.jpg', 'mouse_position': {'x': 2218.9921875, 'y': 289.984375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:54,236 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-53_707695_no_info.jpg，大小: 427.46KB，质量: 5
+2025-01-22 21:25:54,784 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-53_707695_with_info.jpg，大小: 434.30KB，质量: 5
+2025-01-22 21:25:54,785 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-53_707695_no_info.jpg
+2025-01-22 21:25:54,785 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-53_707695_with_info.jpg
+2025-01-22 21:25:54,794 - INFO - 记录事件并保存截图: {'timestamp': 1737552354.794226, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 2356.21875, 'y': 49.484375, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'sublime_text', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-53_707695_no_info.jpg', 'mouse_position': {'x': 2356.21875, 'y': 49.484375, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:56,157 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-55_632555_no_info.jpg，大小: 427.48KB，质量: 5
+2025-01-22 21:25:56,700 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-55_632555_with_info.jpg，大小: 434.34KB，质量: 5
+2025-01-22 21:25:56,701 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-55_632555_no_info.jpg
+2025-01-22 21:25:56,701 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-55_632555_with_info.jpg
+2025-01-22 21:25:56,710 - INFO - 记录事件并保存截图: {'timestamp': 1737552356.710577, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 2357.4375, 'y': 47.453125, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.release', 'delta': None, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-55_632555_no_info.jpg', 'mouse_position': {'x': 2357.4375, 'y': 47.453125, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:25:57,749 - INFO - 用户点击'停止记录并关闭'按钮
+2025-01-22 21:25:57,754 - INFO - 定时器已停止
+2025-01-22 21:25:57,754 - INFO - 准备停止动作记录线程
+2025-01-22 21:25:57,754 - INFO - 用户操作记录器已停止。
+2025-01-22 21:25:57,755 - INFO - 用户操作数据已保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/log/user_actions_20250122_212557_754755.json
+2025-01-22 21:25:57,755 - INFO - ActionRecorderThread 已成功停止。
+2025-01-22 21:25:57,755 - INFO - 动作记录线程已停止
+2025-01-22 21:25:57,755 - INFO - 准备启动处理会话线程
+2025-01-22 21:25:57,755 - INFO - 开始处理会话文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15
+2025-01-22 21:25:57,755 - INFO - 计划生成的ZIP文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/session_20250122_212557.zip
+2025-01-22 21:25:57,755 - INFO - 计划生成的加密文件路径: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/session_20250122_212557.zip.enc
+2025-01-22 21:25:57,755 - INFO - 开始压缩文件夹 - 源文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15
+2025-01-22 21:25:57,755 - INFO - ZIP文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/session_20250122_212557.zip
+2025-01-22 21:25:57,755 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15
+2025-01-22 21:25:57,755 - INFO - 发现文件数量: 0
+2025-01-22 21:25:57,755 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots
+2025-01-22 21:25:57,755 - INFO - 发现文件数量: 0
+2025-01-22 21:25:57,755 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated
+2025-01-22 21:25:57,755 - INFO - 发现文件数量: 12
+2025-01-22 21:25:57,766 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-55_632555_with_info.jpg
+2025-01-22 21:25:57,773 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-41_973458_with_info.jpg
+2025-01-22 21:25:57,780 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-26_293730_with_info.jpg
+2025-01-22 21:25:57,787 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-34_830310_with_info.jpg
+2025-01-22 21:25:57,793 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-36_689083_with_info.jpg
+2025-01-22 21:25:57,799 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-28_294762_with_info.jpg
+2025-01-22 21:25:57,805 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-40_002241_with_info.jpg
+2025-01-22 21:25:57,811 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-18_753061_with_info.jpg
+2025-01-22 21:25:57,817 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-16_052406_with_info.jpg
+2025-01-22 21:25:57,823 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_21-25-37_with_info.jpg
+2025-01-22 21:25:57,829 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-46_076091_with_info.jpg
+2025-01-22 21:25:57,834 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-53_707695_with_info.jpg
+2025-01-22 21:25:57,834 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original
+2025-01-22 21:25:57,834 - INFO - 发现文件数量: 12
+2025-01-22 21:25:57,840 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-40_002241_no_info.jpg
+2025-01-22 21:25:57,845 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-34_830310_no_info.jpg
+2025-01-22 21:25:57,851 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-16_052406_no_info.jpg
+2025-01-22 21:25:57,856 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_21-25-37_no_info.jpg
+2025-01-22 21:25:57,861 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-53_707695_no_info.jpg
+2025-01-22 21:25:57,867 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-18_753061_no_info.jpg
+2025-01-22 21:25:57,872 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-41_973458_no_info.jpg
+2025-01-22 21:25:57,878 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-46_076091_no_info.jpg
+2025-01-22 21:25:57,883 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-55_632555_no_info.jpg
+2025-01-22 21:25:57,888 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-36_689083_no_info.jpg
+2025-01-22 21:25:57,893 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-28_294762_no_info.jpg
+2025-01-22 21:25:57,898 - INFO - 已添加文件: 2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-26_293730_no_info.jpg
+2025-01-22 21:25:57,898 - INFO - 正在处理子目录: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/log
+2025-01-22 21:25:57,898 - INFO - 发现文件数量: 2
+2025-01-22 21:25:57,898 - INFO - 已添加文件: 2025-01-22_21-25-15/log/user_actions_20250122_212557_754755.json
+2025-01-22 21:25:57,898 - INFO - 已添加文件: 2025-01-22_21-25-15/log/user_actions_real_time_20250122_212512_841251.jsonl
+2025-01-22 21:25:57,899 - INFO - 压缩完成 - 文件数: 26, ZIP大小: 4.01MB
+2025-01-22 21:25:57,899 - INFO - 开始加密ZIP文件
+2025-01-22 21:25:57,899 - INFO - 开始加密文件 - 源文件: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/session_20250122_212557.zip
+2025-01-22 21:25:57,899 - INFO - 加密文件将保存至: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/session_20250122_212557.zip.enc
+2025-01-22 21:25:57,899 - INFO - 源文件大小: 4.01MB
+2025-01-22 21:25:57,899 - INFO - 已读取源文件，准备加密
+2025-01-22 21:25:57,911 - INFO - 加密完成 - 加密后文件大小: 4.01MB
+2025-01-22 21:25:57,911 - INFO - 开始上传加密文件
+2025-01-22 21:25:59,053 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-58_524294_no_info.jpg，大小: 430.73KB，质量: 5
+2025-01-22 21:25:59,603 - INFO - 压缩图片: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-58_524294_with_info.jpg，大小: 438.07KB，质量: 5
+2025-01-22 21:25:59,604 - INFO - 已保存无信息截图: records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-58_524294_no_info.jpg
+2025-01-22 21:25:59,604 - INFO - 已保存有信息截图: records/2025-01-22_21-25-15/screenshots/annotated/screenshot_2025-01-22_21-25-58_524294_with_info.jpg
+2025-01-22 21:25:59,613 - INFO - 记录事件并保存截图: {'timestamp': 1737552359.6133811, 'action_type': 'mouse_click', 'action_content': {'position': {'x': 1523.8984375, 'y': 895.6875, 'max_x': 3008, 'max_y': 1692}, 'button': 'Button.left.press', 'delta': None, 'key': None}, 'active_app': 'python3.12', 'screenshots_path': 'records/2025-01-22_21-25-15/screenshots/original/screenshot_2025-01-22_21-25-58_524294_no_info.jpg', 'mouse_position': {'x': 1523.8984375, 'y': 895.6875, 'max_x': 3008, 'max_y': 1692}}
+2025-01-22 21:26:21,221 - INFO - 成功: 文件已上传到 lllijuih/AGENTC/2025-01-22_21-25-57.zip.enc
+2025-01-22 21:26:21,222 - INFO - 会话处理完成 - 文件夹: /Users/hiranokaoru/PycharmProjects/begleiter_maintain/src/records/2025-01-22_21-25-15
+2025-01-22 21:26:21,222 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:26:21,222 - INFO - 会话处理完成，程序将退出。
+2025-01-22 21:27:05,090 - INFO - 会话处理完成，准备退出。
+2025-01-22 21:27:05,092 - INFO - 应用程序已正常退出。

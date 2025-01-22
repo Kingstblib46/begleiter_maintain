@@ -298,8 +298,8 @@ class ActionRecorder(QtCore.QObject):
         from pynput.keyboard import Key, KeyCode
         converted = []
 
-        print("key_name: ", end="")
-        print(key_name)
+        #print("key_name: ", end="")
+        #print(key_name)
 
         # 如果 key_name 是 Key 对象（例如 Key.ctrl_l），我们需要将它转为字符串
         if isinstance(key_name, Key):
@@ -549,6 +549,10 @@ class ActionRecorder(QtCore.QObject):
                     f.write('\n')  # 每条事件一行
 
                 self.action_recorded.emit(json.dumps(new_event))
+
+                with self.lock:
+                    self.data.append(new_event)
+
                 thread_safe_logging('info', f"记录事件并保存截图: {new_event}")
 
         except Exception as e:
