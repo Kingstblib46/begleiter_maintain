@@ -252,15 +252,15 @@ class StorageManager:
                 img = screenshot
                 # 从文件名中提取时间戳（假设文件名格式为 screenshot_TIMESTAMP.png）
                 timestamp = os.path.splitext(filename)[0].split('_')[-1]
-                print('\nflag1\n')
+                #print('\nflag1\n')
             elif screenshot:
                 img = screenshot
                 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%f")
-                print('\nflag2\n')
+                #print('\nflag2\n')
             else:
                 img = pyautogui.screenshot()
                 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%f")
-                print('\nflag3\n')
+                #print('\nflag3\n')
 
             # 定义文件名
             unannotated_filename = f"screenshot_{timestamp}_no_info.jpg"
