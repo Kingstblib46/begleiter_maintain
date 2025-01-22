@@ -15,6 +15,7 @@ import pyautogui
 from storage import StorageManager
 from frozen_dir import app_path
 import platform
+import string
 
 from threading import Timer
 
@@ -37,6 +38,14 @@ class ActionRecorder(QtCore.QObject):
         filename = f"user_actions_real_time_{timestamp}.jsonl"
         self.log_filename = filename
 
+        # 获取屏幕宽度和高度（用于计算相对位置）
+        self.screen_width, self.screen_height = pyautogui.size()
+
+        # ---------- 拖拽相关 ----------
+        self.dragging = False
+        self.drag_start_x = None
+        self.drag_start_y = None
+
         # ---------- 滚动累积相关 ----------
         self.scroll_accumulator = {
             "direction": None,
@@ -48,11 +57,10 @@ class ActionRecorder(QtCore.QObject):
         self.scroll_timeout = 2.0
 
         # ---------- 键盘连续输入相关 ----------
-        self.current_action = ""
-        self.key_buffer = []  # 新增：用于存储按键的缓冲区
-        self.key_process_interval = 0.1  # 每100ms处理一次按键
-        self.last_process_time = time.time()
-        self.key_lock = threading.Lock()  # 专门用于保护按键缓冲区的锁
+        self.current_action = ""       # 用于累计用户连续输入的字符串
+        self.action_timer = None       # 定时器，用来判断用户是否停止输入
+        self.last_key_time = time.time()
+        self.max_action_length = 50    # 单次动作最大长度，可自行调整
 
         self.mouse_listener = mouse.Listener(on_click=self.on_click, on_scroll=self.on_scroll)
         self.keyboard_listener = keyboard.Listener(on_press=self.on_press)
@@ -62,8 +70,113 @@ class ActionRecorder(QtCore.QObject):
         self.scroll_thread.start()
 
         # 启动按键处理线程
-        self.key_process_thread = threading.Thread(target=self._process_key_buffer, daemon=True)
-        self.key_process_thread.start()
+        #self.key_process_thread = threading.Thread(target=self._process_key_buffer, daemon=True)
+        #self.key_process_thread.start()
+
+        self.unicode_key_map = {
+            "\x01": "Cmd+A",  # Cmd+A 替代 Ctrl+A
+            "\x02": "Cmd+B",  # Cmd+B 替代 Ctrl+B
+            "\x03": "Cmd+C",  # Cmd+C 替代 Ctrl+C
+            "\x04": "Cmd+D",  # Cmd+D 替代 Ctrl+D
+            "\x05": "Cmd+E",  # Cmd+E 替代 Ctrl+E
+            "\x06": "Cmd+F",  # Cmd+F 替代 Ctrl+F
+            "\x07": "Cmd+G",  # Cmd+G 替代 Ctrl+G
+            "\x08": "Cmd+H",  # Cmd+H 替代 Ctrl+H
+            "\x09": "Cmd+I",  # Cmd+I 替代 Ctrl+I
+            "\x0A": "Cmd+J",  # Cmd+J 替代 Ctrl+J
+            "\x0B": "Cmd+K",  # Cmd+K 替代 Ctrl+K
+            "\x0C": "Cmd+L",  # Cmd+L 替代 Ctrl+L
+            "\x0D": "Cmd+M",  # Cmd+M 替代 Ctrl+M
+            "\x0E": "Cmd+N",  # Cmd+N 替代 Ctrl+N
+            "\x0F": "Cmd+O",  # Cmd+O 替代 Ctrl+O
+            "\x10": "Cmd+P",  # Cmd+P 替代 Ctrl+P
+            "\x11": "Cmd+Q",  # Cmd+Q 替代 Ctrl+Q
+            "\x12": "Cmd+R",  # Cmd+R 替代 Ctrl+R
+            "\x13": "Cmd+S",  # Cmd+S 替代 Ctrl+S
+            "\x14": "Cmd+T",  # Cmd+T 替代 Ctrl+T
+            "\x15": "Cmd+U",  # Cmd+U 替代 Ctrl+U
+            "\x16": "Cmd+V",  # Cmd+V 替代 Ctrl+V
+            "\x17": "Cmd+W",  # Cmd+W 替代 Ctrl+W
+            "\x18": "Cmd+X",  # Cmd+X 替代 Ctrl+X
+            "\x19": "Cmd+Y",  # Cmd+Y 替代 Ctrl+Y
+            "\x1A": "Cmd+Z",  # Cmd+Z 替代 Ctrl+Z
+            "\x1B": "Esc",  # 保持一致
+            "\x1C": "Cmd+\\",  # Cmd+\ 替代 Ctrl+\
+            "\x1D": "Cmd+]",  # Cmd+] 替代 Ctrl+]
+            "\x1E": "Cmd+^",  # Cmd+^ 替代 Ctrl+^
+            "\x1F": "Cmd+_",  # Cmd+_ 替代 Ctrl+_
+            "\x7F": "Delete",  # macOS 使用 Delete 而非 Del
+            # 可以继续根据需要添加更多 Unicode 键
+        }
+
+        self.special_key_map = {
+            "shift": "Shift",
+            "shift_l": "Shift",
+            "shift_r": "Shift",
+            "ctrl_l": "Cmd",  # Ctrl 左侧变为 Cmd
+            "ctrl_r": "Cmd",  # Ctrl 右侧变为 Cmd
+            "ctrl": "Cmd",  # Ctrl 键改为 Cmd
+            "alt": "Option",  # alt 键变为 Option
+            "alt_l": "Option",  # 左侧 alt 键变为 Option
+            "alt_gr": "Option",  # alt_gr 可以视作 Option
+            "cmd": "Cmd",  # cmd 键保持为 Cmd
+            "esc": "Esc",  # esc 键保持为 Esc
+            "delete": "Delete",  # delete 键
+            "enter": "Return",  # macOS 中通常使用 Return
+            "space": "Space",  # 空格键
+            "tab": "Tab",  # Tab 键
+            "backspace": "Backspace",  # 回退键
+            "caps_lock": "CapsLock",  # 大小写锁定键
+            "f1": "F1",  # F1 功能键
+            "f2": "F2",  # F2 功能键
+            "f3": "F3",  # F3 功能键
+            "f4": "F4",  # F4 功能键
+            "f5": "F5",  # F5 功能键
+            "f6": "F6",  # F6 功能键
+            "f7": "F7",  # F7 功能键
+            "f8": "F8",  # F8 功能键
+            "f9": "F9",  # F9 功能键
+            "f10": "F10",  # F10 功能键
+            "f11": "F11",  # F11 功能键
+            "f12": "F12",  # F12 功能键
+            "volume_up": "Volume Up",  # 音量增大
+            "volume_down": "Volume Down",  # 音量减小
+            "mute": "Mute",  # 静音
+            "brightness_up": "Brightness Up",  # 增加亮度
+            "brightness_down": "Brightness Down",  # 降低亮度
+            "home": "Home",  # Home 键
+            "end": "End",  # End 键
+            "page_up": "Page Up",  # 上一页
+            "page_down": "Page Down",  # 下一页
+            "insert": "Insert",  # 插入键
+            "print_screen": "Print Screen",  # 打印屏幕（通常 macOS 使用截图功能）
+            "scroll_lock": "Scroll Lock",  # 滚动锁定键
+            "pause": "Pause",  # 暂停键
+            "num_lock": "Num Lock",  # 数字锁定键
+            "left_arrow": "Left Arrow",  # 左箭头
+            "right_arrow": "Right Arrow",  # 右箭头
+            "up_arrow": "Up Arrow",  # 上箭头
+            "down_arrow": "Down Arrow",  # 下箭头
+            "fn": "Fn",  # 功能键 (macOS 上通常与其他功能键组合)
+            "command": "Cmd",  # 作为命令键映射
+            "option": "Option",  # 作为 option 键映射
+            "capslock": "Caps Lock",  # 大小写锁定
+            "enter": "Return",  # 回车
+            "shift_l": "Shift Left",  # 左 shift
+            "shift_r": "Shift Right",  # 右 shift
+        }
+
+        # ---------- 键盘press前截图 ----------
+        self.is_press_start = True
+        self.press_start_screenshot = None
+
+        # ---------- 鼠标press前截图 ----------
+        self.is_click_press_start = True
+        self.click_press_start_screenshot = None
+
+        # ---------- 鼠标scroll前截图 ----------
+        self.is_scroll_press_start = True
+        self.scroll_press_start_screenshot = None
 
     def start_recording(self):
         if not self.running:
@@ -74,60 +187,21 @@ class ActionRecorder(QtCore.QObject):
             thread_safe_logging('debug', "开启事件监听器。")
 
     def stop_recording(self):
-        """停止记录并保存数据"""
-        if not self.running:  # 如果已经停止，直接返回
-            return
+        if self.running:
+            self.running = False
 
-        self.running = False
-        thread_safe_logging('info', "正在停止记录...")
-
-        try:
             # 停止前，先把滚动的累积事件结算
-            self.finalize_scroll_accumulation()
+            self.finalize_scroll_accumulation(self.scroll_press_start_screenshot)
 
-            # 处理剩余的按键缓冲区
-            with self.key_lock:
-                if self.key_buffer:
-                    keys_to_process = self.key_buffer.copy()
-                    self.key_buffer.clear()
+            # 停止前，也需要把最后一次的键盘输入保存
+            if self.action_timer:
+                self.action_timer.cancel()
+            self.finish_action()
 
-                    if keys_to_process:
-                        # 合并剩余的按键
-                        key_sequence = " ".join(k[0] for k in keys_to_process)
-                        mouse_x, mouse_y = pyautogui.position()
-                        active_app = self.get_active_app()
-                        event_data = {
-                            "timestamp": keys_to_process[-1][1],
-                            "event": "key_press",
-                            "key": key_sequence,
-                            "position": {"x": mouse_x, "y": mouse_y},
-                            "active_app": active_app
-                        }
-                        self.handle_event(event_data)
-
-            # 停止监听器
-            if hasattr(self, 'mouse_listener'):
-                self.mouse_listener.stop()
-            if hasattr(self, 'keyboard_listener'):
-                self.keyboard_listener.stop()
-
+            self.mouse_listener.stop()
+            self.keyboard_listener.stop()
             thread_safe_logging('info', "用户操作记录器已停止。")
             thread_safe_logging('debug', "关闭事件监听器。")
-
-            # 确保只调用一次保存操作
-            if hasattr(self, 'data') and self.data:
-                try:
-                    # 保存前检查数据是否已经被保存
-                    if not hasattr(self, '_data_saved'):
-                        self.save_data()
-                        self._data_saved = True  # 标记数据已保存
-                except Exception as e:
-                    thread_safe_logging('error', f"保存数据时出错: {e}")
-                finally:
-                    self.data = []  # 清空数据，防止重复保存
-
-        except Exception as e:
-            thread_safe_logging('error', f"停止记录时出错: {e}")
 
     def get_active_app(self):
         """获取当前前台进程名称"""
@@ -157,116 +231,148 @@ class ActionRecorder(QtCore.QObject):
             return "未知应用"
 
     def on_click(self, x, y, button, pressed):
+        # 都用press之前的截图
         if self.running:
             # 若有未完成的滚动事件，先结算
-            self.finalize_scroll_accumulation()
+            self.finalize_scroll_accumulation(self.scroll_press_start_screenshot)
 
             active_app = self.get_active_app()
 
-            # 根据pressed状态创建相应的事件
-            event_data = {
-                "timestamp": time.time(),
-                "event": "mouse_click",
-                "button": f"{button}.press" if pressed else f"{button}.release",
-                "position": {"x": x, "y": y},
-                "active_app": active_app
-            }
+            # 生成字符串格式的鼠标位置
+            position_x = f"{x}/{self.screen_width}"
+            position_y = f"{y}/{self.screen_height}"
 
-            thread_safe_logging('debug', f"捕获到鼠标{'按下' if pressed else '松开'}事件: {event_data}")
-            self.handle_event(event_data)
+            if pressed:
+                # 截图
+                self.click_press_start_screenshot = pyautogui.screenshot()
+                # 鼠标按下，记录拖拽开始
+                self.drag_start_x, self.drag_start_y = x, y
+                # 记录按下事件
+                event_data = {
+                    "timestamp": time.time(),
+                    "event": "mouse_click",
+                    "button": f"{button}.press",
+                    "position": {"x": x, "y": y},
+                    "active_app": active_app
+                }
+                thread_safe_logging('debug', f"捕获到鼠标按下事件: {event_data}")
+                self.handle_event(event_data, screenshot=self.click_press_start_screenshot)
+            else:
+                # 鼠标松开，记录拖拽结束
+                event_data = {
+                    "timestamp": time.time(),
+                    "event": "mouse_click",
+                    "button": f"{button}.release",
+                    "position": {"x": x, "y": y},
+                    "active_app": active_app
+                }
+                # 记录松开事件
+                thread_safe_logging('debug', f"捕获到鼠标松开事件: {event_data}")
+                self.handle_event(event_data, screenshot=self.click_press_start_screenshot)
+                self.click_press_start_screenshot = None
 
     def on_scroll(self, x, y, dx, dy):
         if self.running:
             self.handle_vertical_scroll(x, y, dy)
 
     def on_press(self, key):
-        """键盘按下时，将按键加入缓冲区"""
+        """键盘按下时，将当前按键加入连续输入的缓冲区。"""
         if not self.running:
             return
 
-        try:
-            # 若有未完成的滚动事件，先结算
-            self.finalize_scroll_accumulation()
+        # 若有未完成的滚动事件，先结算
+        self.finalize_scroll_accumulation(self.scroll_press_start_screenshot)
 
-            key_pressed = self._get_key_name(key)
+        # 键盘序列的第一个press截图
+        if self.is_press_start is True:
+            self.press_start_screenshot = pyautogui.screenshot()
+            print("[*] press_start_screenshot")
+        self.is_press_start = False
 
-            # 将按键添加到缓冲区
-            with self.key_lock:
-                self.key_buffer.append((key_pressed, time.time()))
+        key_pressed = self._get_key_name(key)
 
-        except Exception as e:
-            thread_safe_logging('error', f"处理键盘事件时出错: {e}")
+        # 如果一次动作超过预设最大长度，先保存之前的再开始新动作
+        # if len(self.current_action) + len(key_pressed) > self.max_action_length:
+        #     self.finish_action()
 
-    def _get_key_name(self, key):
-        """将 pynput 的 key 转成可读字符串。"""
-        try:
-            if hasattr(key, 'char') and key.char is not None:
-                # 普通字符
-                return key.char
+        self.current_action += key_pressed + " "
+
+        # 重置/启动定时器：1.5 秒后若无新的按键按下，则视为一次完整输入
+        if self.action_timer:
+            self.action_timer.cancel()
+        self.action_timer = Timer(1.5, self.finish_action)
+        self.action_timer.start()
+
+    def _get_key_name(self, key_name):
+        """
+        将不可打印字符转换为其对应的组合键名称（如 Ctrl+A）。
+        如果字符在 string.printable 中，则转为大写；否则，
+        若在 unicode_key_map 中，就用该映射，否则用 U+XXXX 表示。
+        这里 key_name 可能是整段连续输入，每个字符都需要转换。
+        """
+        from pynput.keyboard import Key, KeyCode
+        converted = []
+
+        print("key_name: ", end="")
+        print(key_name)
+
+        # 如果 key_name 是 Key 对象（例如 Key.ctrl_l），我们需要将它转为字符串
+        if isinstance(key_name, Key):
+            # 先检查是否包含 "Key." 前缀，再进行替换
+            if "Key." in str(key_name):
+                key_name = str(key_name).replace("Key.", "").lower()
             else:
-                # 特殊键
-                return f"Key.{key.name}"
-        except AttributeError:
-            return str(key)
+                key_name = str(key_name).lower()  # 如果没有 "Key." 前缀，则直接转为小写
 
-    def _process_key_buffer(self):
-        """持续处理按键缓冲区的线程"""
-        while True:
-            try:
-                if not self.running:
-                    time.sleep(0.1)
-                    continue
+        # 如果 key_name 是 KeyCode 对象（例如按下的字符）
+        elif isinstance(key_name, KeyCode):
+            key_name = key_name.char  # 获取按键字符
 
-                current_time = time.time()
+        # 如果 key_name 是字符串（例如多个连续按键），按空格拆分
+        if isinstance(key_name, str):
+            keys = key_name.split(' ')  # 处理多个按键字符
+        else:
+            keys = [key_name]  # 单个按键的情况
 
-                # 如果距离上次处理时间不足间隔时间，等待
-                if current_time - self.last_process_time < self.key_process_interval:
-                    time.sleep(0.01)  # 短暂休眠以避免CPU过度使用
-                    continue
+        for key in keys:
+            if key in self.special_key_map:
+                converted_key = self.special_key_map.get(key, key.capitalize())
+                converted.append(converted_key)
+            elif key in string.printable and not key.isspace():
+                converted.append(key)
+            elif key in self.unicode_key_map:
+                converted.append(self.unicode_key_map[key])
+            else:
+                converted.append(f"U+{ord(key):04X}")
+        return ' '.join(converted)
 
-                with self.key_lock:
-                    # 没有按键需要处理
-                    if not self.key_buffer:
-                        time.sleep(0.01)
-                        continue
-
-                    # 获取所有待处理的按键
-                    keys_to_process = self.key_buffer.copy()
-                    self.key_buffer.clear()
-
-                # 处理按键
-                if keys_to_process:
-                    # 按时间顺序排序按键
-                    keys_to_process.sort(key=lambda x: x[1])
-
-                    # 合并按键
-                    key_sequence = " ".join(k[0] for k in keys_to_process)
-
-                    # 创建事件
-                    mouse_x, mouse_y = pyautogui.position()
-                    active_app = self.get_active_app()
-                    event_data = {
-                        "timestamp": keys_to_process[-1][1],  # 使用最后一个按键的时间
-                        "event": "key_press",
-                        "key": key_sequence,
-                        "position": {"x": mouse_x, "y": mouse_y},
-                        "active_app": active_app
-                    }
-
-                    # 处理事件
-                    self.handle_event(event_data)
-
-                self.last_process_time = current_time
-
-            except Exception as e:
-                thread_safe_logging('error', f"处理按键缓冲区时出错: {e}")
-                time.sleep(0.1)  # 发生错误时短暂暂停
+    def finish_action(self):
+        """当用户停止输入超过 1 秒，或长度超标时，将本段输入合并为一次事件。"""
+        if not self.current_action.strip():
+            return
+        mouse_x, mouse_y = pyautogui.position()
+        active_app = self.get_active_app()
+        event_data = {
+            "timestamp": time.time(),
+            "event": "key_press",
+            "key": self.current_action.strip(),
+            "position": {"x": mouse_x, "y": mouse_y},
+            "active_app": active_app
+        }
+        self.handle_event(event_data, self.press_start_screenshot)
+        self.current_action = ""
+        self.is_press_start = True
+        self.press_start_screenshot = None
 
     def handle_vertical_scroll(self, x, y, dy):
         """累加垂直滚动事件。若方向改变或超时则生成一次 mouse_scroll 事件并截图。"""
         now = time.time()
         old_dir = self.scroll_accumulator["direction"]
         old_time = self.scroll_accumulator["last_time"]
+
+        if self.is_scroll_press_start is True:
+            self.scroll_press_start_screenshot = pyautogui.screenshot()
+            self.is_scroll_press_start = False
 
         if dy == 0:
             return
@@ -280,21 +386,28 @@ class ActionRecorder(QtCore.QObject):
             self.scroll_accumulator["y"] = y
             self.scroll_accumulator["last_time"] = now
         else:
-            time_diff = now - old_time
-            if new_dir != old_dir or time_diff > self.scroll_timeout:
+            # 超时，变向 检测；删掉
+            # time_diff = now - old_time
+            # if new_dir != old_dir or time_diff > self.scroll_timeout:
+            #     self.finalize_scroll_accumulation()
+            #     self.scroll_accumulator["direction"] = new_dir
+            #     self.scroll_accumulator["acc_dy"] = dy
+            #     self.scroll_accumulator["x"] = x
+            #     self.scroll_accumulator["y"] = y
+            #     self.scroll_accumulator["last_time"] = now
+            # else:
+
+            # 鼠标位置改变，结束这次连续滚动，结算
+            now_x, now_y = pyautogui.position()
+            if abs(now_x - self.scroll_accumulator["x"]) > 20 or abs(now_y - self.scroll_accumulator["y"] > 20):
                 self.finalize_scroll_accumulation()
-                self.scroll_accumulator["direction"] = new_dir
-                self.scroll_accumulator["acc_dy"] = dy
-                self.scroll_accumulator["x"] = x
-                self.scroll_accumulator["y"] = y
-                self.scroll_accumulator["last_time"] = now
             else:
                 self.scroll_accumulator["acc_dy"] += dy
                 self.scroll_accumulator["x"] = x
                 self.scroll_accumulator["y"] = y
                 self.scroll_accumulator["last_time"] = now
 
-    def finalize_scroll_accumulation(self):
+    def finalize_scroll_accumulation(self, screenshot=None):
         """结算滚动累积，生成一次 mouse_scroll 事件并截图。"""
         direction = self.scroll_accumulator["direction"]
         if direction is None:
@@ -303,6 +416,9 @@ class ActionRecorder(QtCore.QObject):
         acc_dy = self.scroll_accumulator["acc_dy"]
         x = self.scroll_accumulator["x"]
         y = self.scroll_accumulator["y"]
+
+        position_x = f"{x}/{self.screen_width}"
+        position_y = f"{y}/{self.screen_height}"
 
         active_app = self.get_active_app()
         event_data = {
@@ -313,7 +429,11 @@ class ActionRecorder(QtCore.QObject):
             "position": {"x": x, "y": y},
             "active_app": active_app
         }
-        self.handle_event(event_data)
+        self.handle_event(event_data, screenshot)
+
+        self.is_scroll_press_start = True
+        self.scroll_press_start_screenshot = None
+
         thread_safe_logging('debug', f"结算滚动事件: {event_data}")
 
         self.scroll_accumulator = {
@@ -339,7 +459,7 @@ class ActionRecorder(QtCore.QObject):
                 self.finalize_scroll_accumulation()
             time.sleep(0.1)
 
-    def handle_event(self, event):
+    def handle_event(self, event, screenshot=None):
         """对录制的事件进行截图并保存，再写入数据队列。"""
         try:
             action_type = event.get('event')  # 获取事件类型
@@ -349,23 +469,22 @@ class ActionRecorder(QtCore.QObject):
                 action_content = {}
 
                 if action_type in ['mouse_click', 'mouse_scroll']:
-                    screen_size = pyautogui.size()
-                    screen_x, screen_y = screen_size
-                    x = int(event['position']['x'])
-                    y = screen_y - int(event['position']['y'])
+                    x = event['position']['x']
+                    y = event['position']['y']
                     button = event.get('button')
 
                     if action_type == 'mouse_scroll':
                         # 获取水平和垂直滚动量
                         dx = event.get('delta_x', 0)  # 水平方向的滚动量
                         dy = event.get('delta_y', 0)  # 垂直方向的滚动量
-                        screenshot_path = self.storage_manager.save_screenshot(x=x, y=y, dx=dx, dy=dy)
+                        screenshot_path = self.storage_manager.save_screenshot(x=x, y=y, dx=dx, dy=dy,
+                                                                               screenshot=screenshot)
                         action_content = {
                             "position": {
                                 "x": x,
                                 "y": y,
-                                "screen_width": pyautogui.size().width,
-                                "screen_height": pyautogui.size().height
+                                "max_x": self.screen_width,
+                                "max_y": self.screen_height
                             },
                             "button": None,
                             "delta": {
@@ -375,13 +494,13 @@ class ActionRecorder(QtCore.QObject):
                             "key": None  # 对于鼠标事件，key 设置为 None
                         }
                     else:  # mouse_click
-                        screenshot_path = self.storage_manager.save_screenshot(x=x, y=y, button=button)
+                        screenshot_path = self.storage_manager.save_screenshot(x=x, y=y, screenshot=screenshot)
                         action_content = {
                             "position": {
                                 "x": x,
                                 "y": y,
-                                "screen_width": pyautogui.size().width,
-                                "screen_height": pyautogui.size().height
+                                "max_x": self.screen_width,
+                                "max_y": self.screen_height
                             },
                             "button": button,
                             "delta": None,  # 对于非滚动事件，delta 设置为 None
@@ -390,17 +509,18 @@ class ActionRecorder(QtCore.QObject):
 
                 elif action_type == 'key_press':
                     key_name = event['key']
-                    screenshot_path = self.storage_manager.save_screenshot(key_name=key_name)
-
-                    # 获取鼠标位置
+                    if screenshot is not None:
+                        screenshot_path = self.storage_manager.save_screenshot(key_name=key_name, screenshot=screenshot)
+                    else:
+                        screenshot_path = self.storage_manager.save_screenshot(key_name=key_name)
                     mouse_x, mouse_y = pyautogui.position()
 
                     action_content = {
                         "position": {
                             "x": int(mouse_x),
                             "y": int(mouse_y),
-                            "screen_width": pyautogui.size().width,
-                            "screen_height": pyautogui.size().height
+                            "max_x": pyautogui.size().width,
+                            "max_y": pyautogui.size().height
                         },  # 记录鼠标位置
                         "button": None,
                         "delta": None,  # 对于键盘事件，delta 设置为 None
@@ -411,35 +531,26 @@ class ActionRecorder(QtCore.QObject):
                 mouse_x, mouse_y = pyautogui.position()
 
                 # 将 position 字段处理并移除
-                if 'position' in event and event['position'] is not None:
-                    screen_size = pyautogui.size()
-                    screen_x, screen_y = screen_size
+                if 'position' in event:
                     x = event['position']['x']
-                    y = screen_y - event['position']['y']
+                    y = event['position']['y']
 
                     # 设置 mouse_position 字段
                     mouse_position = {
-                        "x": int(x),
-                        "y": int(y),
-                        "screen_width": pyautogui.size().width,
-                        "screen_height": pyautogui.size().height
+                        "x": x,
+                        "y": y,
+                        "max_x": self.screen_width,
+                        "max_y": self.screen_height
                     }
 
                     del event['position']  # 移除原有的 position 字段
-                else:
-                    mouse_position = {
-                        "x": None,
-                        "y": None,
-                        "screen_width": pyautogui.size().width,
-                        "screen_height": pyautogui.size().height
-                    }
 
                 # 组装最终的事件结构
                 new_event = {
-                    "timestamp": event.get("timestamp", time.time()),  # 保存时间戳
+                    "timestamp": time.time(),  # 保存时间戳
                     "action_type": action_type,  # 保存事件类型
                     "action_content": action_content,  # 保存事件内容
-                    "active_app": event.get("active_app", "未知应用"),  # 活动应用
+                    "active_app": event['active_app'],  # 活动应用
                     "screenshots_path": self.get_relative_screenshot_path(screenshot_path),  # 独立保存截图路径
                     "mouse_position": mouse_position  # 独立保存鼠标位置
                 }
@@ -451,13 +562,7 @@ class ActionRecorder(QtCore.QObject):
                     json.dump(new_event, f, ensure_ascii=False)
                     f.write('\n')  # 每条事件一行
 
-                # Emit the event
                 self.action_recorded.emit(json.dumps(new_event))
-
-                # Append the event to the data list for final JSON
-                with self.lock:
-                    self.data.append(new_event)
-
                 thread_safe_logging('info', f"记录事件并保存截图: {new_event}")
 
         except Exception as e:
