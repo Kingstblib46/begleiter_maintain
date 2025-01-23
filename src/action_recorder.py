@@ -369,13 +369,13 @@ class ActionRecorder(QtCore.QObject):
         # print(type(key_name))
         try:
             key_name_str = str(key_name).strip()
-            print("key_name_str: ", key_name_str)
+            #print("key_name_str: ", key_name_str)
         # print("known_key_map[key_name_str]", self.known_key_map[key_name_str])
         except:
             return ""
         try:
             if(key_name_str in self.known_key_map):
-                print("key_name_str in self.known_key_map:      ", self.known_key_map[key_name_str])
+                #print("key_name_str in self.known_key_map:      ", self.known_key_map[key_name_str])
                 return self.known_key_map[key_name_str]
             else:
                 return key_name_str
