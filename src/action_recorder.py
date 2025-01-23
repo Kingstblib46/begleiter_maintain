@@ -73,94 +73,158 @@ class ActionRecorder(QtCore.QObject):
         #self.key_process_thread = threading.Thread(target=self._process_key_buffer, daemon=True)
         #self.key_process_thread.start()
 
-        self.unicode_key_map = {
-            "\x01": "Cmd+A",  # Cmd+A 替代 Ctrl+A
-            "\x02": "Cmd+B",  # Cmd+B 替代 Ctrl+B
-            "\x03": "Cmd+C",  # Cmd+C 替代 Ctrl+C
-            "\x04": "Cmd+D",  # Cmd+D 替代 Ctrl+D
-            "\x05": "Cmd+E",  # Cmd+E 替代 Ctrl+E
-            "\x06": "Cmd+F",  # Cmd+F 替代 Ctrl+F
-            "\x07": "Cmd+G",  # Cmd+G 替代 Ctrl+G
-            "\x08": "Cmd+H",  # Cmd+H 替代 Ctrl+H
-            "\x09": "Cmd+I",  # Cmd+I 替代 Ctrl+I
-            "\x0A": "Cmd+J",  # Cmd+J 替代 Ctrl+J
-            "\x0B": "Cmd+K",  # Cmd+K 替代 Ctrl+K
-            "\x0C": "Cmd+L",  # Cmd+L 替代 Ctrl+L
-            "\x0D": "Cmd+M",  # Cmd+M 替代 Ctrl+M
-            "\x0E": "Cmd+N",  # Cmd+N 替代 Ctrl+N
-            "\x0F": "Cmd+O",  # Cmd+O 替代 Ctrl+O
-            "\x10": "Cmd+P",  # Cmd+P 替代 Ctrl+P
-            "\x11": "Cmd+Q",  # Cmd+Q 替代 Ctrl+Q
-            "\x12": "Cmd+R",  # Cmd+R 替代 Ctrl+R
-            "\x13": "Cmd+S",  # Cmd+S 替代 Ctrl+S
-            "\x14": "Cmd+T",  # Cmd+T 替代 Ctrl+T
-            "\x15": "Cmd+U",  # Cmd+U 替代 Ctrl+U
-            "\x16": "Cmd+V",  # Cmd+V 替代 Ctrl+V
-            "\x17": "Cmd+W",  # Cmd+W 替代 Ctrl+W
-            "\x18": "Cmd+X",  # Cmd+X 替代 Ctrl+X
-            "\x19": "Cmd+Y",  # Cmd+Y 替代 Ctrl+Y
-            "\x1A": "Cmd+Z",  # Cmd+Z 替代 Ctrl+Z
-            "\x1B": "Esc",  # 保持一致
-            "\x1C": "Cmd+\\",  # Cmd+\ 替代 Ctrl+\
-            "\x1D": "Cmd+]",  # Cmd+] 替代 Ctrl+]
-            "\x1E": "Cmd+^",  # Cmd+^ 替代 Ctrl+^
-            "\x1F": "Cmd+_",  # Cmd+_ 替代 Ctrl+_
-            "\x7F": "Delete",  # macOS 使用 Delete 而非 Del
-            # 可以继续根据需要添加更多 Unicode 键
-        }
+        self.known_key_map = {
+            "": "",
+            "Key.f1": "f1",
+            "u": "u",
+            "m": "m",
+            "g": "g",
+            "r": "r",
+            "Key.insert": "insert",
+            "Key.cmd_l": "cmd_l",  # cmd代替ctrl_l
+            "Key.left": "left",
+            "Key.f8": "f8",
+            "Key.f11": "f11",
+            "z": "z",
+            "e": "e",
+            "Key.up": "up",
+            "3": "3",
+            "=": "=",
+            "w": "w",
+            ".": ".",
+            "Key.space": "space",
+            "n": "n",
+            "Key.alt_l": "alt_l",
+            "h": "h",
+            "Key.scroll_lock": "scroll_lock",
+            "Key.f10": "f10",
+            "k": "k",
+            "Key.home": "home",
+            "o": "o",
+            "Key.right": "right",
+            "`": "`",
+            "9": "9",
+            "Key.f6": "f6",
+            "Key.esc": "esc",
+            "Key.cmd_r": "cmd_r",  # cmd代替ctrl_r
+            "y": "y",
+            "Key.cmd": "cmd",  # cmd
+            "Key.delete": "delete",
+            "Key.shift": "shift",
+            "j": "j",
+            "*": "*",
+            "Key.f7": "f7",
+            "Key.print_screen": "print_screen",
+            "/": "/",
+            "Key.backspace": "backspace",
+            "-": "-",
+            "t": "t",
+            "f": "f",
+            "Key.enter": "enter",
+            "Key.f3": "f3",
+            "0": "0",
+            "4": "4",
+            "d": "d",
+            "Key.caps_lock": "caps_lock",
+            "l": "l",
+            "8": "8",
+            "Key.f12": "f12",
+            "Key.tab": "tab",
+            "i": "i",
+            "Key.f4": "f4",
+            "Key.page_up": "page_up",
+            ",": ",",
+            "x": "x",
+            "Key.shift_r": "shift_r",
+            "Key.page_down": "page_down",
+            "None": "None",
+            "Key.f5": "f5",
+            "p": "p",
+            "6": "6",
+            "1": "1",
+            "a": "a",
+            "2": "2",
+            ";": ";",
+            "'": "'",
+            "]": "]",
+            "c": "c",
+            "Key.menu": "menu",
+            "q": "q",
+            "Key.pause": "pause",
+            "v": "v",
+            "Key.num_lock": "num_lock",
+            "s": "s",
+            "b": "b",
+            "5": "5",
+            "Key.f9": "f9",
+            "Key.alt_gr": "alt_gr",
+            "Key.f2": "f2",
+            "Key.end": "end",
+            "Key.down": "down",
+            "7": "7",
+            "\\": "\\",
+            "[": "[",
+            "+": "+",
 
-        self.special_key_map = {
-            "shift": "Shift",
-            "shift_l": "Shift",
-            "shift_r": "Shift",
-            "ctrl_l": "Cmd",  # Ctrl 左侧变为 Cmd
-            "ctrl_r": "Cmd",  # Ctrl 右侧变为 Cmd
-            "ctrl": "Cmd",  # Ctrl 键改为 Cmd
-            "alt": "Option",  # alt 键变为 Option
-            "alt_l": "Option",  # 左侧 alt 键变为 Option
-            "alt_gr": "Option",  # alt_gr 可以视作 Option
-            "cmd": "Cmd",  # cmd 键保持为 Cmd
-            "esc": "Esc",  # esc 键保持为 Esc
-            "delete": "Delete",  # delete 键
-            "space": "Space",  # 空格键
-            "tab": "Tab",  # Tab 键
-            "backspace": "Backspace",  # 回退键
-            "caps_lock": "CapsLock",  # 大小写锁定键
-            "f1": "F1",  # F1 功能键
-            "f2": "F2",  # F2 功能键
-            "f3": "F3",  # F3 功能键
-            "f4": "F4",  # F4 功能键
-            "f5": "F5",  # F5 功能键
-            "f6": "F6",  # F6 功能键
-            "f7": "F7",  # F7 功能键
-            "f8": "F8",  # F8 功能键
-            "f9": "F9",  # F9 功能键
-            "f10": "F10",  # F10 功能键
-            "f11": "F11",  # F11 功能键
-            "f12": "F12",  # F12 功能键
-            "volume_up": "Volume_Up",  # 音量增大
-            "volume_down": "Volume_Down",  # 音量减小
-            "mute": "Mute",  # 静音
-            "brightness_up": "Brightness_Up",  # 增加亮度
-            "brightness_down": "Brightness_Down",  # 降低亮度
-            "home": "Home",  # Home 键
-            "end": "End",  # End 键
-            "page_up": "Page_Up",  # 上一页
-            "page_down": "Page_Down",  # 下一页
-            "insert": "Insert",  # 插入键
-            "print_screen": "Print_Screen",  # 打印屏幕（通常 macOS 使用截图功能）
-            "scroll_lock": "Scroll_Lock",  # 滚动锁定键
-            "pause": "Pause",  # 暂停键
-            "num_lock": "Num_Lock",  # 数字锁定键
-            "left_arrow": "Left_Arrow",  # 左箭头
-            "right_arrow": "Right_Arrow",  # 右箭头
-            "up_arrow": "Up_Arrow",  # 上箭头
-            "down_arrow": "Down_Arrow",  # 下箭头
-            "fn": "Fn",  # 功能键 (macOS 上通常与其他功能键组合)
-            "command": "Cmd",  # 作为命令键映射
-            "option": "Option",  # 作为 option 键映射
-            "capslock": "Caps_Lock",  # 大小写锁定
-            "enter": "Return",  # 回车
+            # 数字键盘部分
+            "Key.num_1": "1",
+            "Key.num_2": "2",
+            "Key.num_3": "3",
+            "Key.num_4": "4",
+            "Key.num_5": "5",
+            "Key.num_6": "6",
+            "Key.num_7": "7",
+            "Key.num_8": "8",
+            "Key.num_9": "9",
+            "Key.num_0": "0",
+            "Key.num_decimal": ".",
+            "Key.num_enter": "enter",
+            "Key.num_add": "+",
+            "Key.num_subtract": "-",
+            "Key.num_multiply": "*",
+            "Key.num_divide": "/",
+            "Key.num_equals": "equals",
+
+            # Function keys mapped as usual on macOS
+            "<97>": "1",
+            "<98>": "2",
+            "<99>": "3",
+            "<100>": "4",
+            "<101>": "5",
+            "<102>": "6",
+            "<103>": "7",
+            "<104>": "8",
+            "<105>": "9",
+            "<96>": "0",
+            "<255>": "Fn",
+
+            # MacOS Ctrl key mappings
+            "'\\x01'": "Ctrl+A",  # Ctrl+A
+            "'\\x02'": "Ctrl+B",  # Ctrl+B
+            "'\\x03'": "Ctrl+C",  # Ctrl+C
+            "'\\x04'": "Ctrl+D",  # Ctrl+D
+            "'\\x05'": "Ctrl+E",  # Ctrl+E
+            "'\\x06'": "Ctrl+F",  # Ctrl+F
+            "'\\x07'": "Ctrl+G",  # Ctrl+G
+            "'\\x08'": "Ctrl+H",  # Ctrl+H
+            "'\\x09'": "Ctrl+I",  # Ctrl+I
+            "'\\x0a'": "Ctrl+J",  # Ctrl+J
+            "'\\x0b'": "Ctrl+K",  # Ctrl+K
+            "'\\x0c'": "Ctrl+L",  # Ctrl+L
+            "'\\x0d'": "Ctrl+M",  # Ctrl+M
+            "'\\x0e'": "Ctrl+N",  # Ctrl+N
+            "'\\x0f'": "Ctrl+O",  # Ctrl+O
+            "'\\x10'": "Ctrl+P",  # Ctrl+P
+            "'\\x11'": "Ctrl+Q",  # Ctrl+Q
+            "'\\x12'": "Ctrl+R",  # Ctrl+R
+            "'\\x13'": "Ctrl+S",  # Ctrl+S
+            "'\\x14'": "Ctrl+T",  # Ctrl+T
+            "'\\x15'": "Ctrl+U",  # Ctrl+U
+            "'\\x16'": "Ctrl+V",  # Ctrl+V
+            "'\\x17'": "Ctrl+W",  # Ctrl+W
+            "'\\x18'": "Ctrl+X",  # Ctrl+X
+            "'\\x19'": "Ctrl+Y",  # Ctrl+Y
+            "'\\x1a'": "Ctrl+Z"  # Ctrl+Z
         }
 
         # ---------- 键盘press前截图 ----------
@@ -304,47 +368,23 @@ class ActionRecorder(QtCore.QObject):
         self.action_timer.start()
 
     def _get_key_name(self, key_name):
-        """
-        将不可打印字符转换为其对应的组合键名称（如 Ctrl+A）。
-        如果字符在 string.printable 中，则转为大写；否则，
-        若在 unicode_key_map 中，就用该映射，否则用 U+XXXX 表示。
-        这里 key_name 可能是整段连续输入，每个字符都需要转换。
-        """
-        from pynput.keyboard import Key, KeyCode
-        converted = []
-
-        #print("key_name: ", end="")
-        #print(key_name)
-
-        # 如果 key_name 是 Key 对象（例如 Key.ctrl_l），我们需要将它转为字符串
-        if isinstance(key_name, Key):
-            # 先检查是否包含 "Key." 前缀，再进行替换
-            if "Key." in str(key_name):
-                key_name = str(key_name).replace("Key.", "").lower()
+        print("key_name: ",end="")
+        print(key_name)
+        # print(type(key_name))
+        try:
+            key_name_str = str(key_name).strip()
+            print("key_name_str: ", key_name_str)
+        # print("known_key_map[key_name_str]", self.known_key_map[key_name_str])
+        except:
+            return ""
+        try:
+            if(key_name_str in self.known_key_map):
+                print("key_name_str in self.known_key_map:      ", self.known_key_map[key_name_str])
+                return self.known_key_map[key_name_str]
             else:
-                key_name = str(key_name).lower()  # 如果没有 "Key." 前缀，则直接转为小写
-
-        # 如果 key_name 是 KeyCode 对象（例如按下的字符）
-        elif isinstance(key_name, KeyCode):
-            key_name = key_name.char  # 获取按键字符
-
-        # 如果 key_name 是字符串（例如多个连续按键），按空格拆分
-        if isinstance(key_name, str):
-            keys = key_name.split(' ')  # 处理多个按键字符
-        else:
-            keys = [key_name]  # 单个按键的情况
-
-        for key in keys:
-            if key in self.special_key_map:
-                converted_key = self.special_key_map.get(key, key.capitalize())
-                converted.append(converted_key)
-            elif key in string.printable and not key.isspace():
-                converted.append(key)
-            elif key in self.unicode_key_map:
-                converted.append(self.unicode_key_map[key])
-            else:
-                converted.append(f"U+{ord(key):04X}")
-        return ' '.join(converted)
+                return key_name_str
+        except:
+            return ""
 
     def finish_action(self):
         """当用户停止输入超过 1 秒，或长度超标时，将本段输入合并为一次事件。"""

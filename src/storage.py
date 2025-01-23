@@ -452,6 +452,13 @@ class StorageManager:
         
         # 读取用户名并构建上传路径（用户名作为文件夹，时间戳作为文件名）
         try:
+            with open(os.path.join(app_path(), 'database.txt'), 'r', encoding='utf-8') as f:
+                dataset_name = f.read().strip()
+                print(f"上传数据库：", dataset_name)
+        except Exception as e:
+            print("未指定传输数据库")
+            dataset_name = 'AGENTC-DEV'
+        try:
             with open(os.path.join(app_path(), 'username.txt'), 'r', encoding='utf-8') as f:
                 username = f.read().strip()
                 path_in_repo = f"{username}/{timestamp}-log-{file_count}.zip.enc"
