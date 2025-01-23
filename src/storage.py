@@ -381,6 +381,9 @@ class StorageManager:
             with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
                 file_count = 0
                 for root, dirs, files in os.walk(folder_path):
+                    if 'annotated' in dirs:
+                        dirs.remove('annotated')  # 排除 'annotated' 文件夹
+
                     thread_safe_logging('info', f"正在处理子目录: {root}")
                     # 过滤掉不需要的文件
                     files = [f for f in files if not (f.endswith('.zip') or f.endswith('.enc'))]
