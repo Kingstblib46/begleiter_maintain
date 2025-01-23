@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.23.5(用户版本，删除了不必要输出，并打包)">
-      <change afterPath="$PROJECT_DIR$/src/database.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/username.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/action_recorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_recorder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/log/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/log/app.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage.py" afterDir="false" />
     </list>
@@ -697,7 +693,7 @@
     <SUITE FILE_PATH="coverage/begleiter$storage.coverage" NAME="storage Coverage Results" MODIFIED="1737213298694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter_maintain$action_recorder.coverage" NAME="action_recorder Coverage Results" MODIFIED="1737543335447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$test_screenshot.coverage" NAME="test_screenshot Coverage Results" MODIFIED="1736786701994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/begleiter_maintain$main.coverage" NAME="main Coverage Results" MODIFIED="1737652472799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/begleiter_maintain$main.coverage" NAME="main Coverage Results" MODIFIED="1737656482257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$action_recorder.coverage" NAME="action_recorder Coverage Results" MODIFIED="1737361339073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$main.coverage" NAME="main Coverage Results" MODIFIED="1737361475695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>

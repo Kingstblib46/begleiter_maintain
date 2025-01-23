@@ -369,179 +369,221 @@ class StorageManager:
             thread_safe_logging('error', f"截屏失败: {e}")
             return "截屏失败"
 
-    def zip_folder(self, folder_path, zip_path):
+    def zip_folder(self, session_folder):
         """
-        将指定文件夹打包成 ZIP 文件，排除之前生成的压缩包和加密文件。
         """
-        origin_file_count = 0
+        import zipfile
         try:
-            thread_safe_logging('info', f"开始压缩文件夹 - 源文件夹: {folder_path}")
-            thread_safe_logging('info', f"ZIP文件将保存至: {zip_path}")
-            
-            with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
-                file_count = 0
-                for root, dirs, files in os.walk(folder_path):
-                    if 'annotated' in dirs:
-                        dirs.remove('annotated')  # 排除 'annotated' 文件夹
+            original_folder = os.path.join(session_folder, "screenshots", "original")
+            if not os.path.exists(original_folder):
+                raise FileNotFoundError(f"Original folder '{original_folder}' does not exist.")
 
-                    thread_safe_logging('info', f"正在处理子目录: {root}")
-                    # 过滤掉不需要的文件
-                    files = [f for f in files if not (f.endswith('.zip') or f.endswith('.enc'))]
-                    thread_safe_logging('info', f"发现文件数量: {len(files)}")
+            # 1. 从 original 文件夹中获取文件
+            files = sorted(os.listdir(original_folder))  # 按文件名排序
+            sum_file = resource_path(".sum_count!dont_delete!!!")
+            with open(sum_file, "r", encoding="utf-8") as f:
+                start = int(f.readline().strip())
+            selected_files = files[start - 1:]  # 下标从 1 开始，因此调整为 0-based
+            selected_file_paths = [os.path.join(original_folder, f) for f in selected_files]
+            selected_file_paths = selected_file_paths[1:]
 
-                    if os.path.basename(root) == 'original':
-                        origin_file_count += len(files)
+            jsonl_file_folder = os.path.join(session_folder, "log")
+            for file in os.listdir(jsonl_file_folder):
+                if file.endswith(".jsonl"):
+                    jsonl_file_path = os.path.join(jsonl_file_folder, file)
+            # 2. 从 .jsonl 文件中读取对应的行
+            with open(jsonl_file_path, "r", encoding="utf-8") as jsonl_file:
+                lines = jsonl_file.readlines()
+            selected_lines = lines
 
-                    for file in files:
-                        abs_file_path = os.path.join(root, file)
-                        relative_path = os.path.relpath(abs_file_path, os.path.dirname(folder_path))
-                        zipf.write(abs_file_path, relative_path)
-                        file_count += 1
-                        thread_safe_logging('info', f"已添加文件: {relative_path}")
-            
-            zip_size = os.path.getsize(zip_path) / (1024 * 1024)  # Convert to MB
-            thread_safe_logging('info', f"压缩完成 - 文件数: {file_count}, ZIP大小: {zip_size:.2f}MB")
-            
+            # 3. 创建 zip 文件
+            copy_dir = os.path.join(session_folder, "copy")
+            zip_file_name = os.path.join(copy_dir, f"{datetime.now().strftime('%Y%m%d%H%M%S')}.zip")
+            with zipfile.ZipFile(zip_file_name, "w", zipfile.ZIP_DEFLATED) as zipf:
+                # 添加 original 文件夹中的文件
+                for file_path in selected_file_paths:
+                    arcname = os.path.join("original", os.path.basename(file_path))  # 压缩文件结构
+                    zipf.write(file_path, arcname)
+                    print(f"Added to zip: {arcname}")
+
+                print(f"Zip file created: {zip_file_name}")
+                # 4. 将jsonl文件加入压缩包
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+                filename = f"user_actions_{timestamp}.jsonl"
+                json_file_name = filename
+                zipf.writestr(json_file_name, "".join(selected_lines))
+                print("add jsonl to zip: ", json_file_name)
+            return zip_file_name
+
         except Exception as e:
-            thread_safe_logging('error', f"压缩失败 - 文件夹: {folder_path}, 错误: {str(e)}")
-            raise
-
-        return origin_file_count
+            print(f"Error in zip_folder: {e}")
+            return None
 
     def encrypt_file(self, input_file, output_file, key, iv):
         """
-        使用 AES 加密文件。
+        使用 AES 加密文件
         """
         try:
-            thread_safe_logging('info', f"开始加密文件 - 源文件: {input_file}")
-            thread_safe_logging('info', f"加密文件将保存至: {output_file}")
-            
-            input_size = os.path.getsize(input_file) / (1024 * 1024)  # Convert to MB
-            thread_safe_logging('info', f"源文件大小: {input_size:.2f}MB")
-
             cipher = AES.new(key.encode('utf-8'), AES.MODE_CBC, iv.encode('utf-8'))
             with open(input_file, 'rb') as f:
                 plaintext = f.read()
-                thread_safe_logging('info', f"已读取源文件，准备加密")
-
             # 使用 PKCS7 填充数据
-            padded_data = pad(plaintext, AES.block_size)
-            ciphertext = cipher.encrypt(padded_data)
-
+            ciphertext = cipher.encrypt(pad(plaintext, AES.block_size))
             # 保存 IV + 加密后的数据
             with open(output_file, 'wb') as f:
-                f.write(iv.encode('utf-8') + ciphertext)
-
-            output_size = os.path.getsize(output_file) / (1024 * 1024)  # Convert to MB
-            thread_safe_logging('info', f"加密完成 - 加密后文件大小: {output_size:.2f}MB")
-            
+                f.write(iv.encode('utf-8') + ciphertext)  # 将 IV 和加密后的数据写入文件
+            thread_safe_logging('info', f"成功: 文件 {input_file} 已加密为 {output_file}。")
         except Exception as e:
-            thread_safe_logging('error', f"加密失败 - 文件: {input_file}, 错误: {str(e)}")
-            raise
+            thread_safe_logging('error', f"错误: 加密文件 {input_file} 时出错: {e}")
 
-    def upload_file(self, file_path, file_count, batch_count = None):
+    def upload_file(self, file_path, file_count, batch_count=None):
         """
         使用 ModelScope API 上传打包后的 ZIP 文件。
         """
-        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-
+        import traceback
         config = self.config.get('modelscope', {})
         access_token = config.get('access_token')
         owner_name = config.get('owner_name')
         dataset_name = config.get('dataset_name')
         commit_message = config.get('commit_message', 'upload dataset folder to repo')
         repo_type = config.get('repo_type', 'dataset')
-        print('\n' + access_token, owner_name, dataset_name, commit_message, repo_type)
-        
+        path_in_repo = config.get('path_in_repo', 'test')
+
         # 读取用户名并构建上传路径（用户名作为文件夹，时间戳作为文件名）
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         try:
-            with open(os.path.join(app_path(), 'database.txt'), 'r', encoding='utf-8') as f:
-                dataset_name = f.read().strip()
-                print(f"上传数据库：", dataset_name)
-        except Exception as e:
-            print("未指定传输数据库")
-            dataset_name = 'AGENTC-DEV'
-        try:
-            with open(os.path.join(app_path(), 'username.txt'), 'r', encoding='utf-8') as f:
-                username = f.read().strip()
+            username = self.get_username_and_write_to_file()
+            if username is None:
+                # 如果用户名为空（获取失败），使用时间戳作为文件名的一部分
+                path_in_repo = f"{timestamp}-log-{file_count}.zip.enc"
+            else:
                 path_in_repo = f"{username}/{timestamp}-log-{file_count}.zip.enc"
-                print(f"上传路径: {path_in_repo}")
-        except:
-            print("未找到用户名文件")
-            path_in_repo = f"{timestamp}-log-{file_count}.zip.enc"
+                if batch_count is not None:
+                    path_in_repo = f"{username}/{timestamp}-({batch_count})-log-{file_count}.zip.enc"
+            print(f"上传路径: {path_in_repo}")
+        except Exception as e:
+            print(f"发生错误: {e}")
+            path_in_repo = f"{timestamp}.zip"  # 如果其他部分失败，回退到时间戳生成路径
 
         if not os.path.exists(file_path):
             thread_safe_logging('error', f"错误: 文件 {file_path} 不存在。上传失败。")
-            return
-
+            return False
         api = HubApi()
         api.login(access_token)
-
         try:
-            repo_id = f"{owner_name}/{dataset_name}"
-            print(f"正在上传到仓库: {repo_id}")
-            print(f"文件路径: {file_path}")
-            print(f"仓库内路径: {path_in_repo}")
-            
-            api.upload_file(
-                repo_id=repo_id,
-                path_or_fileobj=file_path,
-                path_in_repo=path_in_repo,
-                commit_message=commit_message,
-                repo_type=repo_type
-            )
-            thread_safe_logging('info', f"成功: 文件已上传到 {repo_id}/{path_in_repo}")
-            print(f"文件已上传到: {repo_id}/{path_in_repo}")
+            thread_safe_logging("info", f"上传文件路径: {file_path}")
+            with open(file_path, 'rb') as file_obj:
+                thread_safe_logging("info", f"文件对象: {file_obj}")
+                api.upload_file(
+                    repo_id=f"{owner_name}/{dataset_name}",
+                    path_or_fileobj=file_obj,
+                    path_in_repo=path_in_repo,
+                    commit_message=commit_message,
+                    repo_type=repo_type
+                )
+            thread_safe_logging('info', "成功: 文件已成功上传。")
+            return True
         except Exception as e:
-            thread_safe_logging('error', f"错误: 上传文件时出错: {e}")
-            print(f"上传错误: {str(e)}")
+            # 获取异常的详细堆栈信息
+            error_message = traceback.format_exc()
+            thread_safe_logging('error', f"错误: 上传文件时出错: {e}\n详细信息:\n{error_message}")
+            return False
+
+    def count_file(self, foldername):
+        """
+        统计指定文件夹中的文件数量。
+
+        :param foldername: 文件夹的路径
+        :return: 文件数量（整数）
+        """
+        try:
+            # 检查文件夹是否存在
+            if not os.path.exists(foldername):
+                print(f"Folder '{foldername}' does not exist.")
+                return 0
+
+            # 使用 os.listdir 统计文件数量
+            file_count = len([f for f in os.listdir(foldername) if os.path.isfile(os.path.join(foldername, f))])
+            return file_count
+        except Exception as e:
+            print(f"Error counting files in folder '{foldername}': {e}")
+            return 0
 
     def process_session(self):
         """
         压缩、加密并上传当前会话的文件夹。
         """
+        import shutil
         try:
-            thread_safe_logging('info', f"开始处理会话文件夹: {self.session_folder}")
-            
-            zip_path = os.path.join(self.session_folder, f"session_{datetime.now().strftime('%Y%m%d_%H%M%S')}.zip")
-            encrypted_zip_path = zip_path + ".enc"
-            
-            thread_safe_logging('info', f"计划生成的ZIP文件路径: {zip_path}")
-            thread_safe_logging('info', f"计划生成的加密文件路径: {encrypted_zip_path}")
+            # 压缩文件夹
+            zip_file_name = self.zip_folder(self.session_folder)
+            zip_path = zip_file_name
 
-            self.zip_folder(self.session_folder, zip_path)
-            file_count = self.zip_folder(self.session_folder, zip_path)
-
+            # 从 .sum_count!dont_delete!!! 文件种读取sum_count
+            sum_count_file = resource_path('.sum_count!dont_delete!!!')
+            if os.path.exists(sum_count_file):
+                with open(sum_count_file, 'r') as f:
+                    sum_count = int(f.read().strip())  # 读取并转换为整数
+            else:
+                sum_count = 0
+            file_count = self.count_file(os.path.join(self.session_folder, 'screenshots', 'original'))
+            file_count -= sum_count
+            # 加密压缩文件
             encryption_config = self.config.get('encryption', {})
             key = encryption_config.get('key')
             iv = encryption_config.get('iv')
-            
             if not key or not iv:
-                thread_safe_logging('error', "加密失败 - 配置缺失: key 或 iv 未配置")
+                thread_safe_logging('error', "加密配置缺失: key 或 iv 未配置。")
                 return
-
-            thread_safe_logging('info', "开始加密ZIP文件")
             encrypted_zip_path = zip_path + f"-{file_count}" + ".enc"
+            print("zip_path: ", zip_path, encrypted_zip_path, "file_count: ", file_count)
             self.encrypt_file(zip_path, encrypted_zip_path, key, iv)
+            # 从 .batch_count!dont_delete!!!文件中读取batch_count
+            batch_count_file = resource_path('.batch_count!dont_delete!!!')
+            if os.path.exists(batch_count_file):
+                with open(batch_count_file, 'r') as f:
+                    batch_count = int(f.read().strip())  # 读取并转换为整数
+            else:
+                batch_count = 1
 
-            thread_safe_logging('info', "开始上传加密文件")
-            self.upload_file(encrypted_zip_path, file_count=file_count)
+            # 上传加密文件
+            upload_success = self.upload_file(encrypted_zip_path, file_count=file_count, batch_count=batch_count)
+            if upload_success:
+                copy_folder = os.path.join(self.session_folder, "copy")
+                shutil.rmtree(copy_folder)
+                # 删除本地压缩文件
+                try:
+                    os.remove(zip_path)  # 删除压缩文件
+                    os.remove(encrypted_zip_path)  # 删除加密后的文件
+                    thread_safe_logging('info', f"本地文件已删除: {zip_path}, {encrypted_zip_path}")
+                except Exception as delete_error:
+                    thread_safe_logging('error', f"删除本地文件时出错: {delete_error}")
 
-            thread_safe_logging('info', f"会话处理完成 - 文件夹: {self.session_folder}")
-
-            # 在所有处理完成后，删除会话文件夹
-            try:
-                import shutil
-                shutil.rmtree(self.session_folder)
-                print(f"\n会话文件夹已删除: {self.session_folder}")
-                thread_safe_logging('info', f"会话文件夹已删除: {self.session_folder}")
-            except Exception as e:
-                thread_safe_logging('error', f"删除文件夹失败: {str(e)}")
-                print(f"\n删除文件夹失败: {str(e)}")
-
+            thread_safe_logging('info', f"会话文件夹 {self.session_folder} 已处理完毕。")
         except Exception as e:
-            thread_safe_logging('error', f"会话处理失败 - 文件夹: {self.session_folder}, 错误: {str(e)}")
-            raise
+            thread_safe_logging('error', f"处理会话文件夹时出错: {e}")
+
+    # 获取用户名并写入 username.txt，如果为空的话
+    def get_username_and_write_to_file(self):
+        username_file_path = resource_path('username.txt')
+
+        try:
+            # 尝试从 username.txt 读取用户名
+            if not os.path.exists(username_file_path) or os.path.getsize(username_file_path) == 0:
+                # 如果文件不存在或为空，则从系统获取用户名并写入文件
+                username = os.getenv('USERNAME', None)  # 获取系统用户名
+                if not username:
+                    raise Exception("无法获取系统用户名")
+                with open(username_file_path, 'w', encoding='utf-8') as f:
+                    f.write(username)
+                print(f"用户名写入文件: {username}")
+            else:
+                with open(username_file_path, 'r', encoding='utf-8') as f:
+                    username = f.read().strip()
+        except Exception as e:
+            print(f"获取用户名失败: {e}")
+            username = None  # 如果失败，设置为 None
+        return username
 
     def start_session(self):
         """在用户同意后启动会话"""
@@ -550,20 +592,20 @@ class StorageManager:
             timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
             self.session_folder = os.path.join(os.path.join(self.base_path, "records"), timestamp)
             thread_safe_logging('info', f"StorageManager - 创建会话文件夹: {self.session_folder}")
-            
+
             # 创建所需的文件夹
             os.makedirs(self.session_folder, exist_ok=True)
             self.save_path = os.path.join(self.session_folder, 'screenshots')
             os.makedirs(self.save_path, exist_ok=True)
-            
+
             self.original_path = os.path.join(self.save_path, 'original')
             self.annotated_path = os.path.join(self.save_path, 'annotated')
             os.makedirs(self.original_path, exist_ok=True)
             os.makedirs(self.annotated_path, exist_ok=True)
-            
+
             self.log_path = os.path.join(self.session_folder, 'log')
             os.makedirs(self.log_path, exist_ok=True)
-            
+
             StorageManager._session_started = True
             return True
         return False
