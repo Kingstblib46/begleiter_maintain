@@ -74,99 +74,108 @@ class ActionRecorder(QtCore.QObject):
         #self.key_process_thread.start()
 
         self.known_key_map = {
-            "": "",
-            "Key.f1": "f1",
-            "u": "u",
-            "m": "m",
-            "g": "g",
-            "r": "r",
-            "Key.insert": "insert",
-            "Key.cmd_l": "cmd_l",  # cmd代替ctrl_l
-            "Key.left": "left",
-            "Key.f8": "f8",
-            "Key.f11": "f11",
-            "z": "z",
-            "e": "e",
-            "Key.up": "up",
-            "3": "3",
-            "=": "=",
-            "w": "w",
-            ".": ".",
-            "Key.space": "space",
-            "n": "n",
-            "Key.alt_l": "alt_l",
-            "h": "h",
-            "Key.scroll_lock": "scroll_lock",
-            "Key.f10": "f10",
-            "k": "k",
-            "Key.home": "home",
-            "o": "o",
-            "Key.right": "right",
-            "`": "`",
-            "9": "9",
-            "Key.f6": "f6",
-            "Key.esc": "esc",
-            "Key.cmd_r": "cmd_r",  # cmd代替ctrl_r
-            "y": "y",
-            "Key.cmd": "cmd",  # cmd
-            "Key.delete": "delete",
-            "Key.shift": "shift",
-            "j": "j",
-            "*": "*",
-            "Key.f7": "f7",
-            "Key.print_screen": "print_screen",
-            "/": "/",
-            "Key.backspace": "backspace",
-            "-": "-",
-            "t": "t",
-            "f": "f",
-            "Key.enter": "enter",
-            "Key.f3": "f3",
-            "0": "0",
-            "4": "4",
-            "d": "d",
-            "Key.caps_lock": "caps_lock",
-            "l": "l",
-            "8": "8",
-            "Key.f12": "f12",
-            "Key.tab": "tab",
-            "i": "i",
-            "Key.f4": "f4",
-            "Key.page_up": "page_up",
-            ",": ",",
-            "x": "x",
-            "Key.shift_r": "shift_r",
-            "Key.page_down": "page_down",
-            "None": "None",
-            "Key.f5": "f5",
-            "p": "p",
-            "6": "6",
-            "1": "1",
+            # Alphanumeric keys
             "a": "a",
+            "b": "b",
+            "c": "c",
+            "d": "d",
+            "e": "e",
+            "f": "f",
+            "g": "g",
+            "h": "h",
+            "i": "i",
+            "j": "j",
+            "k": "k",
+            "l": "l",
+            "m": "m",
+            "n": "n",
+            "o": "o",
+            "p": "p",
+            "q": "q",
+            "r": "r",
+            "s": "s",
+            "t": "t",
+            "u": "u",
+            "v": "v",
+            "w": "w",
+            "x": "x",
+            "y": "y",
+            "z": "z",
+
+            # Numbers and symbols
+            "0": "0",
+            "1": "1",
             "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "=": "=",
+            "-": "-",
             ";": ";",
             "'": "'",
-            "]": "]",
-            "c": "c",
-            "Key.menu": "menu",
-            "q": "q",
-            "Key.pause": "pause",
-            "v": "v",
-            "Key.num_lock": "num_lock",
-            "s": "s",
-            "b": "b",
-            "5": "5",
-            "Key.f9": "f9",
-            "Key.alt_gr": "alt_gr",
-            "Key.f2": "f2",
-            "Key.end": "end",
-            "Key.down": "down",
-            "7": "7",
+            ",": ",",
+            ".": ".",
+            "/": "/",
             "\\": "\\",
             "[": "[",
-            "+": "+",
+            "]": "]",
+            "`": "`",
 
-            # 数字键盘部分
+            # Special keys
+            "Key.space": "space",
+            "Key.enter": "enter",
+            "Key.backspace": "backspace",
+            "Key.tab": "tab",
+            "Key.delete": "delete",
+            "Key.shift": "shift",
+            "Key.caps_lock": "caps_lock",
+            "Key.ctrl_l": "ctrl_l",  # Ctrl key remains as ctrl
+            "Key.ctrl_r": "ctrl_r",  # Ctrl key remains as ctrl
+            "Key.alt_l": "alt_l",
+            "Key.alt_gr": "alt_gr",
+            "Key.cmd": "cmd",  # macOS cmd key
+            "Key.cmd_l": "cmd_l",  # Left cmd key
+            "Key.cmd_r": "cmd_r",  # Right cmd key
+            "Key.fn": "fn",  # Fn key (for Mac-specific functions)
+            "Key.shift_l": "shift_l",  # Left shift
+            "Key.shift_r": "shift_r",  # Right shift
+            "Key.ctrl": "ctrl",  # Standard ctrl key (no change)
+            "Key.esc": "esc",
+
+            # Function keys (F1-F12)
+            "Key.f1": "f1",
+            "Key.f2": "f2",
+            "Key.f3": "f3",
+            "Key.f4": "f4",
+            "Key.f5": "f5",
+            "Key.f6": "f6",
+            "Key.f7": "f7",
+            "Key.f8": "f8",
+            "Key.f9": "f9",
+            "Key.f10": "f10",
+            "Key.f11": "f11",
+            "Key.f12": "f12",
+
+            # Arrow keys
+            "Key.up": "up",
+            "Key.down": "down",
+            "Key.left": "left",
+            "Key.right": "right",
+
+            # Page and navigation keys
+            "Key.page_up": "page_up",
+            "Key.page_down": "page_down",
+            "Key.home": "home",
+            "Key.end": "end",
+            "Key.insert": "insert",
+            "Key.scroll_lock": "scroll_lock",
+            "Key.num_lock": "num_lock",
+
+            # Numeric keypad keys (for macOS keyboards with numpad)
             "Key.num_1": "1",
             "Key.num_2": "2",
             "Key.num_3": "3",
@@ -185,46 +194,33 @@ class ActionRecorder(QtCore.QObject):
             "Key.num_divide": "/",
             "Key.num_equals": "equals",
 
-            # Function keys mapped as usual on macOS
-            "<97>": "1",
-            "<98>": "2",
-            "<99>": "3",
-            "<100>": "4",
-            "<101>": "5",
-            "<102>": "6",
-            "<103>": "7",
-            "<104>": "8",
-            "<105>": "9",
-            "<96>": "0",
-            "<255>": "Fn",
-
-            # MacOS Ctrl key mappings
-            "'\\x01'": "Ctrl+A",  # Ctrl+A
-            "'\\x02'": "Ctrl+B",  # Ctrl+B
-            "'\\x03'": "Ctrl+C",  # Ctrl+C
-            "'\\x04'": "Ctrl+D",  # Ctrl+D
-            "'\\x05'": "Ctrl+E",  # Ctrl+E
-            "'\\x06'": "Ctrl+F",  # Ctrl+F
-            "'\\x07'": "Ctrl+G",  # Ctrl+G
-            "'\\x08'": "Ctrl+H",  # Ctrl+H
-            "'\\x09'": "Ctrl+I",  # Ctrl+I
-            "'\\x0a'": "Ctrl+J",  # Ctrl+J
-            "'\\x0b'": "Ctrl+K",  # Ctrl+K
-            "'\\x0c'": "Ctrl+L",  # Ctrl+L
-            "'\\x0d'": "Ctrl+M",  # Ctrl+M
-            "'\\x0e'": "Ctrl+N",  # Ctrl+N
-            "'\\x0f'": "Ctrl+O",  # Ctrl+O
-            "'\\x10'": "Ctrl+P",  # Ctrl+P
-            "'\\x11'": "Ctrl+Q",  # Ctrl+Q
-            "'\\x12'": "Ctrl+R",  # Ctrl+R
-            "'\\x13'": "Ctrl+S",  # Ctrl+S
-            "'\\x14'": "Ctrl+T",  # Ctrl+T
-            "'\\x15'": "Ctrl+U",  # Ctrl+U
-            "'\\x16'": "Ctrl+V",  # Ctrl+V
-            "'\\x17'": "Ctrl+W",  # Ctrl+W
-            "'\\x18'": "Ctrl+X",  # Ctrl+X
-            "'\\x19'": "Ctrl+Y",  # Ctrl+Y
-            "'\\x1a'": "Ctrl+Z"  # Ctrl+Z
+            # MacOS-specific key mappings (for Cmd+A, Cmd+C, etc.)
+            "'\\x01'": "Cmd+A",  # Cmd+A
+            "'\\x02'": "Cmd+B",  # Cmd+B
+            "'\\x03'": "Cmd+C",  # Cmd+C
+            "'\\x04'": "Cmd+D",  # Cmd+D
+            "'\\x05'": "Cmd+E",  # Cmd+E
+            "'\\x06'": "Cmd+F",  # Cmd+F
+            "'\\x07'": "Cmd+G",  # Cmd+G
+            "'\\x08'": "Cmd+H",  # Cmd+H
+            "'\\x09'": "Cmd+I",  # Cmd+I
+            "'\\x0a'": "Cmd+J",  # Cmd+J
+            "'\\x0b'": "Cmd+K",  # Cmd+K
+            "'\\x0c'": "Cmd+L",  # Cmd+L
+            "'\\x0d'": "Cmd+M",  # Cmd+M
+            "'\\x0e'": "Cmd+N",  # Cmd+N
+            "'\\x0f'": "Cmd+O",  # Cmd+O
+            "'\\x10'": "Cmd+P",  # Cmd+P
+            "'\\x11'": "Cmd+Q",  # Cmd+Q
+            "'\\x12'": "Cmd+R",  # Cmd+R
+            "'\\x13'": "Cmd+S",  # Cmd+S
+            "'\\x14'": "Cmd+T",  # Cmd+T
+            "'\\x15'": "Cmd+U",  # Cmd+U
+            "'\\x16'": "Cmd+V",  # Cmd+V
+            "'\\x17'": "Cmd+W",  # Cmd+W
+            "'\\x18'": "Cmd+X",  # Cmd+X
+            "'\\x19'": "Cmd+Y",  # Cmd+Y
+            "'\\x1a'": "Cmd+Z"  # Cmd+Z
         }
 
         # ---------- 键盘press前截图 ----------
