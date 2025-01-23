@@ -301,7 +301,7 @@ class ActionRecorder(QtCore.QObject):
             position_y = f"{y}/{self.screen_height}"
 
             if pressed:
-                print("press")
+                #print("press")
                 # 截图
                 self.click_press_start_screenshot = pyautogui.screenshot()
                 # 鼠标按下，记录拖拽开始
@@ -318,7 +318,7 @@ class ActionRecorder(QtCore.QObject):
                 self.handle_event(event_data, screenshot=self.click_press_start_screenshot)
             else:
                 # 鼠标松开，记录拖拽结束
-                print("release")
+                #print("release")
                 event_data = {
                         "timestamp": time.time(),
                         "event": "mouse_click",
@@ -346,7 +346,7 @@ class ActionRecorder(QtCore.QObject):
         # 键盘序列的第一个press截图
         if self.is_press_start is True:
             self.press_start_screenshot = pyautogui.screenshot()
-            print("[*] press_start_screenshot")
+            #print("[*] press_start_screenshot")
         self.is_press_start = False
 
         key_pressed = self._get_key_name(key)
@@ -364,8 +364,8 @@ class ActionRecorder(QtCore.QObject):
         self.action_timer.start()
 
     def _get_key_name(self, key_name):
-        print("key_name: ",end="")
-        print(key_name)
+        #print("key_name: ",end="")
+        #print(key_name)
         # print(type(key_name))
         try:
             key_name_str = str(key_name).strip()
@@ -408,7 +408,7 @@ class ActionRecorder(QtCore.QObject):
 
         if self.is_scroll_press_start is True:
             self.scroll_press_start_screenshot = pyautogui.screenshot()
-            print("[*] scroll_press_start_screenshot")
+            #print("[*] scroll_press_start_screenshot")
             self.is_scroll_press_start = False
 
         if dy == 0:

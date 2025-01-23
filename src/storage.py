@@ -252,15 +252,15 @@ class StorageManager:
                 img = screenshot
                 # 从文件名中提取时间戳（假设文件名格式为 screenshot_TIMESTAMP.png）
                 timestamp = os.path.splitext(filename)[0].split('_')[-1]
-                print('\nflag1\n')
+                #print('\nflag1\n')
             elif screenshot:
                 img = screenshot
                 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%f")
-                print('\nflag2\n')
+                #print('\nflag2\n')
             else:
                 img = pyautogui.screenshot()
                 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%f")
-                print('\nflag3\n')
+                #print('\nflag3\n')
 
             # 定义文件名
             unannotated_filename = f"screenshot_{timestamp}_no_info.jpg"
@@ -530,14 +530,14 @@ class StorageManager:
             thread_safe_logging('info', f"会话处理完成 - 文件夹: {self.session_folder}")
 
             # 在所有处理完成后，删除会话文件夹
-            #try:
-                #import shutil
-                #shutil.rmtree(self.session_folder)
-                #print(f"\n会话文件夹已删除: {self.session_folder}")
-                #thread_safe_logging('info', f"会话文件夹已删除: {self.session_folder}")
-            #except Exception as e:
-                #thread_safe_logging('error', f"删除文件夹失败: {str(e)}")
-                #print(f"\n删除文件夹失败: {str(e)}")
+            try:
+                import shutil
+                shutil.rmtree(self.session_folder)
+                print(f"\n会话文件夹已删除: {self.session_folder}")
+                thread_safe_logging('info', f"会话文件夹已删除: {self.session_folder}")
+            except Exception as e:
+                thread_safe_logging('error', f"删除文件夹失败: {str(e)}")
+                print(f"\n删除文件夹失败: {str(e)}")
 
         except Exception as e:
             thread_safe_logging('error', f"会话处理失败 - 文件夹: {self.session_folder}, 错误: {str(e)}")
