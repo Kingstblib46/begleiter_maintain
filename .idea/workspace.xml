@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.24.3(尝试，分批上传成功，本地删除成功)">
+    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.24.4(尝试，补充了读取数据库能力)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/main.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/main.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/warn-main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/warn-main.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/xref-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/xref-main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.app/Contents/MacOS/main" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main.app/Contents/MacOS/main" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,14 +231,6 @@
       <workItem from="1737647589406" duration="4000" />
       <workItem from="1737647597613" duration="2097000" />
       <workItem from="1737651065118" duration="3769000" />
-    </task>
-    <task id="LOCAL-00019" summary="2025.1.15.5">
-      <option name="closed" value="true" />
-      <created>1736929071466</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1736929071466</updated>
     </task>
     <task id="LOCAL-00020" summary="2025.1.15.6">
       <option name="closed" value="true" />
@@ -615,7 +616,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737657138667</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="2025.1.24.4(尝试，补充了读取数据库能力)">
+      <option name="closed" value="true" />
+      <created>1737657958634</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1737657958634</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +669,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025.1.19.3(打包,更新字段)" />
     <MESSAGE value="2025.1.19.4(坐标转换，傻逼cursor)" />
     <MESSAGE value="2025.1.20.1(有点小问题)" />
     <MESSAGE value="2025.1.20.2(删除鼠标图标，修改文件后缀)" />
@@ -685,14 +693,15 @@
     <MESSAGE value="2025.1.23.5(用户版本，删除了不必要输出，并打包)" />
     <MESSAGE value="2025.1.24.2(尝试，分批上传成功，本地删除再说)" />
     <MESSAGE value="2025.1.24.3(尝试，分批上传成功，本地删除成功)" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025.1.24.3(尝试，分批上传成功，本地删除成功)" />
+    <MESSAGE value="2025.1.24.4(尝试，补充了读取数据库能力)" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025.1.24.4(尝试，补充了读取数据库能力)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/begleiter$ui.coverage" NAME="ui Coverage Results" MODIFIED="1736845995733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$storage.coverage" NAME="storage Coverage Results" MODIFIED="1737213298694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter_maintain$action_recorder.coverage" NAME="action_recorder Coverage Results" MODIFIED="1737543335447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$test_screenshot.coverage" NAME="test_screenshot Coverage Results" MODIFIED="1736786701994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/begleiter_maintain$main.coverage" NAME="main Coverage Results" MODIFIED="1737657560776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/begleiter_maintain$main.coverage" NAME="main Coverage Results" MODIFIED="1737657869641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$action_recorder.coverage" NAME="action_recorder Coverage Results" MODIFIED="1737361339073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$main.coverage" NAME="main Coverage Results" MODIFIED="1737361475695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>

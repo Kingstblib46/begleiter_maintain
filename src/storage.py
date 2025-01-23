@@ -582,24 +582,11 @@ class StorageManager:
 
     # 获取用户名并写入 username.txt，如果为空的话
     def get_username_and_write_to_file(self):
-        username_file_path = resource_path('username.txt')
-
         try:
-            # 尝试从 username.txt 读取用户名
-            if not os.path.exists(username_file_path) or os.path.getsize(username_file_path) == 0:
-                # 如果文件不存在或为空，则从系统获取用户名并写入文件
-                username = os.getenv('USERNAME', None)  # 获取系统用户名
-                if not username:
-                    raise Exception("无法获取系统用户名")
-                with open(username_file_path, 'w', encoding='utf-8') as f:
-                    f.write(username)
-                print(f"用户名写入文件: {username}")
-            else:
-                with open(username_file_path, 'r', encoding='utf-8') as f:
-                    username = f.read().strip()
-        except Exception as e:
-            print(f"获取用户名失败: {e}")
-            username = None  # 如果失败，设置为 None
+            with open(os.path.join(app_path(), 'username.txt'), 'r', encoding='utf-8') as f:
+                username = f.read().strip()
+        except:
+            print("未找到用户名文件")
         return username
 
     def start_session(self):
