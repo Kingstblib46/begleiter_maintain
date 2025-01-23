@@ -559,6 +559,15 @@ class StorageManager:
                 except Exception as delete_error:
                     thread_safe_logging('error', f"删除本地文件时出错: {delete_error}")
 
+            try:
+                import shutil
+                shutil.rmtree(self.session_folder)
+                print(f"\n会话文件夹已删除: {self.session_folder}")
+                thread_safe_logging('info', f"会话文件夹已删除: {self.session_folder}")
+            except Exception as e:
+                thread_safe_logging('error', f"删除文件夹失败: {str(e)}")
+                print(f"\n删除文件夹失败: {str(e)}")
+
             thread_safe_logging('info', f"会话文件夹 {self.session_folder} 已处理完毕。")
         except Exception as e:
             thread_safe_logging('error', f"处理会话文件夹时出错: {e}")
