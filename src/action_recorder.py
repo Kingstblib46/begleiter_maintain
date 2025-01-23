@@ -470,7 +470,7 @@ class ActionRecorder(QtCore.QObject):
             "position": {"x": x, "y": y},
             "active_app": active_app
         }
-        self.handle_event(event_data, screenshot)
+        self.handle_event(event_data, screenshot = self.scroll_press_start_screenshot)
 
         self.is_scroll_press_start = True
         self.scroll_press_start_screenshot = None

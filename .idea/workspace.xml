@@ -4,12 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.22.8(用户版本)">
-      <change afterPath="$PROJECT_DIR$/src/database.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/username.txt" afterDir="false" />
+    <list default="true" id="c1bb14b7-a862-4f5c-bf1d-8c3db9e9ae16" name="Changes" comment="2025.1.23.1(开发版本，修复了键盘问题，加入了读取数据库名字功能)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/main.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/main.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/warn-main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/warn-main.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main/xref-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/main/xref-main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/main.app/Contents/MacOS/main" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main.app/Contents/MacOS/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/action_recorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_recorder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/username.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,14 +228,6 @@
       <workItem from="1737523197091" duration="32000" />
       <workItem from="1737538633339" duration="260000" />
       <workItem from="1737539938798" duration="7161000" />
-    </task>
-    <task id="LOCAL-00012" summary="2025.1.14.7">
-      <option name="closed" value="true" />
-      <created>1736845473708</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1736845473708</updated>
     </task>
     <task id="LOCAL-00013" summary="2025.1.14.8">
       <option name="closed" value="true" />
@@ -613,7 +613,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737552688245</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="2025.1.23.1(开发版本，修复了键盘问题，加入了读取数据库名字功能)">
+      <option name="closed" value="true" />
+      <created>1737600966266</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1737600966266</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,7 +666,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025.1.18.5(绘制鼠标，微调参数)" />
     <MESSAGE value="2025.1.18.6(微调输入参数)" />
     <MESSAGE value="2025.1.18.7(微调输入参数+重新打包)" />
     <MESSAGE value="2025.1.18.8(微调输入参数+重新打包)" />
@@ -683,14 +690,15 @@
     <MESSAGE value="2025.1.22.6(坐标轴修复)" />
     <MESSAGE value="2025.1.22.7(json没有文件修复)" />
     <MESSAGE value="2025.1.22.8(用户版本)" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025.1.22.8(用户版本)" />
+    <MESSAGE value="2025.1.23.1(开发版本，修复了键盘问题，加入了读取数据库名字功能)" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025.1.23.1(开发版本，修复了键盘问题，加入了读取数据库名字功能)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/begleiter$ui.coverage" NAME="ui Coverage Results" MODIFIED="1736845995733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$storage.coverage" NAME="storage Coverage Results" MODIFIED="1737213298694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter_maintain$action_recorder.coverage" NAME="action_recorder Coverage Results" MODIFIED="1737543335447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$test_screenshot.coverage" NAME="test_screenshot Coverage Results" MODIFIED="1736786701994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/begleiter_maintain$main.coverage" NAME="main Coverage Results" MODIFIED="1737552312435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/begleiter_maintain$main.coverage" NAME="main Coverage Results" MODIFIED="1737600847158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$action_recorder.coverage" NAME="action_recorder Coverage Results" MODIFIED="1737361339073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/begleiter$main.coverage" NAME="main Coverage Results" MODIFIED="1737361475695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
