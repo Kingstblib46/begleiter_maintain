@@ -449,6 +449,14 @@ class StorageManager:
         repo_type = config.get('repo_type', 'dataset')
         path_in_repo = config.get('path_in_repo', 'test')
 
+        try:
+            with open(os.path.join(app_path(), 'database.txt'), 'r', encoding='utf-8') as f:
+                dataset_name = f.read().strip()
+                print(f"上传数据库：", dataset_name)
+        except Exception as e:
+            print("未指定传输数据库")
+            dataset_name = 'AGENTC-DEV'
+
         # 读取用户名并构建上传路径（用户名作为文件夹，时间戳作为文件名）
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         try:
@@ -460,7 +468,7 @@ class StorageManager:
                 path_in_repo = f"{username}/{timestamp}-log-{file_count}.zip.enc"
                 if batch_count is not None:
                     path_in_repo = f"{username}/{timestamp}-({batch_count})-log-{file_count}.zip.enc"
-            print(f"上传路径: {path_in_repo}")
+            print(f"上传路径: {dataset_name}/{path_in_repo}")
         except Exception as e:
             print(f"发生错误: {e}")
             path_in_repo = f"{timestamp}.zip"  # 如果其他部分失败，回退到时间戳生成路径
