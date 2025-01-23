@@ -439,7 +439,7 @@ class StorageManager:
             thread_safe_logging('error', f"加密失败 - 文件: {input_file}, 错误: {str(e)}")
             raise
 
-    def upload_file(self, file_path, file_count):
+    def upload_file(self, file_path, file_count, batch_count = None):
         """
         使用 ModelScope API 上传打包后的 ZIP 文件。
         """

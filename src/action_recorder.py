@@ -19,7 +19,6 @@ import string
 
 from threading import Timer
 
-
 class ActionRecorder(QtCore.QObject):
     action_recorded = QtCore.pyqtSignal(str)
 
@@ -72,6 +71,12 @@ class ActionRecorder(QtCore.QObject):
         # 启动按键处理线程
         #self.key_process_thread = threading.Thread(target=self._process_key_buffer, daemon=True)
         #self.key_process_thread.start()
+
+        # ---------- action 数量相关 ----------
+        self.prev_action_count = 0
+        self.cur_action_count = 0
+        self.max_action_threshold = 10
+        self.batch_count = 1
 
         self.known_key_map = {
             # Alphanumeric keys
@@ -235,9 +240,234 @@ class ActionRecorder(QtCore.QObject):
         self.is_scroll_press_start = True
         self.scroll_press_start_screenshot = None
 
+    def resource_path(relative_path):
+        import sys
+        if getattr(sys, 'frozen', False):  # 是否Bundle Resource
+            base_path = sys._MEIPASS
+        else:
+            base_path = os.path.abspath(".")
+        if base_path.endswith('_internal'):
+            base_path = base_path[:-9]
+        return os.path.join(base_path, relative_path)  # 去掉 _internal
+
+    def count_file(self, foldername):
+        """
+        统计指定文件夹中的文件数量。
+
+        :param foldername: 文件夹的路径
+        :return: 文件数量（整数）
+        """
+        try:
+            # 检查文件夹是否存在
+            if not os.path.exists(foldername):
+                print(f"Folder '{foldername}' does not exist.")
+                return 0
+
+            # 使用 os.listdir 统计文件数量
+            file_count = len([f for f in os.listdir(foldername) if os.path.isfile(os.path.join(foldername, f))])
+            return file_count
+        except Exception as e:
+            print(f"Error counting files in folder '{foldername}': {e}")
+            return 0
+
+    def copy_folder(self, src_folder, dest_folder):
+        """
+        将 src_folder 复制到 dest_folder。
+
+        :param src_folder: 源文件夹路径
+        :param dest_folder: 目标文件夹路径
+        """
+        import shutil
+        import os
+        try:
+            # 检查源文件夹是否存在
+            if not os.path.exists(src_folder):
+                print(f"Source folder '{src_folder}' does not exist or is empty.")
+                return False
+
+            # 检查源文件夹是否有内容
+            if len(os.listdir(src_folder)) == 0:
+                print(f"Source folder '{src_folder}' is empty.")
+                return False
+
+            # 如果目标文件夹已存在，先删除
+            if os.path.exists(dest_folder):
+                shutil.rmtree(dest_folder)
+                print(f"Existing destination folder '{dest_folder}' has been removed.")
+
+            # 使用 shutil.copytree 复制整个文件夹
+            shutil.copytree(src_folder, dest_folder)
+            print(f"Folder '{src_folder}' successfully copied to '{dest_folder}'.")
+            return True
+        except Exception as e:
+            print(f"Error copying folder '{src_folder}' to '{dest_folder}': {e}")
+            return False
+
+    def copy_file(self, src_file, dest_file):
+        """
+        将 src_file 复制到 dest_file。
+
+        :param src_file: 源文件路径
+        :param dest_file: 目标文件路径
+        """
+        import shutil
+        try:
+            # 检查源文件是否存在
+            if not os.path.exists(src_file):
+                print(f"Source file '{src_file}' does not exist.")
+                return False
+
+            # 获取目标文件夹路径并创建（如果不存在）
+            dest_folder = os.path.dirname(dest_file)
+            if not os.path.exists(dest_folder):
+                os.makedirs(dest_folder)
+                print(f"Destination folder '{dest_folder}' created.")
+
+            # 复制文件
+            shutil.copy2(src_file, dest_file)
+            print(f"File '{src_file}' successfully copied to '{dest_file}'.")
+            return True
+        except Exception as e:
+            print(f"Error copying file '{src_file}' to '{dest_file}': {e}")
+            return False
+
+    def encrypt_file(self, input_file, output_file, key, iv):
+        """
+        使用 AES 加密文件
+        """
+        from Crypto.Cipher import AES
+        from Crypto.Util.Padding import pad
+        try:
+            cipher = AES.new(key.encode('utf-8'), AES.MODE_CBC, iv.encode('utf-8'))
+            with open(input_file, 'rb') as f:
+                plaintext = f.read()
+            # 使用 PKCS7 填充数据
+            ciphertext = cipher.encrypt(pad(plaintext, AES.block_size))
+            # 保存 IV + 加密后的数据
+            with open(output_file, 'wb') as f:
+                f.write(iv.encode('utf-8') + ciphertext)  # 将 IV 和加密后的数据写入文件
+            thread_safe_logging('info', f"成功: 文件 {input_file} 已加密为 {output_file}。")
+        except Exception as e:
+            thread_safe_logging('error', f"错误: 加密文件 {input_file} 时出错: {e}")
+
+    def zip_xxx_count(self, session_folder, start, end):
+        """
+        将 current_copy_folder 中的文件压缩处理。
+
+        1. 从 original 文件夹中取文件，按照文件名称排序后，取下标为 start~end 的文件（1-based 下标）。
+        2. 从 .jsonl 文件中读取对应行的数据，取下标为 start~end 的行（1-based 下标）。
+        3. 将这两部分数据打包为 zip 文件，压缩结构如下：
+        original/
+        ├── xxx.jpg
+        ├── …
+        xxx.jsonl
+
+        :param current_copy_folder: 要操作的文件夹路径
+        :param start: 开始下标（1-based）
+        :param end: 结束下标（1-based）
+        """
+        import zipfile
+        try:
+            original_folder = os.path.join(session_folder, "screenshots", "original")
+            if not os.path.exists(original_folder):
+                raise FileNotFoundError(f"Original folder '{original_folder}' does not exist.")
+
+            # 1. 从 original 文件夹中获取文件
+            files = sorted(os.listdir(original_folder))  # 按文件名排序
+            selected_files = files[start - 1:end]  # 下标从 1 开始，因此调整为 0-based
+            selected_file_paths = [os.path.join(original_folder, f) for f in selected_files]
+
+            # # 2. 从 .jsonl 文件中读取对应的行
+            # with open(jsonl_file_path, "r", encoding="utf-8") as jsonl_file:
+            #     lines = jsonl_file.readlines()
+            # selected_lines = lines[start - 1:end]  # 下标从 1 开始，因此调整为 0-based
+
+            # 3. 创建 zip 文件
+            copy_dir = os.path.join(session_folder, "copy")
+            os.makedirs(copy_dir, exist_ok=True)
+            zip_file_name = os.path.join(copy_dir, f"{datetime.now().strftime('%Y%m%d%H%M%S')}.zip")
+            with zipfile.ZipFile(zip_file_name, "w", zipfile.ZIP_DEFLATED) as zipf:
+                # 添加 original 文件夹中的文件
+                for file_path in selected_file_paths:
+                    arcname = os.path.join("original", os.path.basename(file_path))  # 压缩文件结构
+                    zipf.write(file_path, arcname)
+                    print(f"Added to zip: {arcname}")
+
+            print(f"Zip file created: {zip_file_name}")
+            return zip_file_name
+
+        except Exception as e:
+            print(f"Error in zip_xxx_count: {e}")
+            return None
+
+    def monitor_action_count(self):
+        """
+        只分批传图片，不传jsonl
+        也不用copy，直接用双指针读 original文件夹就行
+        """
+        # return
+        self.max_action_threshold = 10
+        First = True
+        while True:
+            if (First == True):
+                time.sleep(10)  # 这是为了开发测试时，让开始多点几下，使得有记录）后面直接改为监控的时间interval就行
+                First = False
+            # 后面记得把下面的加上try except
+            # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            session_folder = self.storage_manager.session_folder
+            original_folder = os.path.join(session_folder, 'screenshots', 'original')
+            log_folder = os.path.join(session_folder, 'log')
+            log_file_path = os.path.join(log_folder, self.log_filename)
+            # print("@monitor_action_count : session_folder ---",session_folder)
+            # print("@monitor_action_count : original_folder ---",original_folder)
+            # print("@monitor_action_count : log_file ---",log_file_path)
+            # print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            # 统计增量
+            self.cur_action_count = self.count_file(original_folder)
+            if self.cur_action_count - self.prev_action_count > self.max_action_threshold:
+                # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                # 压缩, 加密，上传
+                # 还需要考虑：如果没有成功上传，需要将数据先留着，下次再上传
+                # 改成这种吧，如果没有成功上传，就不更新 prev_action_count 和 batch_count 就行了
+                # copy文件夹都一律删除
+                zip_file_name = self.zip_xxx_count(session_folder, self.prev_action_count + 1,
+                                                   self.cur_action_count)  # 注意区间问题
+                key = "16byteslongkey!!"
+                iv = "16byteslongiv!!!"
+                enc_zip_file_name = zip_file_name + ".enc"
+                self.encrypt_file(zip_file_name, enc_zip_file_name, key, iv)
+                upload_success = False
+                if zip_file_name is not None:
+                    # 上传
+                    upload_success = self.storage_manager.upload_file(enc_zip_file_name,
+                                                                      self.cur_action_count - self.prev_action_count,
+                                                                      self.batch_count)
+                # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                # 删除
+                if upload_success:
+                    self.batch_count += 1
+                    self.prev_action_count = self.cur_action_count
+                    from storage import resource_path
+                    batch_count_file = resource_path(".batch_count!dont_delete!!!")
+                    with open(batch_count_file, 'w') as f:
+                        f.write(str(self.batch_count))
+                    sum_file = resource_path(".sum_count!dont_delete!!!")
+                    with open(sum_file, 'w') as f:
+                        f.write(str(self.cur_action_count))
+                    print(f"Successfully uploaded file: {enc_zip_file_name}")
+                else:
+                    pass
+
+                time.sleep(60)
+
+        pass
+
     def start_recording(self):
         if not self.running:
             self.running = True
+            # 启动一个线程来监控产生的action数量
+            self.action_thread = threading.Thread(target=self.monitor_action_count, daemon=True)
+            self.action_thread.start()
             self.mouse_listener.start()
             self.keyboard_listener.start()
             thread_safe_logging('info', "用户操作记录器已启动。")
