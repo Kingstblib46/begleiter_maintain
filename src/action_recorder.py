@@ -260,7 +260,7 @@ class ActionRecorder(QtCore.QObject):
         try:
             # 检查文件夹是否存在
             if not os.path.exists(foldername):
-                print(f"Folder '{foldername}' does not exist.")
+                #print(f"Folder '{foldername}' does not exist.")
                 return 0
 
             # 使用 os.listdir 统计文件数量
@@ -282,7 +282,7 @@ class ActionRecorder(QtCore.QObject):
         try:
             # 检查源文件夹是否存在
             if not os.path.exists(src_folder):
-                print(f"Source folder '{src_folder}' does not exist or is empty.")
+                #print(f"Source folder '{src_folder}' does not exist or is empty.")
                 return False
 
             # 检查源文件夹是否有内容
@@ -314,7 +314,7 @@ class ActionRecorder(QtCore.QObject):
         try:
             # 检查源文件是否存在
             if not os.path.exists(src_file):
-                print(f"Source file '{src_file}' does not exist.")
+                #print(f"Source file '{src_file}' does not exist.")
                 return False
 
             # 获取目标文件夹路径并创建（如果不存在）
@@ -357,41 +357,71 @@ class ActionRecorder(QtCore.QObject):
         1. 从 original 文件夹中取文件，按照文件名称排序后，取下标为 start~end 的文件（1-based 下标）。
         2. 从 .jsonl 文件中读取对应行的数据，取下标为 start~end 的行（1-based 下标）。
         3. 将这两部分数据打包为 zip 文件，压缩结构如下：
-        original/
+        screenshots/
         ├── xxx.jpg
         ├── …
-        xxx.jsonl
+        log/
+        ├── xxx.jsonl
 
-        :param current_copy_folder: 要操作的文件夹路径
+        :param session_folder: 会话文件夹路径
         :param start: 开始下标（1-based）
         :param end: 结束下标（1-based）
         """
         import zipfile
         try:
+            # 1. 处理图片文件
             original_folder = os.path.join(session_folder, "screenshots", "original")
             if not os.path.exists(original_folder):
                 raise FileNotFoundError(f"Original folder '{original_folder}' does not exist.")
 
-            # 1. 从 original 文件夹中获取文件
             files = sorted(os.listdir(original_folder))  # 按文件名排序
             selected_files = files[start - 1:end]  # 下标从 1 开始，因此调整为 0-based
             selected_file_paths = [os.path.join(original_folder, f) for f in selected_files]
 
-            # # 2. 从 .jsonl 文件中读取对应的行
-            # with open(jsonl_file_path, "r", encoding="utf-8") as jsonl_file:
-            #     lines = jsonl_file.readlines()
-            # selected_lines = lines[start - 1:end]  # 下标从 1 开始，因此调整为 0-based
+            # 2. 处理JSONL文件
+            log_folder = os.path.join(session_folder, "log")
+            if not os.path.exists(log_folder):
+                raise FileNotFoundError(f"Log folder '{log_folder}' does not exist.")
 
-            # 3. 创建 zip 文件
+            # 创建必要的目录结构
             copy_dir = os.path.join(session_folder, "copy")
-            os.makedirs(copy_dir, exist_ok=True)
-            zip_file_name = os.path.join(copy_dir, f"{datetime.now().strftime('%Y%m%d%H%M%S')}.zip")
+            copy_screenshots_dir = os.path.join(copy_dir, "screenshots")
+            copy_log_dir = os.path.join(copy_dir, "log")
+            os.makedirs(copy_screenshots_dir, exist_ok=True)
+            os.makedirs(copy_log_dir, exist_ok=True)
+
+            # 创建临时JSONL文件来存储选定的行
+            timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+            temp_jsonl = os.path.join(copy_log_dir, f"{timestamp}.jsonl")
+            
+            # 读取原始JSONL文件并提取指定行
+            jsonl_file = os.path.join(log_folder, self.log_filename)
+            with open(jsonl_file, 'r', encoding='utf-8') as source, \
+                 open(temp_jsonl, 'w', encoding='utf-8') as target:
+                lines = source.readlines()
+                selected_lines = lines[start - 1:end]  # 下标从 1 开始，因此调整为 0-based
+                print(f"Selected lines: ", end - start)
+                target.writelines(selected_lines)
+
+            # 3. 创建zip文件
+            zip_file_name = os.path.join(copy_dir, f"{timestamp}.zip")
             with zipfile.ZipFile(zip_file_name, "w", zipfile.ZIP_DEFLATED) as zipf:
-                # 添加 original 文件夹中的文件
+                # 添加图片文件到 screenshots 目录
                 for file_path in selected_file_paths:
-                    arcname = os.path.join("original", os.path.basename(file_path))  # 压缩文件结构
+                    arcname = os.path.join("screenshots", os.path.basename(file_path))
                     zipf.write(file_path, arcname)
                     print(f"Added to zip: {arcname}")
+                
+                # 添加JSONL文件到 log 目录
+                arcname = os.path.join("log", os.path.basename(temp_jsonl))
+                zipf.write(temp_jsonl, arcname)
+                print(f"Added to zip: {arcname}")
+
+            # 清理临时JSONL文件
+            os.remove(temp_jsonl)
+            # 清理临时目录
+            os.rmdir(copy_screenshots_dir)
+            os.rmdir(copy_log_dir)
 
             print(f"Zip file created: {zip_file_name}")
             return zip_file_name
