@@ -362,6 +362,7 @@ class ActionRecorder(QtCore.QObject):
         ├── …
         log/
         ├── xxx.jsonl
+        ├── xxx.json
 
         :param session_folder: 会话文件夹路径
         :param start: 开始下标（1-based）
@@ -390,18 +391,28 @@ class ActionRecorder(QtCore.QObject):
             os.makedirs(copy_screenshots_dir, exist_ok=True)
             os.makedirs(copy_log_dir, exist_ok=True)
 
-            # 创建临时JSONL文件来存储选定的行
+            # 创建临时文件来存储选定的行
             timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
             temp_jsonl = os.path.join(copy_log_dir, f"{timestamp}.jsonl")
+            temp_json = os.path.join(copy_log_dir, f"{timestamp}.json")
             
             # 读取原始JSONL文件并提取指定行
             jsonl_file = os.path.join(log_folder, self.log_filename)
+            json_array = []
             with open(jsonl_file, 'r', encoding='utf-8') as source, \
-                 open(temp_jsonl, 'w', encoding='utf-8') as target:
+                 open(temp_jsonl, 'w', encoding='utf-8') as target_jsonl:
                 lines = source.readlines()
                 selected_lines = lines[start - 1:end]  # 下标从 1 开始，因此调整为 0-based
-                print(f"Selected lines: ", end - start)
-                target.writelines(selected_lines)
+                #print(f"Selected lines: ", end - start)
+                # 写入JSONL文件
+                target_jsonl.writelines(selected_lines)
+                # 准备JSON数组
+                for line in selected_lines:
+                    json_array.append(json.loads(line))
+
+            # 写入JSON文件
+            with open(temp_json, 'w', encoding='utf-8') as target_json:
+                json.dump(json_array, target_json, ensure_ascii=False, indent=2)
 
             # 3. 创建zip文件
             zip_file_name = os.path.join(copy_dir, f"{timestamp}.zip")
@@ -412,13 +423,15 @@ class ActionRecorder(QtCore.QObject):
                     zipf.write(file_path, arcname)
                     print(f"Added to zip: {arcname}")
                 
-                # 添加JSONL文件到 log 目录
-                arcname = os.path.join("log", os.path.basename(temp_jsonl))
-                zipf.write(temp_jsonl, arcname)
-                print(f"Added to zip: {arcname}")
+                # 添加JSONL和JSON文件到 log 目录
+                for temp_file in [temp_jsonl, temp_json]:
+                    arcname = os.path.join("log", os.path.basename(temp_file))
+                    zipf.write(temp_file, arcname)
+                    print(f"Added to zip: {arcname}")
 
-            # 清理临时JSONL文件
+            # 清理临时文件
             os.remove(temp_jsonl)
+            os.remove(temp_json)
             # 清理临时目录
             os.rmdir(copy_screenshots_dir)
             os.rmdir(copy_log_dir)
