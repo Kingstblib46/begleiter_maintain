@@ -387,15 +387,16 @@ class ActionRecorder(QtCore.QObject):
             copy_dir = os.path.join(session_folder, "copy")
             copy_screenshots_dir = os.path.join(copy_dir, "screenshots")
             copy_log_dir = os.path.join(copy_dir, "log")
-            os.makedirs(copy_screenshots_dir, exist_ok=True)
-            os.makedirs(copy_log_dir, exist_ok=True)
+            os.makedirs(copy_screenshots_dir, exist_ok=True);print("make screenshot dir success")
+            os.makedirs(copy_log_dir, exist_ok=True);print("make log dir success")
 
             # 创建临时JSONL文件来存储选定的行
             timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
             temp_jsonl = os.path.join(copy_log_dir, f"{timestamp}.jsonl")
             
             # 读取原始JSONL文件并提取指定行
-            jsonl_file = os.path.join(log_folder, self.log_filename)
+            log_files = os.listdir(log_folder)
+            jsonl_file = os.path.join(log_folder, log_files[0])  # 只有一个文件
             with open(jsonl_file, 'r', encoding='utf-8') as source, \
                  open(temp_jsonl, 'w', encoding='utf-8') as target:
                 lines = source.readlines()
@@ -445,6 +446,20 @@ class ActionRecorder(QtCore.QObject):
             # 后面记得把下面的加上try except
             # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             session_folder = self.storage_manager.session_folder
+
+            if self.storage_manager.session_folder is None:
+                records_dir = os.path.join(app_path(), "records")
+                if os.path.exists(records_dir):
+                    sessions = os.listdir(records_dir)
+                    if len(sessions) == 1:
+                        session_folder = os.path.join(records_dir, sessions[0])
+                        print("use local!")
+                        self.storage_manager.session_folder = session_folder
+                    else:
+                        raise ValueError(f"Expected exactly one session folder, found {len(sessions)}")
+                else:
+                    raise ValueError("Records directory does not exist")
+
             original_folder = os.path.join(session_folder, 'screenshots', 'original')
             log_folder = os.path.join(session_folder, 'log')
             log_file_path = os.path.join(log_folder, self.log_filename)
