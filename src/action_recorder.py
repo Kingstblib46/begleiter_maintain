@@ -75,7 +75,7 @@ class ActionRecorder(QtCore.QObject):
         # ---------- action 数量相关 ----------
         self.prev_action_count = 0
         self.cur_action_count = 0
-        self.max_action_threshold = 10
+        self.max_action_threshold = 300
         self.batch_count = 1
 
         self.known_key_map = {
@@ -437,7 +437,7 @@ class ActionRecorder(QtCore.QObject):
         也不用copy，直接用双指针读 original文件夹就行
         """
         # return
-        self.max_action_threshold = 10
+        self.max_action_threshold = 300
         First = True
         while True:
             if (First == True):
